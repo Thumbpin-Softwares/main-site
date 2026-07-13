@@ -1,6 +1,7 @@
 @extends('layout.visitor', [
     'title' => 'Real Estate Video Ads Agency in Gurgaon | Thumbpin',
     'description' => 'Thumbpin produces cinematic real estate ad films, drone walkthroughs and property promo reels that help builders and brokers sell faster.',
+    'keywords' => 'real estate video ads, real estate ad films, drone walkthroughs, property promo videos, real estate marketing agency Gurgaon, real estate marketing agency Gurugram, builder video ads, broker promo videos, property video production Gurgaon, real estate advertising agency',
     'footer_black' => 'footer-black',
 ])
 
