@@ -513,7 +513,7 @@ marketing agency Gurgaon',
 
             {{-- ================= QUICK LINKS SECTION ================= --}}
             <section class="bg-white py-[100px] border-b border-[#eee]">
-                <div class="container">
+                <div class="container max-w-4xl mx-auto">
                     <div class="mb-[60px] pl-5 border-l-[3px] border-tp-red max-[768px]:mb-10">
                         <h2 class="text-2xl uppercase tracking-[2px] m-0 font-extrabold">Explore Our Work</h2>
                     </div>
