@@ -143,6 +143,21 @@ marketing agency Gurgaon',
     }
     </script>
 
+    <!-- VideoObject Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "VideoObject",
+      "name": "Thumbpin — Creative & Digital Advertising Agency Showreel",
+      "description": "Thumbpin transforms your vision into digital reality — a look at our branding, advertising, and video production work.",
+      "thumbnailUrl": [
+        "https://assets.thumbpin.in/thumbpin-photos/thumbpin-upload/vidproduction/place.png"
+      ],
+      "contentUrl": "https://assets.thumbpin.in/thumbpin-videos/whatwedo2optimised.mp4",
+      "embedUrl": "https://www.thumbpin.in/"
+    }
+    </script>
+
 
 
 
@@ -150,11 +165,11 @@ marketing agency Gurgaon',
         {{-- ====================== 1. FIXED HERO (VIDEO BACKGROUND) ====================== --}}
         <div class="fixed inset-0 w-full h-screen -z-10 overflow-hidden bg-black max-[991px]:relative max-[991px]:h-[80vh] max-[991px]:z-10 max-[768px]:h-[60vh]" id="sec-hero">
             {{-- Desktop Video --}}
-            <video id="hero-video-bg" class="block w-full h-full absolute inset-0 object-cover max-[768px]:hidden" src="https://assets.thumbpin.in/thumbpin-videos/whatwedo2optimised.mp4" autoplay muted loop playsinline></video>
+            <video id="hero-video-bg" class="block w-full h-full absolute inset-0 object-cover max-[768px]:hidden" src="https://assets.thumbpin.in/thumbpin-videos/whatwedo2optimised.mp4" autoplay muted loop playsinline preload="auto" fetchpriority="high"></video>
             {{-- Mobile Video - Only loaded on small screens via JS --}}
             <div id="hero-video-mobile-container" class="hidden max-[768px]:block w-full h-full absolute inset-0 [&>video]:block [&>video]:w-full [&>video]:h-full [&>video]:object-cover"></div>
             <template id="hero-video-mobile-template">
-                <video id="hero-video-mobile" src="https://assets.thumbpin.in/thumbpin-videos/optimisedforsmallerscreens.mp4" autoplay muted loop playsinline></video>
+                <video id="hero-video-mobile" src="https://assets.thumbpin.in/thumbpin-videos/optimisedforsmallerscreens.mp4" autoplay muted loop playsinline preload="none"></video>
             </template>
             <div class="absolute inset-0 bg-black/80 z-[1] max-[768px]:hidden"></div>
 
@@ -169,7 +184,7 @@ marketing agency Gurgaon',
                 <div class="flex items-center justify-center font-black uppercase leading-none text-white tracking-[-3px] text-[clamp(32px,8vw,100px)] gap-[clamp(10px,2vw,25px)] opacity-0 translate-y-[30px] animate-hero-reveal [animation-delay:0.6s] max-[1280px]:text-[clamp(28px,6vw,72px)] max-[1280px]:tracking-[-2px] max-[1280px]:gap-[clamp(8px,1.5vw,18px)] max-[1024px]:text-[clamp(24px,5.5vw,56px)] max-[1024px]:tracking-[-1.5px] max-[1024px]:gap-[clamp(6px,1.2vw,14px)]">
                     <span class="inline-block">TRANSFORMS</span>
                     <div class="inline-flex items-center justify-center w-[clamp(80px,16vw,220px)] h-[clamp(40px,7vw,100px)] rounded-full overflow-hidden mx-[clamp(5px,1vw,15px)] shrink-0 pointer-events-auto shadow-[0_10px_40px_rgba(0,0,0,0.5)] border-2 border-white/20 -translate-y-[5%] cursor-pointer [&>video]:w-full [&>video]:h-full [&>video]:object-cover max-[1280px]:w-[clamp(70px,14vw,160px)] max-[1280px]:h-[clamp(35px,6vw,75px)] max-[1024px]:w-[clamp(60px,12vw,130px)] max-[1024px]:h-[clamp(30px,5vw,60px)]" onclick="openVideoModal('https://assets.thumbpin.in/thumbpin-videos/whatwedo2optimised.mp4')">
-                        <video autoplay muted loop playsinline>
+                        <video id="hero-video-pill" muted loop playsinline preload="none">
                             <source src="https://assets.thumbpin.in/thumbpin-videos/whatwedo2optimised.mp4" type="video/mp4">
                         </video>
                     </div>
@@ -310,8 +325,8 @@ marketing agency Gurgaon',
                         <div class="film-item wide">
                             <div class="film-card-cinema">
                                 <div class="film-iframe-wrap">
-                                    <div class="youtube-facade" data-video-id="ncZ3Jh2d_4U">
-                                        <img src="https://img.youtube.com/vi/ncZ3Jh2d_4U/hqdefault.jpg" alt="Film 1" loading="lazy">
+                                    <div class="youtube-facade" data-video-id="NyQYfrLnvvQ">
+                                        <img src="https://img.youtube.com/vi/NyQYfrLnvvQ/hqdefault.jpg" alt="Film 1" loading="lazy">
                                         <div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
                                     </div>
                                 </div>
@@ -651,8 +666,8 @@ marketing agency Gurgaon',
                         <!-- Case 1 -->
                         <div class="reveal group grid grid-cols-[1.2fr_0.8fr] gap-[60px] items-center max-[991px]:grid-cols-1 max-[991px]:gap-[30px]">
                             <div class="relative bg-black rounded overflow-hidden aspect-video shadow-[0_30px_60px_rgba(0,0,0,0.5)] border border-white/[0.08] cursor-pointer transition-transform duration-[600ms] ease-[cubic-bezier(0.2,1,0.3,1)] hover:scale-[1.02] hover:border-white/20 [&:hover_.play-btn]:opacity-100 [&:hover_.play-btn]:scale-100" onclick="openVideoModal('https://assets.thumbpin.in/thumbpin-videos/casestudy2.mp4')">
-                                <video muted loop playsinline preload="metadata" class="w-full h-full object-contain block">
-                                    <source src="https://assets.thumbpin.in/thumbpin-videos/casestudy2.mp4" type="video/mp4">
+                                <video muted loop playsinline preload="none" class="lazy-video w-full h-full object-contain block">
+                                    <source data-src="https://assets.thumbpin.in/thumbpin-videos/casestudy2.mp4" type="video/mp4">
                                 </video>
                                 <div class="play-btn absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-90 w-[70px] h-[70px] bg-white/10 backdrop-blur-[10px] rounded-full flex items-center justify-center text-white opacity-0 transition-all duration-[400ms] border border-white/20 max-[991px]:opacity-100 max-[991px]:bg-black/50">
                                     <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current ml-1"><path d="M8 5v14l11-7z"></path></svg>
@@ -669,8 +684,8 @@ marketing agency Gurgaon',
                         <!-- Case 2 (Alt Layout) -->
                         <div class="reveal group grid grid-cols-[0.8fr_1.2fr] gap-[60px] items-center max-[991px]:grid-cols-1 max-[991px]:gap-[30px]">
                             <div class="order-2 relative bg-black rounded overflow-hidden aspect-video shadow-[0_30px_60px_rgba(0,0,0,0.5)] border border-white/[0.08] cursor-pointer transition-transform duration-[600ms] ease-[cubic-bezier(0.2,1,0.3,1)] hover:scale-[1.02] hover:border-white/20 [&:hover_.play-btn]:opacity-100 [&:hover_.play-btn]:scale-100 max-[991px]:order-1" onclick="openVideoModal('https://assets.thumbpin.in/thumbpin-videos/casestudy1.mp4')">
-                                <video muted loop playsinline preload="metadata" class="w-full h-full object-contain block">
-                                    <source src="https://assets.thumbpin.in/thumbpin-videos/casestudy1.mp4" type="video/mp4">
+                                <video muted loop playsinline preload="none" class="lazy-video w-full h-full object-contain block">
+                                    <source data-src="https://assets.thumbpin.in/thumbpin-videos/casestudy1.mp4" type="video/mp4">
                                 </video>
                                 <div class="play-btn absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 scale-90 w-[70px] h-[70px] bg-white/10 backdrop-blur-[10px] rounded-full flex items-center justify-center text-white opacity-0 transition-all duration-[400ms] border border-white/20 max-[991px]:opacity-100 max-[991px]:bg-black/50">
                                     <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current ml-1"><path d="M8 5v14l11-7z"></path></svg>

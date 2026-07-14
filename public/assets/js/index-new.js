@@ -105,6 +105,59 @@
                 }
             }
             
+            // 5. HERO PILL VIDEO - Duplicates the hero background clip; defer its
+            // load until after the page has settled so it doesn't compete with
+            // the hero background video for bandwidth during initial load/LCP.
+            function initHeroPillVideo() {
+                const pill = document.getElementById('hero-video-pill');
+                if (!pill) return;
+
+                const start = () => {
+                    pill.load();
+                    pill.play().catch(() => {});
+                };
+
+                if ('requestIdleCallback' in window) {
+                    requestIdleCallback(start, { timeout: 3000 });
+                } else {
+                    setTimeout(start, 1500);
+                }
+            }
+
+            // 6. LAZY VIDEOS - Portfolio case-study previews below the fold.
+            // preload="none" by default; only assign the real src (and start
+            // buffering metadata) once the video scrolls near the viewport.
+            function initLazyVideos() {
+                const lazyVideos = document.querySelectorAll('video.lazy-video');
+                if (!lazyVideos.length) return;
+
+                const loadVideo = (video) => {
+                    if (video.dataset.loaded) return;
+                    video.dataset.loaded = 'true';
+                    video.querySelectorAll('source[data-src]').forEach(source => {
+                        source.src = source.dataset.src;
+                        source.removeAttribute('data-src');
+                    });
+                    video.preload = 'metadata';
+                    video.load();
+                };
+
+                if ('IntersectionObserver' in window) {
+                    const videoObserver = new IntersectionObserver((entries, observer) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                loadVideo(entry.target);
+                                observer.unobserve(entry.target);
+                            }
+                        });
+                    }, { rootMargin: '300px 0px' });
+
+                    lazyVideos.forEach(video => videoObserver.observe(video));
+                } else {
+                    lazyVideos.forEach(loadVideo);
+                }
+            }
+
             // Initialize all lazy loading on DOM ready
             if (document.readyState === 'loading') {
                 document.addEventListener('DOMContentLoaded', function() {
@@ -114,6 +167,7 @@
                         initLazyIframes();
                         initLazyImages();
                         initDeferredSections();
+                        initLazyVideos();
                     });
                 });
             } else {
@@ -122,8 +176,11 @@
                     initLazyIframes();
                     initLazyImages();
                     initDeferredSections();
+                    initLazyVideos();
                 });
             }
+
+            window.addEventListener('load', initHeroPillVideo);
         })();
 
         window.addEventListener('load', function() {
