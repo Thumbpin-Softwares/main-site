@@ -285,7 +285,7 @@ marketing agency Gurgaon',
                             <p class="text-lg text-[#888] m-0 font-normal max-w-[500px] max-[991px]:mx-auto">Let's turn your ideas into digital reality. We are ready when you are.</p>
                         </div>
                         <div>
-                            <a href="#sec-contact" class="inline-flex items-center gap-[15px] bg-white text-black py-[18px] px-[45px] rounded-full font-bold text-base uppercase tracking-wider transition-all duration-[400ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] no-underline border border-transparent hover:bg-tp-red hover:text-white hover:-translate-y-1.5 hover:shadow-[0_15px_30px_rgba(230,57,70,0.3)]">Start Your Project <i class="fas fa-arrow-right"></i></a>
+                            <a href="#sec-contact" class="inline-flex items-center gap-[15px] bg-white text-black py-[18px] px-[45px] rounded-full font-bold text-base uppercase tracking-wider transition-all duration-[400ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] no-underline border border-transparent hover:bg-tp-red hover:text-black hover:-translate-y-1.5 hover:shadow-[0_15px_30px_rgba(230,57,70,0.3)]">Start Your Project <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>
