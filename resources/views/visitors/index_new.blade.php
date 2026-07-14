@@ -158,6 +158,96 @@ marketing agency Gurgaon',
     }
     </script>
 
+    <!-- Reels ItemList VideoObject Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "ListItem", "position": 1,
+          "item": {
+            "@type": "VideoObject",
+            "name": "Ramaeri Digital Film",
+            "description": "Short-form digital film reel produced by Thumbpin for Ramaeri.",
+            "thumbnailUrl": "https://img.youtube.com/vi/_UagDA4XyFM/hqdefault.jpg",
+            "embedUrl": "https://www.youtube.com/embed/_UagDA4XyFM"
+          }
+        },
+        {
+          "@type": "ListItem", "position": 2,
+          "item": {
+            "@type": "VideoObject",
+            "name": "Fashion Film",
+            "description": "Short-form fashion film reel produced by Thumbpin.",
+            "thumbnailUrl": "https://img.youtube.com/vi/MoEvrnlSy7U/hqdefault.jpg",
+            "embedUrl": "https://www.youtube.com/embed/MoEvrnlSy7U"
+          }
+        },
+        {
+          "@type": "ListItem", "position": 3,
+          "item": {
+            "@type": "VideoObject",
+            "name": "College Vidya Film",
+            "description": "Short-form brand film reel produced by Thumbpin for College Vidya.",
+            "thumbnailUrl": "https://img.youtube.com/vi/sQcTZugZne0/hqdefault.jpg",
+            "embedUrl": "https://www.youtube.com/embed/sQcTZugZne0"
+          }
+        },
+        {
+          "@type": "ListItem", "position": 4,
+          "item": {
+            "@type": "VideoObject",
+            "name": "Vserv Brand Reel",
+            "description": "Short-form brand reel produced by Thumbpin for Vserv.",
+            "thumbnailUrl": "https://img.youtube.com/vi/V_-e9JaCnuM/hqdefault.jpg",
+            "embedUrl": "https://www.youtube.com/embed/V_-e9JaCnuM"
+          }
+        },
+        {
+          "@type": "ListItem", "position": 5,
+          "item": {
+            "@type": "VideoObject",
+            "name": "Short-Form Social Content",
+            "description": "Short-form social media content reel produced by Thumbpin.",
+            "thumbnailUrl": "https://img.youtube.com/vi/Oj4FmmUoCKA/hqdefault.jpg",
+            "embedUrl": "https://www.youtube.com/embed/Oj4FmmUoCKA"
+          }
+        },
+        {
+          "@type": "ListItem", "position": 6,
+          "item": {
+            "@type": "VideoObject",
+            "name": "Short Film Reel",
+            "description": "Short-form film reel produced by Thumbpin.",
+            "thumbnailUrl": "https://img.youtube.com/vi/CiKv3ezY9b8/hqdefault.jpg",
+            "embedUrl": "https://www.youtube.com/embed/CiKv3ezY9b8"
+          }
+        },
+        {
+          "@type": "ListItem", "position": 7,
+          "item": {
+            "@type": "VideoObject",
+            "name": "Vserv Dubai Reel",
+            "description": "Short-form brand reel produced by Thumbpin for Vserv Dubai.",
+            "thumbnailUrl": "https://img.youtube.com/vi/ee1nPF5evyQ/hqdefault.jpg",
+            "embedUrl": "https://www.youtube.com/embed/ee1nPF5evyQ"
+          }
+        },
+        {
+          "@type": "ListItem", "position": 8,
+          "item": {
+            "@type": "VideoObject",
+            "name": "Short Film Reel",
+            "description": "Short-form film reel produced by Thumbpin.",
+            "thumbnailUrl": "https://img.youtube.com/vi/4T8YyPqliog/hqdefault.jpg",
+            "embedUrl": "https://www.youtube.com/embed/4T8YyPqliog"
+          }
+        }
+      ]
+    }
+    </script>
+
 
 
 
@@ -174,7 +264,7 @@ marketing agency Gurgaon',
             <div class="absolute inset-0 bg-black/80 z-[1] max-[768px]:hidden"></div>
 
             <!-- Headline Overlay - Centered with Inline Video -->
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[1400px] text-center z-[5] pointer-events-none flex flex-col items-center justify-center gap-0 max-[991px]:w-[95%] max-[991px]:top-[55%] max-[768px]:hidden">
+            <h1 class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-[1400px] text-center z-[5] pointer-events-none flex flex-col items-center justify-center gap-0 max-[991px]:w-[95%] max-[991px]:top-[55%] max-[768px]:hidden">
                 <!-- Line 1: THUMBPIN -->
                 <div class="flex items-center justify-center font-black uppercase leading-none text-white tracking-[-3px] text-[clamp(32px,8vw,100px)] gap-[clamp(10px,2vw,25px)] opacity-0 translate-y-[30px] animate-hero-reveal [animation-delay:0.4s] max-[1280px]:text-[clamp(28px,6vw,72px)] max-[1280px]:tracking-[-2px] max-[1280px]:gap-[clamp(8px,1.5vw,18px)] max-[1024px]:text-[clamp(24px,5.5vw,56px)] max-[1024px]:tracking-[-1.5px] max-[1024px]:gap-[clamp(6px,1.2vw,14px)]">
                     <span class="inline-block">THUMBPIN</span>
@@ -202,7 +292,7 @@ marketing agency Gurgaon',
                     <span class="inline-block">DIGITAL</span>
                     <span class="inline-block text-tp-red">REALITY.</span>
                 </div>
-            </div>
+            </h1>
 
             <div class="absolute bottom-0 left-0 w-full h-2/5 bg-gradient-to-t from-white to-transparent z-[1] pointer-events-none opacity-0"></div>
             <div class="absolute bottom-10 left-1/2 -translate-x-1/2 text-white uppercase text-xs tracking-[3px] z-[2] [mix-blend-mode:difference] animate-scroll-hint max-[768px]:hidden">Scroll Down</div>
@@ -281,8 +371,8 @@ marketing agency Gurgaon',
                 <div class="container">
                     <div class="flex justify-between items-center max-w-[1100px] mx-auto px-5 max-[991px]:flex-col max-[991px]:text-center max-[991px]:gap-10">
                         <div>
-                            <h2 class="text-5xl font-extrabold mb-4 leading-[1.1] text-white max-[991px]:text-4xl">Have a <span class="text-tp-red">vision</span> in mind?</h2>
-                            <p class="text-lg text-[#888] m-0 font-normal max-w-[500px] max-[991px]:mx-auto">Let's turn your ideas into digital reality. We are ready when you are.</p>
+                            <h2 class="text-4xl font-semibold mb-4 leading-[1.1] text-white max-[991px]:text-4xl">Have a <span class="text-tp-red">vision</span> in mind?</h2>
+                            <p class="text-[24px] text-[#888] m-0 font-normal max-w-[500px] max-[991px]:mx-auto">Let's turn your ideas into digital reality. We are ready when you are.</p>
                         </div>
                         <div>
                             <a href="#sec-contact" class="inline-flex items-center gap-[15px] bg-white text-black py-[18px] px-[45px] rounded-full font-bold text-base uppercase tracking-wider transition-all duration-[400ms] ease-[cubic-bezier(0.165,0.84,0.44,1)] no-underline border border-transparent hover:bg-tp-red hover:text-black hover:-translate-y-1.5 hover:shadow-[0_15px_30px_rgba(230,57,70,0.3)]">Start Your Project <i class="fas fa-arrow-right"></i></a>
@@ -321,8 +411,8 @@ marketing agency Gurgaon',
                             </div>
                         </div>
                         
-                        <!-- Film 01: The Feature (Wide with Side Text) -->
-                        <div class="film-item wide">
+                        <!-- Film 01: Medium -->
+                        <div class="film-item medium">
                             <div class="film-card-cinema">
                                 <div class="film-iframe-wrap">
                                     <div class="youtube-facade" data-video-id="NyQYfrLnvvQ">
@@ -340,8 +430,8 @@ marketing agency Gurgaon',
                             </div>
                         </div>
 
-
-                        <div class="film-item wide" style="flex-direction: row-reverse;">
+                        <!-- Film 02: Medium -->
+                        <div class="film-item medium">
                             <div class="film-card-cinema">
                                 <div class="film-iframe-wrap">
                                     <div class="youtube-facade" data-video-id="7OiAfYltdRU">
@@ -350,9 +440,9 @@ marketing agency Gurgaon',
                                     </div>
                                 </div>
                             </div>
-                            <div class="film-meta" style="padding: 0 40px 0 0; text-align: right;">
-                                <div class="film-index" style="left: auto; right: 0;">02</div>
-                                <div class="film-content" style="border-left: none; border-right: 2px solid var(--tp-red); margin-left: 0; margin-right: 10px; padding-left: 0; padding-right: 20px;">
+                            <div class="film-meta">
+                                <div class="film-index">02</div>
+                                <div class="film-content">
                                     <h3>Coporate Film - Good Earth Infra</h3>
                                     <p>Corporate film for Good Earth Infra.</p>
                                 </div>
@@ -407,6 +497,7 @@ marketing agency Gurgaon',
                 <div class="container">
                     <div class="section-header-modern" style="margin-bottom: 60px;">
                         <h2 style="color: #111; font-size: 48px; text-transform: uppercase;">Micro <br><span class="txt-red">Moments.</span></h2>
+                        <p class="sub-text">Reels, short-form video ads and social media video production for brands in Gurgaon and Gurugram — built to stop the scroll.</p>
                     </div>
 
                     <div class="reels-grid">
@@ -414,10 +505,11 @@ marketing agency Gurgaon',
                         <div class="reel-item-modern">
                             <div class="reel-card-modern">
                                 <div class="youtube-facade" data-video-id="_UagDA4XyFM">
-                                    <img src="https://img.youtube.com/vi/_UagDA4XyFM/hqdefault.jpg" alt="Short Film #2" loading="lazy">
+                                    <img src="https://img.youtube.com/vi/_UagDA4XyFM/hqdefault.jpg" alt="Ramaeri digital film reel — Thumbpin short-form video production" loading="lazy">
                                     <div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
                                 </div>
                             </div>
+                            <h3 class="sr-only">Ramaeri Digital Film</h3>
                             <div class="reel-index">01</div>
                         </div>
 
@@ -425,10 +517,11 @@ marketing agency Gurgaon',
                         <div class="reel-item-modern">
                             <div class="reel-card-modern">
                                 <div class="youtube-facade" data-video-id="MoEvrnlSy7U">
-                                    <img src="https://img.youtube.com/vi/MoEvrnlSy7U/hqdefault.jpg" alt="Short Film" loading="lazy">
+                                    <img src="https://img.youtube.com/vi/MoEvrnlSy7U/hqdefault.jpg" alt="Fashion film reel — Thumbpin short-form video production" loading="lazy">
                                     <div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
                                 </div>
                             </div>
+                            <h3 class="sr-only">Fashion Film</h3>
                             <div class="reel-index">02</div>
                         </div>
 
@@ -436,10 +529,11 @@ marketing agency Gurgaon',
                         <div class="reel-item-modern">
                             <div class="reel-card-modern">
                                 <div class="youtube-facade" data-video-id="sQcTZugZne0">
-                                    <img src="https://img.youtube.com/vi/sQcTZugZne0/hqdefault.jpg" alt="Reel 3" loading="lazy">
+                                    <img src="https://img.youtube.com/vi/sQcTZugZne0/hqdefault.jpg" alt="College Vidya brand film reel — Thumbpin short-form video production" loading="lazy">
                                     <div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
                                 </div>
                             </div>
+                            <h3 class="sr-only">College Vidya Film</h3>
                             <div class="reel-index">03</div>
                         </div>
 
@@ -461,10 +555,11 @@ marketing agency Gurgaon',
                         <div class="reel-item-modern">
                             <div class="reel-card-modern">
                                 <div class="youtube-facade" data-video-id="V_-e9JaCnuM">
-                                    <img src="https://img.youtube.com/vi/V_-e9JaCnuM/hqdefault.jpg" alt="Reel 4" loading="lazy">
+                                    <img src="https://img.youtube.com/vi/V_-e9JaCnuM/hqdefault.jpg" alt="Vserv brand reel — Thumbpin short-form video production" loading="lazy">
                                     <div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
                                 </div>
                             </div>
+                            <h3 class="sr-only">Vserv Brand Reel</h3>
                             <div class="reel-index">04</div>
                         </div>
 
@@ -472,10 +567,11 @@ marketing agency Gurgaon',
                         <div class="reel-item-modern">
                             <div class="reel-card-modern">
                                 <div class="youtube-facade" data-video-id="Oj4FmmUoCKA">
-                                    <img src="https://img.youtube.com/vi/Oj4FmmUoCKA/hqdefault.jpg" alt="Reel 5" loading="lazy">
+                                    <img src="https://img.youtube.com/vi/Oj4FmmUoCKA/hqdefault.jpg" alt="Short-form social media content reel — Thumbpin video production" loading="lazy">
                                     <div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
                                 </div>
                             </div>
+                            <h3 class="sr-only">Short-Form Social Content</h3>
                             <div class="reel-index">05</div>
                         </div>
 
@@ -483,28 +579,31 @@ marketing agency Gurgaon',
                         <div class="reel-item-modern">
                             <div class="reel-card-modern">
                                 <div class="youtube-facade" data-video-id="CiKv3ezY9b8">
-                                    <img src="https://img.youtube.com/vi/CiKv3ezY9b8/hqdefault.jpg" alt="Reel 6" loading="lazy">
+                                    <img src="https://img.youtube.com/vi/CiKv3ezY9b8/hqdefault.jpg" alt="Short film reel — Thumbpin video production Gurgaon" loading="lazy">
                                     <div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
                                 </div>
                             </div>
+                            <h3 class="sr-only">Short Film Reel</h3>
                             <div class="reel-index">06</div>
                         </div>
                         <div class="reel-item-modern">
                             <div class="reel-card-modern">
                                 <div class="youtube-facade" data-video-id="ee1nPF5evyQ">
-                                    <img src="https://img.youtube.com/vi/ee1nPF5evyQ/hqdefault.jpg" alt="Reel 7" loading="lazy">
+                                    <img src="https://img.youtube.com/vi/ee1nPF5evyQ/hqdefault.jpg" alt="Vserv Dubai brand reel — Thumbpin short-form video production" loading="lazy">
                                     <div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
                                 </div>
                             </div>
+                            <h3 class="sr-only">Vserv Dubai Reel</h3>
                             <div class="reel-index">07</div>
                         </div>
                         <div class="reel-item-modern">
                             <div class="reel-card-modern">
                                 <div class="youtube-facade" data-video-id="4T8YyPqliog">
-                                    <img src="https://img.youtube.com/vi/4T8YyPqliog/hqdefault.jpg" alt="Reel 8" loading="lazy">
+                                    <img src="https://img.youtube.com/vi/4T8YyPqliog/hqdefault.jpg" alt="Short film reel — Thumbpin video production Gurgaon" loading="lazy">
                                     <div class="yt-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"></path></svg></div>
                                 </div>
                             </div>
+                            <h3 class="sr-only">Short Film Reel</h3>
                             <div class="reel-index">08</div>
                         </div>
                     </div>
@@ -512,8 +611,8 @@ marketing agency Gurgaon',
             </section>
 
             {{-- ================= QUICK LINKS SECTION ================= --}}
-            <section class="bg-white py-[100px] border-b border-[#eee]">
-                <div class="container max-w-4xl mx-auto">
+            <section class="bg-white py-[100px] px-6">
+                <div class="container max-w-5xl mx-auto">
                     <div class="mb-[60px] pl-5 border-l-[3px] border-tp-red max-[768px]:mb-10">
                         <h2 class="text-2xl uppercase tracking-[2px] m-0 font-extrabold">Explore Our Work</h2>
                     </div>
@@ -712,16 +811,11 @@ marketing agency Gurgaon',
                     <div class="pt-2.5">
                         <span class="text-[11px] font-bold tracking-[3px] uppercase text-tp-red mb-5 inline-block bg-tp-red/[0.06] py-1.5 px-3.5 rounded">Let's Create Together</span>
                         <h2 class="text-[clamp(38px,5vw,58px)] font-extrabold uppercase leading-[1.05] text-[#111] mb-6 tracking-[-2px] max-[480px]:text-[30px] max-[480px]:tracking-[-1px]">Ready to Build<br>Something <span class="text-tp-red">Great?</span></h2>
-                        <p class="text-[#666] text-[15px] leading-[1.7] mb-9 max-w-[400px] max-[860px]:max-w-full">You have a vision — we have the strategy, creativity, and firepower to make it real. Drop us a brief — no strings attached.</p>
-                        <ul class="list-none flex flex-col gap-3.5 mb-9 p-0">
-                            <li class="flex items-center gap-3 text-sm text-[#555] font-medium before:content-[''] before:w-2 before:h-2 before:rounded-full before:bg-tp-red before:shrink-0 before:shadow-[0_0_6px_rgba(206,45,51,0.3)]">Response within 2 business hours</li>
-                            <li class="flex items-center gap-3 text-sm text-[#555] font-medium before:content-[''] before:w-2 before:h-2 before:rounded-full before:bg-tp-red before:shrink-0 before:shadow-[0_0_6px_rgba(206,45,51,0.3)]">End-to-end creative — concept to delivery</li>
-                            <li class="flex items-center gap-3 text-sm text-[#555] font-medium before:content-[''] before:w-2 before:h-2 before:rounded-full before:bg-tp-red before:shrink-0 before:shadow-[0_0_6px_rgba(206,45,51,0.3)]">360° branding, advertising & production</li>
-                        </ul>
-                        <div class="flex flex-col gap-3 pt-2.5 border-t border-[#e0e0e0]">
+                        <p class="text-[#666] text-[15px] leading-[1.7] mb-4 max-w-[400px] max-[860px]:max-w-full">You have a vision — we have the strategy, creativity, and firepower to make it real. Drop us a brief — no strings attached.</p>
+                        <div class="flex flex-col gap-3 pt-2 border-t border-[#e0e0e0]">
                             <a href="https://www.google.com/maps/search/?api=1&query=Beyond+Just+Work+Tower+A+Spaze+iTech+park+Sector+49+Gurgaon" target="_blank" class="text-sm text-[#888] no-underline transition-colors duration-[250ms] flex items-start gap-2.5 font-medium hover:text-tp-red [&_svg]:text-tp-red">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mt-[3px] shrink-0"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                                <span>12th floor, Beyond Just Work, Tower A, Spaze iTech park, Sector 49, Gurgaon</span>
+                                <span>6th Floor, office no. 657, Tower B1, Spaze I-Tech Park, Sector 49, Gurugram, Haryana 122018</span>
                             </a>
                             <a href="tel:+919773511447" class="text-sm text-[#888] no-underline transition-colors duration-[250ms] flex items-center gap-2.5 font-medium hover:text-tp-red [&_svg]:text-tp-red">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.4 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.81a16 16 0 0 0 6.29 6.29l.95-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
@@ -736,16 +830,6 @@ marketing agency Gurgaon',
 
                     {{-- RIGHT: Form Card --}}
                     <div class="relative bg-white border border-[#eaeaea] rounded-[20px] p-11 shadow-[0_20px_60px_rgba(0,0,0,0.06),0_1px_3px_rgba(0,0,0,0.04)] before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:h-1 before:[background:linear-gradient(90deg,#ce2d33,#ff6b6b,#ce2d33)] before:rounded-t-[20px] max-[860px]:p-7 max-[860px]:px-5 max-[480px]:p-6 max-[480px]:px-4 max-[480px]:rounded-2xl">
-
-                        {{-- Voice AI --}}
-                        <div class="mb-6 flex items-center gap-3 flex-wrap">
-                            <button type="button" id="voiceFormBtn" class="voice-ai-trigger" onclick="startFormVoiceInput()">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-                                <span id="formMicLabel">Speak to Fill Form</span>
-                            </button>
-                            <p id="formVoiceStatus" class="text-[#555] text-xs m-0 hidden flex-1"></p>
-                        </div>
-
                         <div id="form-messages" class="form-messages"></div>
 
                         <form action="{{ route('project-form') }}" method="post" id="homeContactForm">

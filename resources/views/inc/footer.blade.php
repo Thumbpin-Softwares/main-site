@@ -37,6 +37,17 @@
                     </li>
                 </ul>
             </div>
+            <ul class="footer-services">
+                <li><a href="{{ route('search-engine-optimization-seo-services') }}">SEO Services</a></li>
+                <li><a href="{{ route('web-design-agency') }}">Web Design</a></li>
+                <li><a href="{{ route('digital-marketing') }}">Digital Marketing</a></li>
+                <li><a href="{{ route('social-media-marketing-agency') }}">Social Media Marketing</a></li>
+                <li><a href="{{ route('performance-marketing-agency') }}">Performance Marketing</a></li>
+                <li><a href="{{ route('real-estate-ads') }}">Real Estate Ads</a></li>
+                <li><a href="{{ route('advertising-agency-in-gurgaon') }}">Advertising Agency in Gurgaon</a></li>
+                <li><a href="{{ route('video-production-in-gurgaon') }}">Video Production in Gurgaon</a></li>
+            </ul>
+
             <div class="msg">
                 <a href="{{ route('terms') }}">
                     © <?php echo date('Y'); ?> Thumbpin

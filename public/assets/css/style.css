@@ -1,6 +1,9 @@
 @font-face {
     font-family: "AcuminVariableConcept";
-    src: url(../fonts/AcuminVariableConcept.otf);
+    src: url(../fonts/AcuminVariableConcept.otf) format("opentype");
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
 }
 
 :root{
@@ -804,6 +807,25 @@ footer .footer .msg a{
     margin: -1px 0 0;
 }
 
+footer .footer .footer-services{
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px 18px;
+}
+footer .footer .footer-services li a{
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    color: #666;
+}
+footer .footer .footer-services li a:hover{
+    color: var(--primary-color);
+}
+
 
 footer.footer-black{
     background-color: #000;
@@ -817,6 +839,12 @@ footer.footer-black .footer .logo img.logo-white{
 footer.footer-black .footer .msg,
 footer.footer-black .footer .msg a{
     color: #777;
+}
+footer.footer-black .footer .footer-services li a{
+    color: #999;
+}
+footer.footer-black .footer .footer-services li a:hover{
+    color: var(--primary-color);
 }
 
 
