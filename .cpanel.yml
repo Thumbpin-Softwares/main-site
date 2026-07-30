@@ -1,16 +1,26 @@
 ---
 deployment:
   tasks:
-    - export REPOPATH=/home/$USER/repositories/thumbpin-main
-    - export DEPLOYPATH=/home/$USER/public_html/
+    # $HOME is set reliably by cPanel's deploy environment; $USER sometimes is not.
+    - export REPOPATH=$HOME/repositories/thumbpin-main
+    - export DEPLOYPATH=$HOME/public_html
 
-    # Sync public assets into the document root. The excludes are paths that
-    # exist only on the server (uploads, the storage symlink), which --delete
-    # would otherwise wipe on every deploy.
-    - /usr/bin/rsync -a --delete --exclude='storage' --exclude='uploads' --exclude='.well-known' --exclude='cgi-bin' $REPOPATH/public/ $DEPLOYPATH
+    # /usr/local/bin/php on this host is 7.4, but the app needs >= 8.2.
+    - export PHPBIN=/opt/cpanel/ea-php82/root/usr/bin/php
 
-    # The application is served straight out of this checkout, so views and
-    # routes are already current -- only the caches need clearing.
-    - cd $REPOPATH && /usr/local/bin/php artisan view:clear
-    - cd $REPOPATH && /usr/local/bin/php artisan config:clear
-    - cd $REPOPATH && /usr/local/bin/php artisan route:clear
+    # Log the environment first so a failed deploy is diagnosable from the log.
+    - echo "REPO=$REPOPATH DEPLOY=$DEPLOYPATH"
+    - ls -d $REPOPATH/public || echo "MISSING repo public dir"
+
+    # Copy assets, but NEVER .htaccess or index.php: cPanel's MultiPHP handler
+    # lives in public_html/.htaccess and is not tracked in git. Overwriting it
+    # drops the domain to the default PHP 7.4 and takes the whole site down.
+    # This host has no rsync, so tar is used to get per-file excludes.
+    - cd $REPOPATH/public && /bin/tar -cf - --exclude=.htaccess --exclude=index.php . | (cd $DEPLOYPATH && /bin/tar -xf -)
+
+    # Caches. Non-fatal so a bad php path can never abort the asset copy above.
+    - cd $REPOPATH && $PHPBIN artisan view:clear || true
+    - cd $REPOPATH && $PHPBIN artisan config:clear || true
+    - cd $REPOPATH && $PHPBIN artisan route:clear || true
+
+    - echo "DEPLOY DONE"
