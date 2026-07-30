@@ -1,0 +1,4 @@
+/* Utilities for site-wide partials. No @tailwind base on purpose -- see
+   tailwind.shared.config.js for why preflight is off here. */
+@tailwind components;
+@tailwind utilities;

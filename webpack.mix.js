@@ -15,4 +15,10 @@ mix.js('resources/js/app.js', 'public/js')
     .postCss('resources/css/app.css', 'public/css', [
         require('tailwindcss'),
         require('autoprefixer'),
+    ])
+    // Loaded on every page for shared partials (footer). Utilities only, no
+    // preflight, so it can sit alongside Bootstrap on the legacy pages.
+    .postCss('resources/css/shared.css', 'public/css', [
+        require('tailwindcss')({ config: './tailwind.shared.config.js' }),
+        require('autoprefixer'),
     ]);

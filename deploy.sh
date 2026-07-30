@@ -12,16 +12,26 @@ set -euo pipefail
 REPOPATH="${REPOPATH:-$HOME/repositories/thumbpin-main}"
 DEPLOYPATH="${DEPLOYPATH:-$HOME/public_html}"
 
-# /usr/local/bin/php on this host is 7.4; the app requires >= 8.2.
+# /usr/local/bin/php on this host is 7.4 and the app requires >= 8.2. The binary
+# must also have PDO: Laravel boots Voyager's service provider, which touches the
+# DB connection, so a PDO-less build fails every artisan command with
+# "Class \"PDO\" not found" -- which is exactly what ea-php84 does here.
 PHPBIN="${PHPBIN:-}"
 if [ -z "$PHPBIN" ]; then
-    for candidate in /opt/cpanel/ea-php84/root/usr/bin/php \
+    for candidate in /opt/cpanel/ea-php82/root/usr/bin/php \
                      /opt/cpanel/ea-php83/root/usr/bin/php \
-                     /opt/cpanel/ea-php82/root/usr/bin/php; do
-        [ -x "$candidate" ] && PHPBIN="$candidate" && break
+                     /opt/cpanel/ea-php84/root/usr/bin/php; do
+        [ -x "$candidate" ] || continue
+        "$candidate" -m 2>/dev/null | grep -qx 'PDO' || continue
+        PHPBIN="$candidate"
+        break
     done
 fi
-[ -n "$PHPBIN" ] || { echo "!! no PHP >= 8.2 binary found under /opt/cpanel"; exit 1; }
+[ -n "$PHPBIN" ] || {
+    echo "!! no PHP >= 8.2 with PDO found under /opt/cpanel"
+    echo "   enable the pdo_mysql extension in cPanel > Select PHP Version"
+    exit 1
+}
 
 echo "repo:   $REPOPATH"
 echo "deploy: $DEPLOYPATH"
@@ -45,6 +55,14 @@ cd "$REPOPATH"
 "$PHPBIN" artisan config:clear || echo "   (config:clear failed, continuing)"
 "$PHPBIN" artisan route:clear  || echo "   (route:clear failed, continuing)"
 
+echo "==> regenerating sitemap.xml"
+# Written straight into the document root, not into the repo: public/sitemap.xml
+# is tracked in git, and dirtying the working tree here would break the
+# `git pull --ff-only` above on the next deploy. Runs after the sync so it
+# overwrites the (now stale) tracked copy that tar just laid down.
+"$PHPBIN" artisan sitemap:generate --output="$DEPLOYPATH/sitemap.xml" \
+    || echo "   (sitemap:generate failed, keeping the existing sitemap.xml)"
+
 echo
 echo "==> verifying"
 if grep -q 'footer-services' "$DEPLOYPATH/assets/css/style.css" 2>/dev/null; then
@@ -53,6 +71,7 @@ else
     echo "    !! footer CSS MISSING in $DEPLOYPATH/assets/css/style.css"
 fi
 echo "    app.css lines: $(wc -l < "$DEPLOYPATH/css/app.css" 2>/dev/null || echo '?') (1 = minified prod build)"
+echo "    sitemap URLs:  $(grep -c '<loc>' "$DEPLOYPATH/sitemap.xml" 2>/dev/null || echo '?')"
 
 echo
 echo "DEPLOY DONE"

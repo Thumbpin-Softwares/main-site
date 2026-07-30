@@ -23,4 +23,9 @@ deployment:
     - cd $REPOPATH && $PHPBIN artisan config:clear || true
     - cd $REPOPATH && $PHPBIN artisan route:clear || true
 
+    # Sitemap, written into the document root rather than the repo: public/sitemap.xml
+    # is tracked in git, and a dirty working tree would break the next pull.
+    - cd $REPOPATH && $PHPBIN artisan sitemap:generate --output=$DEPLOYPATH/sitemap.xml || true
+    - grep -c '<loc>' $DEPLOYPATH/sitemap.xml || true
+
     - echo "DEPLOY DONE"

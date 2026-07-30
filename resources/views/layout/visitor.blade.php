@@ -13,20 +13,23 @@
     <meta name="keywords" content="{{ $keywords ?? config('app.name') }}">
     <link rel="canonical" href="{{ $canonical ?? Request::url() }}" />
 
-    <meta name="robots" content="max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
     <meta name="author" content="{{ config('app.name') }}">
     <meta name="dc.description" content="{{ $description ?? config('app.name') }}" />
     <meta name="dc.language" content="en_US" />
     <meta property="og:site_name" content="{{ config('app.name') }}" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:url" content="{{ config('app.url') }}" />
-    <meta property="og:type" content="article" />
+    {{-- Must be the URL of THIS page; a site-wide value tells crawlers every page is the homepage. --}}
+    <meta property="og:url" content="{{ $canonical ?? Request::url() }}" />
+    <meta property="og:type" content="{{ $og_type ?? 'website' }}" />
     <meta property="og:title" content="{{ $title ?? config('app.name') }}" />
     <meta property="og:description" content="{{ $description ?? config('app.name') }}" />
     <meta property="og:image" content="{{ $image ?? config('app.url') . '/assets/img/logo/favicon.jpeg' }}" />
+    {{-- Only declare dimensions for a real share image; the favicon fallback is not 1200x627. --}}
+    @isset($image)
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="627" />
-    <meta property="og:image:alt" content="{{ config('app.name') }} logo" />
+    @endisset
+    <meta property="og:image:alt" content="{{ $image_alt ?? config('app.name') . ' logo' }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ $title ?? '' }}" />
     <meta name="twitter:image" content="{{ $image ?? config('app.url') . '/assets/img/logo/favicon.jpeg' }}">
@@ -44,6 +47,9 @@
 
     {{-- Custom Css --}}
     <link rel="stylesheet" href="@asset('assets/css/style.css')">
+
+    {{-- Tailwind utilities for shared partials (footer). Utilities only, no preflight. --}}
+    <link rel="stylesheet" href="@asset('css/shared.css')">
 
     @yield('head')
 
