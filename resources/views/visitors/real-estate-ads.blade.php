@@ -14,7 +14,7 @@
 <noscript>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </noscript>
-<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+<link rel="stylesheet" href="@asset('css/app.css')">
 
 <style>
 :root { --film-red: #E50914; }
@@ -66,6 +66,12 @@
 .reel-item:hover img { transform: scale(1.08); }
 .reel-preview-iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; z-index: 1; pointer-events: none; }
 
+/* ---- Reels on touch devices (no hover to reveal the play button) ---- */
+@media (hover: none) {
+    .reel-item .yt-play { opacity: 1; transform: scale(1); }
+    .reel-item:active { transform: scale(0.98) !important; }
+}
+
 /* ---- Long-form hover ---- */
 .longform-card img { transition: all 0.4s cubic-bezier(0.165,0.84,0.44,1); }
 .longform-card:hover img { transform: scale(1.05); }
@@ -116,6 +122,13 @@
 /* ---- Lightbox ---- */
 .film-lightbox { display: none; opacity: 0; transition: opacity 0.3s ease; }
 .film-lightbox.active { display: flex; opacity: 1; }
+/* Vertical (reel) videos get a 9:16 frame instead of 16:9 */
+.film-lightbox-box.is-vertical {
+    aspect-ratio: 9 / 16 !important;
+    height: min(78vh, 720px);
+    width: auto !important;
+    max-width: 100% !important;
+}
 </style>
 @endsection
 
@@ -472,7 +485,7 @@
 
     {{-- ====================== LIGHTBOX ====================== --}}
     <div class="film-lightbox fixed inset-0 z-[99999] bg-black/95 items-center justify-center p-10 max-[768px]:p-5" id="filmLightbox">
-        <div class="relative w-full max-w-[900px] aspect-video bg-black">
+        <div class="film-lightbox-box relative w-full max-w-[900px] aspect-video bg-black" id="filmLightboxBox">
             <button class="absolute -top-[45px] right-0 bg-transparent border-none text-white text-[30px] cursor-pointer w-10 h-10 flex items-center justify-center transition-all duration-300 hover:text-film-red hover:rotate-90"
                     id="filmLightboxClose">&times;</button>
             <iframe id="filmLightboxIframe" allow="autoplay; encrypted-media" allowfullscreen class="w-full h-full border-none"></iframe>
@@ -491,9 +504,15 @@
     var lightbox = document.getElementById('filmLightbox');
     var lightboxIframe = document.getElementById('filmLightboxIframe');
     var lightboxClose = document.getElementById('filmLightboxClose');
+    var lightboxBox   = document.getElementById('filmLightboxBox');
 
-    function openLightbox(videoId) {
-        lightboxIframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
+    // Hover previews only make sense with a real pointer; touch gets tap-to-open.
+    var canHover = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    function openLightbox(videoId, vertical) {
+        lightboxBox.classList.toggle('is-vertical', !!vertical);
+        lightboxIframe.src = 'https://www.youtube.com/embed/' + videoId +
+            '?autoplay=1&rel=0&playsinline=1';
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
@@ -501,6 +520,7 @@
     function closeLightbox() {
         lightbox.classList.remove('active');
         lightboxIframe.src = '';
+        lightboxBox.classList.remove('is-vertical');
         document.body.style.overflow = '';
     }
 
@@ -521,6 +541,15 @@
         var vid   = card.getAttribute('data-video-id');
         var thumb = card.querySelector('.yt-facade');
         var iframe = null;
+
+        // Touch devices: the muted inline preview can't autoplay and isn't tappable,
+        // so open the reel in the lightbox (9:16) instead.
+        if (!canHover) {
+            card.addEventListener('click', function() {
+                if (vid) openLightbox(vid, true);
+            });
+            return;
+        }
 
         function startPreview() {
             if (iframe || !vid) return;

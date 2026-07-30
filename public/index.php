@@ -7,6 +7,23 @@ define('LARAVEL_START', microtime(true));
 
 /*
 |--------------------------------------------------------------------------
+| Locate The Application Root
+|--------------------------------------------------------------------------
+|
+| Locally this file sits inside the project, so the app root is one level up.
+| On cPanel this file is copied into ~/public_html while the application
+| itself stays in the deployed git checkout, so we fall back to that path.
+| Keeping a single source of truth means a `git push` + Deploy updates the
+| views and routes that are actually served.
+|
+*/
+
+$appRoot = is_file(__DIR__.'/../vendor/autoload.php')
+    ? __DIR__.'/..'
+    : dirname(__DIR__).'/repositories/thumbpin-main';
+
+/*
+|--------------------------------------------------------------------------
 | Check If The Application Is Under Maintenance
 |--------------------------------------------------------------------------
 |
@@ -16,7 +33,7 @@ define('LARAVEL_START', microtime(true));
 |
 */
 
-if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php')) {
+if (file_exists($maintenance = $appRoot.'/storage/framework/maintenance.php')) {
     require $maintenance;
 }
 
@@ -31,7 +48,7 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
 |
 */
 
-require __DIR__.'/../vendor/autoload.php';
+require $appRoot.'/vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
@@ -44,7 +61,7 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
+$app = require_once $appRoot.'/bootstrap/app.php';
 
 $kernel = $app->make(Kernel::class);
 

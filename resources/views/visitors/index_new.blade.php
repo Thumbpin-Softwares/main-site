@@ -38,7 +38,7 @@ marketing agency Gurgaon',
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{{ config('app.url') }}/assets/css/new-home-page.css">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="@asset('css/app.css')">
 
     <link rel="stylesheet" href="{{ asset('assets/css/index-new.css') }}">
 
