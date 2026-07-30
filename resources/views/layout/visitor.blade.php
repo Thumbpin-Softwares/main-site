@@ -43,7 +43,7 @@
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
     {{-- Custom Css --}}
-    <link rel="stylesheet" href="{{ config('app.url') }}/assets/css/style.css">
+    <link rel="stylesheet" href="@asset('assets/css/style.css')">
 
     @yield('head')
 
