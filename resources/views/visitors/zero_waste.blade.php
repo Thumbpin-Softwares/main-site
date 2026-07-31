@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Zero Waste | Thumbpin', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Print and packaging design for Zero Waste, a UAE waste recycling company. See how Thumbpin turned recycled material into an elegant brand brochure.','title' => 'Zero Waste | Thumbpin', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>
@@ -67,9 +68,10 @@
             <div class="row h-100-only">
                 <div class="col-md-12">
                     <div class="content-box">
-                        <div class="main-content-title">
+                        <h1 class="main-content-title">Zero Waste — Print & Packaging Design</h1>
+                        <h2 class="content-title">
                             About the brand
-                        </div>
+                        </h2>
                         <p>
                             Zero Waste is a UAE-based waste recycling company that focuses on cultivating sustainable cities by implementing innovative waste management practices to promote a green future for all coming generations. They set up cost-efficient waste collection & management systems including a number of services involving recycling and at times, destruction to build a healthier, habitable urban civilization.
                         </p>

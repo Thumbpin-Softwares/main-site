@@ -1,11 +1,16 @@
 /**
- * Tailwind build for partials shared by EVERY page (footer, and later the header).
+ * Preflight-free Tailwind build. Output is css/shared.css, which the layout loads
+ * on EVERY page, so anything listed in `content` below can use Tailwind utilities.
  *
  * The main tailwind.config.js emits `@tailwind base` (preflight), which resets
- * heading sizes and list/paragraph margins. That is fine on the two pages built
- * against it, but loading it site-wide would land on top of Bootstrap 5 and
- * restyle ~38 legacy pages. So this build ships utilities only, no preflight --
- * which means shared markup must spell out resets it needs (list-none, pl-0, m-0).
+ * heading sizes and list/paragraph margins. That is correct for pages written
+ * against it (about, real-estate-ads), but dropping it on a legacy Bootstrap page
+ * flattens its <h2>/<h3> to body size and strips <p> margins. Hence this second
+ * build: utilities only, safe to mix with Bootstrap and style.css.
+ *
+ * To Tailwind-ify another legacy page, add it to `content` here -- do NOT link
+ * css/app.css into it, or preflight will come along and restyle the page.
+ * Trade-off: shared.css is global, so every page pays for the utilities added.
  *
  * @type {import('tailwindcss').Config}
  */
@@ -14,8 +19,11 @@ module.exports = {
     preflight: false,
   },
   content: [
+    // Shared partials, on every page.
     './resources/views/inc/**/*.blade.php',
     './resources/views/layout/**/*.blade.php',
+    // Legacy pages progressively adopting Tailwind utilities.
+    './resources/views/visitors/services.blade.php',
   ],
   theme: {
     extend: {

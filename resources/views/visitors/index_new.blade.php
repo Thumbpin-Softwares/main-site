@@ -154,7 +154,8 @@ marketing agency Gurgaon',
         "https://assets.thumbpin.in/thumbpin-photos/thumbpin-upload/vidproduction/place.png"
       ],
       "contentUrl": "https://assets.thumbpin.in/thumbpin-videos/whatwedo2optimised.mp4",
-      "embedUrl": "https://www.thumbpin.in/"
+      "embedUrl": "https://www.thumbpin.in/",
+      "uploadDate": "2026-01-03T11:21:09+00:00"
     }
     </script>
 
@@ -171,7 +172,8 @@ marketing agency Gurgaon',
             "name": "Ramaeri Digital Film",
             "description": "Short-form digital film reel produced by Thumbpin for Ramaeri.",
             "thumbnailUrl": "https://img.youtube.com/vi/_UagDA4XyFM/hqdefault.jpg",
-            "embedUrl": "https://www.youtube.com/embed/_UagDA4XyFM"
+            "embedUrl": "https://www.youtube.com/embed/_UagDA4XyFM",
+            "uploadDate": "2025-12-22T09:43:18-08:00"
           }
         },
         {
@@ -181,7 +183,8 @@ marketing agency Gurgaon',
             "name": "Fashion Film",
             "description": "Short-form fashion film reel produced by Thumbpin.",
             "thumbnailUrl": "https://img.youtube.com/vi/MoEvrnlSy7U/hqdefault.jpg",
-            "embedUrl": "https://www.youtube.com/embed/MoEvrnlSy7U"
+            "embedUrl": "https://www.youtube.com/embed/MoEvrnlSy7U",
+            "uploadDate": "2025-12-19T06:57:19-08:00"
           }
         },
         {
@@ -191,7 +194,8 @@ marketing agency Gurgaon',
             "name": "College Vidya Film",
             "description": "Short-form brand film reel produced by Thumbpin for College Vidya.",
             "thumbnailUrl": "https://img.youtube.com/vi/sQcTZugZne0/hqdefault.jpg",
-            "embedUrl": "https://www.youtube.com/embed/sQcTZugZne0"
+            "embedUrl": "https://www.youtube.com/embed/sQcTZugZne0",
+            "uploadDate": "2025-12-19T06:57:16-08:00"
           }
         },
         {
@@ -201,7 +205,8 @@ marketing agency Gurgaon',
             "name": "Vserv Brand Reel",
             "description": "Short-form brand reel produced by Thumbpin for Vserv.",
             "thumbnailUrl": "https://img.youtube.com/vi/V_-e9JaCnuM/hqdefault.jpg",
-            "embedUrl": "https://www.youtube.com/embed/V_-e9JaCnuM"
+            "embedUrl": "https://www.youtube.com/embed/V_-e9JaCnuM",
+            "uploadDate": "2025-12-22T09:59:28-08:00"
           }
         },
         {
@@ -211,7 +216,8 @@ marketing agency Gurgaon',
             "name": "Short-Form Social Content",
             "description": "Short-form social media content reel produced by Thumbpin.",
             "thumbnailUrl": "https://img.youtube.com/vi/Oj4FmmUoCKA/hqdefault.jpg",
-            "embedUrl": "https://www.youtube.com/embed/Oj4FmmUoCKA"
+            "embedUrl": "https://www.youtube.com/embed/Oj4FmmUoCKA",
+            "uploadDate": "2025-12-22T10:32:34-08:00"
           }
         },
         {
@@ -221,7 +227,8 @@ marketing agency Gurgaon',
             "name": "Short Film Reel",
             "description": "Short-form film reel produced by Thumbpin.",
             "thumbnailUrl": "https://img.youtube.com/vi/CiKv3ezY9b8/hqdefault.jpg",
-            "embedUrl": "https://www.youtube.com/embed/CiKv3ezY9b8"
+            "embedUrl": "https://www.youtube.com/embed/CiKv3ezY9b8",
+            "uploadDate": "2025-12-23T03:26:56-08:00"
           }
         },
         {
@@ -231,7 +238,8 @@ marketing agency Gurgaon',
             "name": "Vserv Dubai Reel",
             "description": "Short-form brand reel produced by Thumbpin for Vserv Dubai.",
             "thumbnailUrl": "https://img.youtube.com/vi/ee1nPF5evyQ/hqdefault.jpg",
-            "embedUrl": "https://www.youtube.com/embed/ee1nPF5evyQ"
+            "embedUrl": "https://www.youtube.com/embed/ee1nPF5evyQ",
+            "uploadDate": "2025-12-22T09:59:38-08:00"
           }
         },
         {
@@ -241,7 +249,8 @@ marketing agency Gurgaon',
             "name": "Short Film Reel",
             "description": "Short-form film reel produced by Thumbpin.",
             "thumbnailUrl": "https://img.youtube.com/vi/4T8YyPqliog/hqdefault.jpg",
-            "embedUrl": "https://www.youtube.com/embed/4T8YyPqliog"
+            "embedUrl": "https://www.youtube.com/embed/4T8YyPqliog",
+            "uploadDate": "2025-12-23T03:26:50-08:00"
           }
         }
       ]
@@ -255,12 +264,64 @@ marketing agency Gurgaon',
         {{-- ====================== 1. FIXED HERO (VIDEO BACKGROUND) ====================== --}}
         <div class="fixed inset-0 w-full h-screen -z-10 overflow-hidden bg-black max-[991px]:relative max-[991px]:h-[80vh] max-[991px]:z-10 max-[768px]:h-[60vh]" id="sec-hero">
             {{-- Desktop Video --}}
-            <video id="hero-video-bg" class="block w-full h-full absolute inset-0 object-cover max-[768px]:hidden" src="https://assets.thumbpin.in/thumbpin-videos/whatwedo2optimised.mp4" autoplay muted loop playsinline preload="auto" fetchpriority="high"></video>
+            {{-- src is set by JS (see hero-video script below). With a plain src this
+                 6 MB file downloaded on mobile too -- max-[768px]:hidden only hides it,
+                 it does not stop the fetch, and preload="auto" fetchpriority="high"
+                 put it straight in front of LCP for a video nobody could see. --}}
+            <video id="hero-video-bg" class="block w-full h-full absolute inset-0 object-cover max-[768px]:hidden" data-src="https://assets.thumbpin.in/thumbpin-videos/whatwedo2optimised.mp4" muted loop playsinline preload="none"></video>
             {{-- Mobile Video - Only loaded on small screens via JS --}}
             <div id="hero-video-mobile-container" class="hidden max-[768px]:block w-full h-full absolute inset-0 [&>video]:block [&>video]:w-full [&>video]:h-full [&>video]:object-cover"></div>
             <template id="hero-video-mobile-template">
                 <video id="hero-video-mobile" src="https://assets.thumbpin.in/thumbpin-videos/optimisedforsmallerscreens.mp4" autoplay muted loop playsinline preload="none"></video>
             </template>
+
+            <script>
+            // Loads exactly one hero video for the current viewport. Nothing in the
+            // markup carries a live src, so a phone never downloads the desktop file
+            // and a desktop never downloads the mobile one.
+            (function () {
+                var mobile    = window.matchMedia('(max-width: 768px)');
+                var desktopEl = document.getElementById('hero-video-bg');
+                var container = document.getElementById('hero-video-mobile-container');
+                var template  = document.getElementById('hero-video-mobile-template');
+                var done      = { desktop: false, mobile: false };
+
+                function play(video) {
+                    var p = video.play();
+                    // Autoplay rejection is expected on some browsers; the poster frame stays.
+                    if (p && p.catch) { p.catch(function () {}); }
+                }
+
+                function loadDesktop() {
+                    if (done.desktop || !desktopEl || !desktopEl.dataset.src) { return; }
+                    done.desktop = true;
+                    desktopEl.src = desktopEl.dataset.src;
+                    play(desktopEl);
+                }
+
+                function loadMobile() {
+                    if (done.mobile || !container || !template) { return; }
+                    done.mobile = true;
+                    container.appendChild(template.content.cloneNode(true));
+                    var video = container.querySelector('video');
+                    if (video) { play(video); }
+                }
+
+                function sync() {
+                    if (mobile.matches) {
+                        // Deferred to idle so the video never competes with LCP on a phone.
+                        if (document.readyState === 'complete') { loadMobile(); }
+                        else { window.addEventListener('load', loadMobile, { once: true }); }
+                    } else {
+                        loadDesktop();
+                    }
+                }
+
+                sync();
+                if (mobile.addEventListener) { mobile.addEventListener('change', sync); }
+                else if (mobile.addListener) { mobile.addListener(sync); }
+            })();
+            </script>
             <div class="absolute inset-0 bg-black/80 z-[1] max-[768px]:hidden"></div>
 
             <!-- Headline Overlay - Centered with Inline Video -->

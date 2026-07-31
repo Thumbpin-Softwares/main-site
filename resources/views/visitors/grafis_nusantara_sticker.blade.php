@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Grafis Nusantara Sticker | Thumbpin', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Sticker and packaging design for Grafis Nusantara. A closer look at the print work Thumbpin produced for the brand.','title' => 'Grafis Nusantara Sticker | Thumbpin', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>
@@ -67,9 +68,10 @@
             <div class="row h-100-only">
                 <div class="col-md-12">
                     <div class="content-box">
-                        <div class="main-content-title">
+                        <h1 class="main-content-title">Grafis Nusantara — Sticker & Packaging Design</h1>
+                        <h2 class="content-title">
                             About the brand
-                        </div>
+                        </h2>
                         <p>
                             Grafis Nusantara is a collective media that archives the cultural context of visual graphics from all around Indonesian archipelago. This zine is the first volume from Grafis Nusantara, featuring a growing collection of local labels and stickers from the 70s-90s.
                         </p>

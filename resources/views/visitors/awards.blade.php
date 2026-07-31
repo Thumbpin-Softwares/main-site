@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Awards | Thumbpin', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Award-winning creative work by Thumbpin. A look at the campaigns and design that have earned recognition for our clients.','title' => 'Awards | Thumbpin', 'footer_black' => 'footer-black'])
 
 @section('head')
 
@@ -14,9 +15,9 @@
             <div class="row align-items-center h-100-only">
                 <div class="col-md-6">
                     <div class="content-box">
-                        <div class="title with-img">
+                        <h1 class="title with-img">
                             Awards
-                        </div>
+                        </h1>
                         <div class="des">
                             <p>
                                 The world is huge and constantly running. Competition, race, and the finish line is all we see. The biggest award amidst this chaos is the connection we can make through a single creative. View our collection below, and be your own judge.

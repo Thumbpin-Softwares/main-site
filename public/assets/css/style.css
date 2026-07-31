@@ -2973,3 +2973,50 @@ footer.footer-black .footer .footer-services li a:hover{
 
 
 
+
+/* ===================== Heading semantics ===================== */
+/*
+   Page titles across the site were built as <div class="title">, leaving most
+   pages with no <h1> at all. They are now real headings. The specificity here is
+   exactly (0,0,1) -- same as Bootstrap's own `h1` rule -- so it neutralises
+   Bootstrap's h1 defaults while every existing `.title` class rule (0,1,0) still
+   wins. Net effect: identical rendering, correct semantics.
+*/
+h1:where(.title, .main-content-title, .content-title),
+h2:where(.title, .main-content-title, .content-title) {
+    margin: 0;
+    font-size: inherit;
+    font-weight: inherit;
+    line-height: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: inherit;
+}
+
+/*
+   Case-study pages under /work/* that are a single image with no copy at all had
+   no heading and no clearance for the absolutely-positioned header, which
+   overlapped the top of the artwork. This gives them a real <h1> and that gap.
+*/
+.portfolio-title {
+    padding: 140px 0 30px;
+    font-size: 38px;
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.1;
+    color: #000;
+    margin: 0;
+}
+@media screen and (max-width: 767px) {
+    .portfolio-title { padding: 120px 0 20px; font-size: 26px; }
+}
+
+/*
+   .text-red is used ~24 times across the site but was only ever defined inside
+   three pages' own <style> blocks, so on the rest it silently inherited the
+   surrounding colour. Defined here once, in the brand red. Pages that declare
+   their own .text-red with !important keep theirs.
+*/
+.text-red {
+    color: var(--primary-color);
+}

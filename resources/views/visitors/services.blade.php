@@ -18,12 +18,19 @@
             <div class="row align-items-center h-100-only">
                 <div class="col-lg-6">
                     <div class="content-box">
-                        <div class="title" style="font-size: 80px; line-height: 0.9; font-weight: 800; color: #fff; letter-spacing: -2px; margin-bottom: 30px;">
+                        <span class="block mb-5 font-body text-[14px] font-bold uppercase tracking-[3px] text-tp-red">
+                        what do we offer
+                    </span>
+                        <h1 class="title" style="font-size: 80px; line-height: 0.9; font-weight: 800; color: #fff; letter-spacing: -2px; margin-bottom: 30px;">
                             WE ARE <br>
                             <span class="text-red">BEST AT</span>
-                        </div>
-                        <div class="des" style="border-left: 4px solid var(--tp-red);">
-                            <p style="font-size: 20px; color: #ccc; line-height: 1.6; max-width: 90%;">
+                        </h1>
+                        {{-- "border-solid" (not border-l-solid -- Tailwind has no per-side
+                             style utility) is required here: css/shared.css is built without
+                             preflight, which is what normally applies border-style globally,
+                             so a width on its own renders nothing. --}}
+                        <div class="max-w-[90%] border-l-4 border-r-0 border-t-0 border-b-0 border-solid border-tp-red pl-[25px] max-[767px]:max-w-full">
+                        <p class="m-0 text-base leading-[1.6] text-neutral-400 max-[767px]:text-[17px]">
                                 Creating unique business identities under our roof with integrated marketing solutions. We weave stories that make noise, amplify reach, and create wins.
                             </p>
                         </div>
@@ -45,240 +52,63 @@
     </div>
     {{-- ====================== End Service-Hero-Sec Area ====================== --}}
 
-    {{-- ====================== Sec-9 Area (Card-Based Grid) ====================== --}}
-    <div class="sec-9" id="sec-9" style="padding: 100px 0; background: #fff;">
-        <div class="container">
-            <div class="services-grid">
-                <!-- Item 1 - Branding -->
-                <div class="service-card">
-                    <div class="card-accent"></div>
-                    <span class="card-number">01</span>
-                    <h3 class="card-title">Branding</h3>
-                    <p class="card-desc">Undertaking brand and market research to fathom brand goals and positioning, along with building on the existing voice and visual language.</p>
-                    <div class="card-arrow">→</div>
-                </div>
+    {{-- ====================== Sec-9 Area (Services Grid) ====================== --}}
+    {{--
+        Pure Tailwind. Two things to know before editing:
+        * This page loads css/shared.css, which is built WITHOUT preflight, so
+          borders need an explicit `border-solid` and headings/paragraphs need
+          explicit `m-0` -- Tailwind has not reset Bootstrap's defaults here.
+        * Hover states are driven by `group` on the card, so the accent bar,
+          number badge, title, copy and arrow all react to one hover.
+    --}}
+    <div class="sec-9 bg-white py-[100px] max-[991px]:py-[70px]" id="sec-9">
+        <div class="mx-auto w-full max-w-[1140px] px-[15px]">
+            @php
+            $services = [
+                    ['01', 'Branding', 'Undertaking brand and market research to fathom brand goals and positioning, along with building on the existing voice and visual language.', null],
+                    ['02', 'Strategy', 'Deploying a research-based strategy with room for innovative developments, across all forms of traditional & non-traditional media.', null],
+                    ['03', 'Digital Marketing', 'We integrate marketing strategies & solutions to create distinctive conversations and reach a diverse audience through a unique online presence.', 'digital-marketing'],
+                    ['04', 'Real Estate Video Ads', 'Cinematic property walkthroughs, drone aerials and promo films that help builders and brokers showcase their projects and sell faster.', 'real-estate-ads'],
+                    ['05', 'Web Designing', 'Working with innovative UI/UX designs and infographics to establish a platform to connect with people.', null],
+                    ['06', 'Events & Live', 'We take your brand out on a walk amidst society & concerts.', null],
+                    ['07', 'Disruptive Ideas', 'We plan unprecedented solutions and ideas that take your brand to the front line of unique marketing campaigns.', null],
+                    ['08', 'Friendship With Benefits', 'Got a specific project for us? We\'re here to provide our expertise.', null],
+            ];
 
-                <!-- Item 2 - Strategy -->
-                <div class="service-card">
-                    <div class="card-accent"></div>
-                    <span class="card-number">02</span>
-                    <h3 class="card-title">Strategy</h3>
-                    <p class="card-desc">Deploying a research-based strategy with room for innovative developments, across all forms of traditional & non-traditional media.</p>
-                    <div class="card-arrow">→</div>
-                </div>
+            $card = 'group relative block overflow-hidden rounded-lg border border-solid border-[#e5e5e5]'
+                  . ' bg-white p-[40px_35px] no-underline shadow-[0_2px_8px_rgba(0,0,0,0.04)]'
+                  . ' transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]'
+                  . ' hover:-translate-y-2 hover:border-tp-red hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)]'
+                  . ' max-[991px]:p-[35px_30px] max-[576px]:p-[30px_25px]';
+            @endphp
 
-                <!-- Item 3 - Digital Marketing (Clickable) -->
-                <a href="{{ route('digital-marketing') }}" class="service-card service-card-link">
-                    <div class="card-accent"></div>
-                    <span class="card-number">03</span>
-                    <h3 class="card-title">Digital Marketing</h3>
-                    <p class="card-desc">We integrate marketing strategies & solutions to create distinctive conversations and reach a diverse audience through a unique online presence.</p>
-                    <div class="card-arrow">→</div>
-                </a>
+            <div class="mt-[60px] grid grid-cols-2 gap-[30px] max-[991px]:mt-10 max-[991px]:grid-cols-1 max-[991px]:gap-[25px] max-[576px]:gap-5">
+                @foreach($services as [$num, $title, $desc, $route])
+                @php $isLink = (bool) $route; @endphp
+                <{{ $isLink ? 'a' : 'div' }}
+                    @if($isLink) href="{{ route($route) }}" @endif
+                    class="{{ $card }} {{ $isLink ? 'cursor-pointer text-inherit' : '' }}">
 
-                <!-- Item 4 - Real Estate Video Ads (Clickable) -->
-                <a href="{{ route('real-estate-ads') }}" class="service-card service-card-link">
-                    <div class="card-accent"></div>
-                    <span class="card-number">04</span>
-                    <h3 class="card-title">Real Estate Video Ads</h3>
-                    <p class="card-desc">Cinematic property walkthroughs, drone aerials and promo films that help builders and brokers showcase their projects and sell faster.</p>
-                    <div class="card-arrow">→</div>
-                </a>
+                    {{-- Accent bar: grows from 0 to full height on hover --}}
+                    <span class="absolute left-0 top-0 h-0 w-[4px] bg-tp-red transition-[height] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:h-full"></span>
 
-                <!-- Item 5 - Web Designing -->
-                <div class="service-card">
-                    <div class="card-accent"></div>
-                    <span class="card-number">05</span>
-                    <h3 class="card-title">Web Designing</h3>
-                    <p class="card-desc">Working with innovative UI/UX designs and infographics to establish a platform to connect with people.</p>
-                    <div class="card-arrow">→</div>
-                </div>
+                    <span class="mb-5 inline-block rounded border border-solid border-tp-red px-3 py-[6px] font-mono text-[14px] font-bold text-tp-red transition-all duration-300 group-hover:bg-tp-red group-hover:text-white max-[576px]:px-[10px] max-[576px]:py-[5px] max-[576px]:text-[12px]">
+                        {{ $num }}
+                    </span>
 
-                <!-- Item 6 - Events & Live -->
-                <div class="service-card">
-                    <div class="card-accent"></div>
-                    <span class="card-number">06</span>
-                    <h3 class="card-title">Events & Live</h3>
-                    <p class="card-desc">We take your brand out on a walk amidst society & concerts.</p>
-                    <div class="card-arrow">→</div>
-                </div>
+                    <h3 class="m-0 mb-[15px] text-[28px] font-extrabold uppercase leading-[1.2] tracking-[-0.5px] text-black transition-colors duration-300 group-hover:text-tp-red max-[991px]:text-[24px] max-[576px]:text-[22px]">
+                        {{ $title }}
+                    </h3>
 
-                <!-- Item 7 - Disruptive Ideas -->
-                <div class="service-card">
-                    <div class="card-accent"></div>
-                    <span class="card-number">07</span>
-                    <h3 class="card-title">Disruptive Ideas</h3>
-                    <p class="card-desc">We plan unprecedented solutions and ideas that take your brand to the front line of unique marketing campaigns.</p>
-                    <div class="card-arrow">→</div>
-                </div>
+                    <p class="m-0 mb-5 text-[16px] leading-[1.7] text-[#666] transition-colors duration-300 group-hover:text-[#333] max-[991px]:text-[15px]">
+                        {{ $desc }}
+                    </p>
 
-                <!-- Item 8 - Friendship With Benefits -->
-                <div class="service-card">
-                    <div class="card-accent"></div>
-                    <span class="card-number">08</span>
-                    <h3 class="card-title">Friendship With Benefits</h3>
-                    <p class="card-desc">Got a specific project for us? We're here to provide our expertise.</p>
-                    <div class="card-arrow">→</div>
-                </div>
+                    <span class="block -translate-x-[10px] text-[24px] leading-none text-[#ccc] opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:text-tp-red group-hover:opacity-100" aria-hidden="true">&rarr;</span>
+                </{{ $isLink ? 'a' : 'div' }}>
+                @endforeach
             </div>
         </div>
-
-        <style>
-            /* Services Grid Layout */
-            .services-grid {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 30px;
-                margin-top: 60px;
-            }
-
-            /* Service Card Base Styles */
-            .service-card {
-                position: relative;
-                background: #fff;
-                border: 1px solid #e5e5e5;
-                border-radius: 8px;
-                padding: 40px 35px;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                cursor: pointer;
-                overflow: hidden;
-                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-                display: block;
-                text-decoration: none;
-            }
-
-            /* Red Accent Line */
-            .card-accent {
-                position: absolute;
-                left: 0;
-                top: 0;
-                width: 4px;
-                height: 0;
-                background: var(--tp-red);
-                transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            }
-
-            /* Card Number Badge */
-            .card-number {
-                display: inline-block;
-                font-size: 14px;
-                font-weight: 700;
-                color: var(--tp-red);
-                font-family: 'Courier New', monospace;
-                margin-bottom: 20px;
-                padding: 6px 12px;
-                border: 1px solid var(--tp-red);
-                border-radius: 4px;
-                transition: all 0.3s ease;
-            }
-
-            /* Card Title */
-            .card-title {
-                font-size: 28px;
-                font-weight: 800;
-                color: #000;
-                margin: 0 0 15px 0;
-                text-transform: uppercase;
-                letter-spacing: -0.5px;
-                transition: color 0.3s ease;
-            }
-
-            /* Card Description */
-            .card-desc {
-                font-size: 16px;
-                color: #666;
-                line-height: 1.7;
-                margin: 0 0 20px 0;
-                transition: color 0.3s ease;
-            }
-
-            /* Card Arrow */
-            .card-arrow {
-                font-size: 24px;
-                color: #ccc;
-                transition: all 0.3s ease;
-                opacity: 0;
-                transform: translateX(-10px);
-            }
-
-            /* Hover Effects */
-            .service-card:hover {
-                transform: translateY(-8px);
-                box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
-                border-color: var(--tp-red);
-            }
-
-            .service-card:hover .card-accent {
-                height: 100%;
-            }
-
-            .service-card:hover .card-number {
-                background: var(--tp-red);
-                color: #fff;
-            }
-
-            .service-card:hover .card-title {
-                color: var(--tp-red);
-            }
-
-            .service-card:hover .card-desc {
-                color: #333;
-            }
-
-            .service-card:hover .card-arrow {
-                opacity: 1;
-                transform: translateX(0);
-                color: var(--tp-red);
-            }
-
-            /* Link-specific styles */
-            .service-card-link {
-                color: inherit;
-            }
-
-            .service-card-link:hover {
-                text-decoration: none;
-            }
-
-            /* Responsive Design */
-            @media (max-width: 991px) {
-                .services-grid {
-                    grid-template-columns: 1fr;
-                    gap: 25px;
-                }
-
-                .service-card {
-                    padding: 35px 30px;
-                }
-
-                .card-title {
-                    font-size: 24px;
-                }
-
-                .card-desc {
-                    font-size: 15px;
-                }
-            }
-
-            @media (max-width: 576px) {
-                .services-grid {
-                    gap: 20px;
-                }
-
-                .service-card {
-                    padding: 30px 25px;
-                }
-
-                .card-title {
-                    font-size: 22px;
-                }
-
-                .card-number {
-                    font-size: 12px;
-                    padding: 5px 10px;
-                }
-            }
-        </style>
     </div>
     {{-- ====================== End Sec-9 Area ====================== --}}
 

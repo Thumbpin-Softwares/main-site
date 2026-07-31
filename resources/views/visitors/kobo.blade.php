@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Kobo | Thumbpin', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Brand identity design for Kobo. A look at the logo, visual language and brand system Thumbpin developed.','title' => 'Kobo | Thumbpin', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>
@@ -70,9 +71,9 @@
             <div class="row h-100-only">
                 <div class="col-md-12">
                     <div class="content-box">
-                        <div class="main-content-title">
+                        <h1 class="main-content-title">
                             Kobo
-                        </div>
+                        </h1>
                         <p>
                             Helping Africa’s leader in integrated logistics reach the global market
                         </p>

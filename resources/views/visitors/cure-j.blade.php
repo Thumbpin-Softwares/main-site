@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Cure J | Thumbpin', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Print and packaging design for Cure J. See the collateral Thumbpin created to bring the brand to life across printed touchpoints.','title' => 'Cure J | Thumbpin', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>
@@ -67,9 +68,10 @@
             <div class="row h-100-only">
                 <div class="col-md-12">
                     <div class="content-box">
-                        <div class="main-content-title">
+                        <h1 class="main-content-title">Cure J — Print & Packaging Design</h1>
+                        <h2 class="content-title">
                             About The Brand
-                        </div>
+                        </h2>
                         <p>
                             In this stressful society, negative pressures follow, Cure j provides healing products, which may be healed by fragrance, may be healed by effects, and the unpleasant mood will also improve. It doesn't matter if you are hurt, we should all love ourselves! I hope everyone can find a way to be cured.
                         </p>

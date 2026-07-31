@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'S21 Cafe | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Print and packaging design for S21 Cafe. How Thumbpin shaped the cafe brand through menus, signage and printed collateral.','title' => 'S21 Cafe | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>
@@ -99,6 +100,7 @@
     {{-- ====================== Sec-10 Area ====================== --}}
     <div class="sec-10">
         <div class="container">
+        <h1 class="portfolio-title">S21 Cafe — Print & Packaging Design</h1>
             <div class="row filter_box">
                 <div class="col-12">
                     <a class="card-3">

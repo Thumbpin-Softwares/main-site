@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Mr Furniture | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Brand identity design for Mr Furniture. The logo, palette and visual system Thumbpin built for the furniture brand.','title' => 'Mr Furniture | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 
@@ -39,6 +40,7 @@
 <main>
 
     <div class="container">
+        <h1 class="portfolio-title">Mr Furniture — Brand Identity Design</h1>
         <div class="portfolio-img-box">
             <div class="set-video">
                 <img src="{{ config('app.url') }}/assets/img/work/branding/mr_furniture/1.jpg" alt="mr_furniture">

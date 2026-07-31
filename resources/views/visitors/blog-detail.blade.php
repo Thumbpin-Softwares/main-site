@@ -1,5 +1,13 @@
-@extends('layout.visitor', ['title' => $post->title.' | Thumbpin', 'header_black' => 'bg-black', 'footer_black' =>
-'footer-black'])
+{{-- The description prefers the post's own meta_description, then its excerpt,
+     then a trimmed body, so every post ships a real one instead of the site default. --}}
+@extends('layout.visitor', [
+    'title' => $post->title.' | Thumbpin',
+    'description' => \Illuminate\Support\Str::limit(
+        trim(strip_tags($post->meta_description ?: ($post->excerpt ?: $post->body))), 155
+    ),
+    'header_black' => 'bg-black',
+    'footer_black' => 'footer-black',
+])
 
 @section('head')
 
@@ -14,9 +22,9 @@
     {{-- ====================== Sec-14 Area ====================== --}}
     <div class="sec-14">
         <div class="container">
-            <div class="title">
+            <h1 class="title">
                 {{ $post->title }}
-            </div>
+            </h1>
             <div class="date">
                 By {{ $post->name }} on {{ date('M d, Y', strtotime($post->created_at)) }}
             </div>

@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Branding | Thumbpin', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Brand identity work by Thumbpin. We build identities that resonate with your customers and scale across every demographic you want to reach.','title' => 'Branding | Thumbpin', 'footer_black' => 'footer-black'])
 
 @section('head')
 
@@ -14,9 +15,9 @@
             <div class="row align-items-center h-100-only">
                 <div class="col-md-6">
                     <div class="content-box">
-                        <div class="title with-img">
+                        <h1 class="title with-img">
                             Branding
-                        </div>
+                        </h1>
                         <div class="des">
                             <p>
                                 We create a unique brand identity for you that resonates, reflects, and relates to your consumers and grows your brand across all desired demographics.

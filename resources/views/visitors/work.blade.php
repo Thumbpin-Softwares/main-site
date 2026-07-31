@@ -16,9 +16,9 @@
                 <div class="col-md-6">
                     <div class="content-box">
                         <div>
-                            <div class="title with-img">
+                            <h1 class="title with-img">
                                 W<img src="{{ config('app.url') }}/assets/img/shape-06.png" alt="img">rk
-                            </div>
+                            </h1>
                             <div class="des">
                                 <p>
                                     Get your brand recognized by customers in every corner through a proven history of modern advertising. The world’s a stage. Let the show commence.

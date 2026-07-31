@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Digital | Thumbpin', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Digital design and campaign work by Thumbpin. Browse the digital creative, social and online campaigns we have produced for brands.','title' => 'Digital | Thumbpin', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>
@@ -20,9 +21,9 @@
             <div class="row align-items-center h-100-only">
                 <div class="col-md-6">
                     <div class="content-box">
-                        <div class="title with-img">
+                        <h1 class="title with-img">
                             Digital
-                        </div>
+                        </h1>
                         <div class="des">
                             <p>
                                 We build a digital presence for your brand which is unique to what you stand for and attracts the crowd you wish to market to.

@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Award | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'A closer look at one of Thumbpin’s award-winning campaigns — the brief, the challenge and the creative solution behind it.','title' => 'Award | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 
@@ -69,9 +70,10 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="content-box">
-                        <div class="main-content-title">
+                        <h1 class="main-content-title">Thumbpin — Award-Winning Campaign Work</h1>
+                        <h2 class="content-title">
                             Brief:
-                        </div>
+                        </h2>
                         <p>
                             Times Groups’ 4th edition of Print of Power had centered around “The Mask” in light of the Covid-19 pandemic. The objective was to shift the mentality from “I need to protect myself with a mask” to “I need to protect the world with my mask.”
                         </p>

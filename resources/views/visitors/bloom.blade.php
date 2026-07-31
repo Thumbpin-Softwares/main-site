@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Bloom | Thumbpin', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Brand identity design for Bloom. See the logo, palette and visual system Thumbpin built for the brand.','title' => 'Bloom | Thumbpin', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>
@@ -77,9 +78,10 @@
             <div class="row h-100-only">
                 <div class="col-md-12 d-flex align-items-center">
                     <div class="content-box">
-                        <div class="main-content-title">
+                        <h1 class="main-content-title">Bloom — Brand Identity Design</h1>
+                        <h2 class="content-title">
                             About The Brand
-                        </div>
+                        </h2>
                         <p>
                             In the rush of our everyday life, we often feel suffocated at the end of the day.
                         </p>

@@ -18,7 +18,7 @@
 @php
 $team = [
     ['BRAJESH PATHAK.jpeg',   'Brajesh Pathak',   'Founder & Business Head',      'Marketing enthusiast, translating businesses into stories.',        'https://www.linkedin.com/in/brajesh-pathak-415826120'],
-    ['DURGESH SINGH.jpg',     'Durgesh Singh',    'Creative Director Consultant', 'Story-teller by the day, creator by the night.',                    'https://www.linkedin.com/in/durgesh-singh-820b50ab'],
+    ['DURGESH SINGH.jpg',     'Durgesh Singh',    'Consultant', 'Story-teller by the day, creator by the night.',                    'https://www.linkedin.com/in/durgesh-singh-820b50ab'],
     ['SOHAN ROUT.jpeg',       'Sohan Rout',       'Full Stack Developer',         'Tidies as he builds, writing today for the team that arrives next year.', 'https://www.linkedin.com/in/sohan-rout/'],
     ['SPARSH SHARMA.png',     'Sparsh Sharma',    'Full Stack Developer',         'Ship first, polish after. Working beats perfect, every time.',       'https://www.linkedin.com/in/sparshdev/'],
     ['KOMAL BHADURIA.jpg',    'Komal Bhaduria',   'Digital Specialist',           'Digital marketing maven, and digital connoisseur.',                 null],
@@ -137,12 +137,12 @@ $schema = [
                     <span class="block mb-5 font-body text-[14px] font-bold uppercase tracking-[3px] text-tp-red">
                         Who We Are
                     </span>
-                    <h1 class="relative z-[2] mb-10 font-body text-[72px] text-white font-extrabold uppercase leading-[0.95] text-black max-[767px]:text-[48px]">
+                    <h1 class="relative z-[2] mb-10 font-body text-[72px] text-white font-extrabold uppercase leading-[0.95] max-[767px]:text-[48px]">
                         Ideas That <br>
                         <span class="text-tp-red">Inspire Action.</span>
                     </h1>
                     <div class="max-w-[90%] border-l-4 border-tp-red pl-[25px] max-[767px]:max-w-full">
-                        <p class="m-0 text-md leading-[1.6] text-neutral-400 max-[767px]:text-[17px]">
+                        <p class="m-0 text-base leading-[1.6] text-neutral-400 max-[767px]:text-[17px]">
                             We are a team of creative thinkers, designers, planners, strategists, and tech experts who share one objective: to help brands like yours grow with ideas that matter. We define how brands connect with people through thoughtful storytelling, impactful design, and intelligent strategy.
                         </p>
                     </div>

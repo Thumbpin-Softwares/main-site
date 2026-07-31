@@ -50,11 +50,11 @@
                 <div class="row align-items-center h-100-only">
                     <div class="col-md-7 col-lg-6">
                         <div class="content-box">
-                            <div class="title">
+                            <h1 class="title">
                                 c
                                 <img src="{{ config('app.url') }}/assets/img/shape-01.png" alt="img">
                                 ntact
-                            </div>
+                            </h1>
                             <div class="des">
                                 <p>
                                     Where will your story go next?

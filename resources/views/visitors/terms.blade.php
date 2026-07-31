@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'T & C | Thumbpin', 'footer_black' => 'footer-black', 'header_black' => 'bg-black'])
+@extends('layout.visitor', [
+    'description' => 'Terms and conditions for using the Thumbpin website and engaging Thumbpin for creative, branding and marketing services.','title' => 'T & C | Thumbpin', 'footer_black' => 'footer-black', 'header_black' => 'bg-black'])
 
 @section('head')
 <style>

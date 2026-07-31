@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Website | Thumbpin', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Website design and development work by Thumbpin. Browse the sites we have designed and built for brands across sectors.','title' => 'Website | Thumbpin', 'footer_black' => 'footer-black'])
 
 @section('head')
 
@@ -14,9 +15,9 @@
             <div class="row align-items-center h-100-only">
                 <div class="col-md-6">
                     <div class="content-box">
-                        <div class="title with-img">
+                        <h1 class="title with-img">
                             Website
-                        </div>
+                        </h1>
                         <div class="des">
                             <p>
                                 Our team creates a website for your brand that creates impressions, achieves goals, and creates new ones. Keep your customers scrolling as long as you want.

@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Print | Thumbpin', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Print and packaging design work by Thumbpin. Browse the collateral, packaging and printed campaigns we have produced for brands.','title' => 'Print | Thumbpin', 'footer_black' => 'footer-black'])
 
 @section('head')
 
@@ -14,9 +15,9 @@
             <div class="row align-items-center h-100-only">
                 <div class="col-md-6">
                     <div class="content-box">
-                        <div class="title with-img">
+                        <h1 class="title with-img">
                             print
-                        </div>
+                        </h1>
                         <div class="des">
                             <p>
                                 We create print campaigns that will undeniably turn heads every time your desired audience comes across your brand. Stay hooked in their memories.

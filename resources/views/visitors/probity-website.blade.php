@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Probity | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Website design and development for Probity. A look at the site Thumbpin designed and built for the brand.','title' => 'Probity | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 
@@ -23,6 +24,7 @@
 <main>
 
     <div class="container">
+        <h1 class="portfolio-title">Probity — Website Design & Development</h1>
         <div class="portfolio-img-box">
             <img src="{{ config('app.url') }}/assets/img/work/website/probity-page.jpg" alt="img">
         </div>

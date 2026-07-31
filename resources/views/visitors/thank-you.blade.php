@@ -1,6 +1,6 @@
 @extends('layout.visitor', [
     'title' => 'Thank You | Thumbpin',
-    'description' => '',
+    'description' => 'Thanks for getting in touch with Thumbpin. Our team will review your enquiry and get back to you shortly.',
     'footer_black' => 'footer-black',
 ])
 

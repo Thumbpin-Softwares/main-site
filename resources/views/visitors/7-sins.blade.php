@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => '7 Sins | Thumbpin', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Packaging design for Zagovor Brewery’s Seven Sins range. See how Thumbpin built a distinct label system for the beer line.','title' => '7 Sins | Thumbpin', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>
@@ -67,9 +68,9 @@
             <div class="row h-100-only">
                 <div class="col-md-12">
                     <div class="content-box">
-                        <div class="main-content-title">
+                        <h1 class="main-content-title">
                             ZAGOVOR BREWERY – SEVEN SINS
-                        </div>
+                        </h1>
                         <p>
                             To celebrate their seventh birthday, the one of the most famous independent Russian breweries — Zagovor released a special edition of super juicy triple dry hopped New England Double IPA, called 7 SINS and covered in seven different color labels. The t-shirt and glass merchandise was also designed to be a part of the anniversary release. The label was printed on high-gloss silver paper, and given a silk finish with a matte laminate.
                         </p>

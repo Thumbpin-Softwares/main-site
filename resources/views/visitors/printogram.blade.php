@@ -1,4 +1,5 @@
-@extends('layout.visitor', ['title' => 'Printogram | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+@extends('layout.visitor', [
+    'description' => 'Brand identity design for Printogram. A look at the logo and brand system Thumbpin developed.','title' => 'Printogram | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 
@@ -39,6 +40,7 @@
 <main>
 
     <div class="container">
+        <h1 class="portfolio-title">Printogram — Brand Identity Design</h1>
         <div class="portfolio-img-box">
             <div class="set-video">
                 <img src="{{ config('app.url') }}/assets/img/work/branding/printogram/1.jpg" alt="img">
