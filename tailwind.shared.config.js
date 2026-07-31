@@ -34,6 +34,24 @@ module.exports = {
       colors: {
         'tp-red': '#ce2d33',
       },
+      // Seamless marquee: the track holds the content twice, so shifting it by
+      // exactly -50% lands on the duplicate and loops with no visible jump.
+      keyframes: {
+        marqueeLeft: {
+          '0%':   { transform: 'translateX(0)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
+        marqueeRight: {
+          '0%':   { transform: 'translateX(-50%)' },
+          '100%': { transform: 'translateX(0)' },
+        },
+      },
+      animation: {
+        'marquee-left':       'marqueeLeft 30s linear infinite',
+        'marquee-left-slow':  'marqueeLeft 60s linear infinite',
+        'marquee-right':      'marqueeRight 40s linear infinite',
+        'marquee-right-slow': 'marqueeRight 70s linear infinite',
+      },
     },
   },
   plugins: [],

@@ -23,16 +23,31 @@
     <meta property="og:type" content="{{ $og_type ?? 'website' }}" />
     <meta property="og:title" content="{{ $title ?? config('app.name') }}" />
     <meta property="og:description" content="{{ $description ?? config('app.name') }}" />
-    <meta property="og:image" content="{{ $image ?? config('app.url') . '/assets/img/logo/favicon.jpeg' }}" />
-    {{-- Only declare dimensions for a real share image; the favicon fallback is not 1200x627. --}}
-    @isset($image)
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="627" />
-    @endisset
-    <meta property="og:image:alt" content="{{ $image_alt ?? config('app.name') . ' logo' }}" />
+    @php
+        // Pages opt in with 'image' => config('app.url').'/img/og/whatever.png'.
+        // Dimensions are read off the file rather than hardcoded: a wrong width/height
+        // makes some scrapers skip the preview, and share images are not all one size.
+        $ogImage = $image ?? config('app.url') . '/assets/img/logo/favicon.jpeg';
+        $ogSize  = null;
+        if (isset($image)) {
+            $localPath = public_path(parse_url($image, PHP_URL_PATH));
+            if (is_file($localPath) && ($info = @getimagesize($localPath))) {
+                $ogSize = ['width' => $info[0], 'height' => $info[1], 'mime' => $info['mime']];
+            }
+        }
+    @endphp
+    <meta property="og:image" content="{{ $ogImage }}" />
+    <meta property="og:image:secure_url" content="{{ $ogImage }}" />
+    @if($ogSize)
+    <meta property="og:image:width" content="{{ $ogSize['width'] }}" />
+    <meta property="og:image:height" content="{{ $ogSize['height'] }}" />
+    <meta property="og:image:type" content="{{ $ogSize['mime'] }}" />
+    @endif
+    <meta property="og:image:alt" content="{{ $image_alt ?? ($title ?? config('app.name')) }}" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="{{ $title ?? '' }}" />
-    <meta name="twitter:image" content="{{ $image ?? config('app.url') . '/assets/img/logo/favicon.jpeg' }}">
+    <meta name="twitter:image" content="{{ $ogImage }}">
+    <meta name="twitter:image:alt" content="{{ $image_alt ?? ($title ?? config('app.name')) }}" />
     <meta name="twitter:description" content="{{ $description ?? config('app.name') }}" />
 
     {{-- Favicon --}}
