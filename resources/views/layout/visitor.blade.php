@@ -53,8 +53,32 @@
     {{-- Favicon --}}
     <link rel="icon" href="{{ config('app.url') }}/assets/img/logo/favicon.jpeg">
 
-    {{-- Font-Awesome Pro v5.10.0 --}}
-    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+    {{--
+        Resource hints. Every third-party origin below costs a DNS lookup + TCP
+        connect + TLS handshake before its first byte arrives -- on mobile that is
+        roughly 200-300ms per origin, serialised after the HTML parses. Warming the
+        connections here overlaps that cost with HTML download instead.
+
+        assets.thumbpin.in matters most: the homepage pulls ~100 images from it.
+    --}}
+    <link rel="preconnect" href="https://assets.thumbpin.in" crossorigin>
+    <link rel="preconnect" href="https://pro.fontawesome.com" crossorigin>
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://i.ytimg.com">
+
+    {{--
+        Font-Awesome Pro v5.10.0 -- loaded non-blocking. It is icon glyphs only, so
+        it is not needed for first paint; as a plain stylesheet it blocked rendering
+        on a round-trip to a slow origin. media="print" makes the browser fetch it at
+        low priority without blocking, and onload promotes it to all media.
+    --}}
+    <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet"
+          media="print" onload="this.media='all';this.onload=null">
+    <noscript>
+        <link href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" rel="stylesheet">
+    </noscript>
 
     {{-- Bootstrap v5.0.2 --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"

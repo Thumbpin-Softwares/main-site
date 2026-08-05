@@ -1,6 +1,11 @@
+/* woff2 first (432KB), .otf kept as a fallback for anything that cannot read it
+   (~1MB). Browsers pick the first format they support, so modern ones never
+   fetch the .otf. Both carry the same 3 variable axes: wght 100-900,
+   wdth 50-115, slnt 0-12. Regenerate with fontTools if the source changes. */
 @font-face {
     font-family: "AcuminVariableConcept";
-    src: url(../fonts/AcuminVariableConcept.otf) format("opentype");
+    src: url(../fonts/AcuminVariableConcept.woff2) format("woff2"),
+         url(../fonts/AcuminVariableConcept.otf) format("opentype");
     font-weight: 100 900;
     font-style: normal;
     font-display: swap;

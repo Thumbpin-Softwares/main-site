@@ -112,6 +112,13 @@
                 const pill = document.getElementById('hero-video-pill');
                 if (!pill) return;
 
+                // The pill lives inside the headline <h1>, which is display:none
+                // below 769px. Without this guard we still called load() there and
+                // pulled the full ~6MB desktop clip down on a phone to render
+                // nothing -- by far the largest transfer on the mobile homepage.
+                // Breakpoint mirrors the max-[768px]:hidden utility on the <h1>.
+                if (window.matchMedia('(max-width: 768px)').matches) return;
+
                 const start = () => {
                     pill.load();
                     pill.play().catch(() => {});
