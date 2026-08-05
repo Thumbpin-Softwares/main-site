@@ -36,6 +36,7 @@ Route::view('/services/social-media-marketing', 'visitors.services.social-media-
 Route::view('/services/web-design', 'visitors.services.web-design')->name('web-design-agency');
 Route::view('/services/real-estate-ads', 'visitors.services.real-estate-ads')->name('real-estate-ads');
 Route::view('/services/branding', 'visitors.services.branding')->name('branding-agency');
+Route::view('/services/strategy', 'visitors.services.strategy')->name('strategy-agency');
 
 
 Route::view('/work/digital', 'visitors.digital')->name('digital');

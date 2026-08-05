@@ -24,7 +24,7 @@ $breadcrumbId = $servicesUrl . '/#breadcrumb';
 // name => route (null where no dedicated page exists yet)
 $serviceEntries = [
     'Branding'               => 'branding-agency',
-    'Strategy'               => null,
+    'Strategy'               => 'strategy-agency',
     'Digital Marketing'      => 'digital-marketing',
     'Real Estate Video Ads'  => 'real-estate-ads',
     'Web Design'             => 'web-design-agency',
@@ -249,7 +249,7 @@ $schema = [
             @php
             $services = [
                     ['01', 'Branding',               'Undertaking brand and market research to fathom brand goals and positioning, along with building on the existing voice and visual language.',                                                              'branding-agency',                        'branding.jpeg'],
-                    ['02', 'Strategy',               'Deploying a research-based strategy with room for innovative developments, across all forms of traditional & non-traditional media.',                                                                     null,                                     'strategy.jpeg'],
+                    ['02', 'Strategy',               'Deploying a research-based strategy with room for innovative developments, across all forms of traditional & non-traditional media.',                                                                     'strategy-agency',                        'strategy.jpeg'],
                     ['03', 'Digital Marketing',      'We integrate marketing strategies & solutions to create distinctive conversations and reach a diverse audience through a unique online presence.',                                                          'digital-marketing',                      'digital-marketing.webp'],
                     ['04', 'Real Estate Video Ads',  'Cinematic property walkthroughs, drone aerials and promo films that help builders and brokers showcase their projects and sell faster.',                                                                   'real-estate-ads',                        'real-estate-video-ads.webp'],
                     ['05', 'Web Designing',          'Working with innovative UI/UX designs and infographics to establish a platform to connect with people.',                                                                                                   'web-design-agency',                      'web-design.jpeg'],

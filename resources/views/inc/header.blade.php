@@ -29,6 +29,7 @@
                                     <a href="{{ route('web-design-agency') }}" class="{{ request()->is('services/web-design') ? 'active' : '' }}">Web Design</a>
                                     <a href="{{ route('real-estate-ads') }}" class="{{ request()->is('services/real-estate-ads') ? 'active' : '' }}">Real Estate Video Ads</a>
                                     <a href="{{ route('branding-agency') }}" class="{{ request()->is('services/branding') ? 'active' : '' }}">Branding</a>
+                                    <a href="{{ route('strategy-agency') }}" class="{{ request()->is('services/strategy') ? 'active' : '' }}">Strategy</a>
                                 </div>
                             </div>
                         </li>
@@ -99,6 +100,7 @@
                             <li><a href="{{ route('web-design-agency') }}">Web Design</a></li>
                             <li><a href="{{ route('real-estate-ads') }}">Real Estate Video Ads</a></li>
                             <li><a href="{{ route('branding-agency') }}">Branding</a></li>
+                            <li><a href="{{ route('strategy-agency') }}">Strategy</a></li>
                         </ul>
                     </li>
                     <li class="has-dropdown-mobile">

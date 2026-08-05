@@ -53,6 +53,7 @@
                 $sections = [
                     ['Services', [
                         ['branding-agency',                         'Branding'],
+                        ['strategy-agency',                         'Strategy'],
                         ['search-engine-optimization-seo-services', 'SEO Services'],
                         ['web-design-agency',                       'Web Design'],
                         ['digital-marketing',                       'Digital Marketing'],
