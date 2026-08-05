@@ -54,17 +54,27 @@
     <link rel="icon" href="{{ config('app.url') }}/assets/img/logo/favicon.jpeg">
 
     {{--
-        Resource hints. Every third-party origin below costs a DNS lookup + TCP
-        connect + TLS handshake before its first byte arrives -- on mobile that is
-        roughly 200-300ms per origin, serialised after the HTML parses. Warming the
-        connections here overlaps that cost with HTML download instead.
+        Resource hints. Every third-party origin costs a DNS lookup + TCP connect +
+        TLS handshake before its first byte arrives -- roughly 200-300ms each on
+        mobile. Warming the connection overlaps that with HTML download.
 
-        assets.thumbpin.in matters most: the homepage pulls ~100 images from it.
+        Two rules being followed here:
+
+        1. `crossorigin` must match how the resource is actually fetched. A
+           crossorigin preconnect opens an anonymous CORS socket, and a normal
+           fetch will NOT reuse it -- the browser opens a second connection and
+           the warmed one is wasted. Images/video from assets.thumbpin.in are
+           fetched without CORS, so no crossorigin there. jsdelivr and cdnjs are
+           requested with crossorigin="anonymous" on their tags, so they keep it.
+
+        2. preconnect is capped at ~4 origins. Each held socket costs memory and
+           competes for bandwidth on a phone, so anything less critical is
+           downgraded to dns-prefetch, which resolves DNS without connecting.
     --}}
-    <link rel="preconnect" href="https://assets.thumbpin.in" crossorigin>
-    <link rel="preconnect" href="https://pro.fontawesome.com" crossorigin>
+    <link rel="preconnect" href="https://assets.thumbpin.in">
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://pro.fontawesome.com">
     <link rel="dns-prefetch" href="https://unpkg.com">
     <link rel="dns-prefetch" href="https://i.ytimg.com">
 

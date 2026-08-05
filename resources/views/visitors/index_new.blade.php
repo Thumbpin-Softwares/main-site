@@ -770,7 +770,7 @@ marketing agency Gurgaon',
                                     <span class="work-link">View Case Study</span>
                                 </div>
                                 <div class="work-img">
-                                    <img src="https://assets.thumbpin.in/thumbpin-photos/thumbpin-upload/our-work-1.webp" alt="Tobako House">
+                                    <img src="https://assets.thumbpin.in/thumbpin-photos/thumbpin-upload/our-work-1.webp" alt="Tobako House" loading="lazy" decoding="async">
                                 </div>
                             </div>
                         </a>
@@ -778,7 +778,7 @@ marketing agency Gurgaon',
                         <a href="{{ route('work') }}" class="work-item-link">
                             <div class="work-item">
                                 <div class="work-img">
-                                    <img src="https://assets.thumbpin.in/thumbpin-photos/thumbpin-upload/our-work-2.webp" alt="Mr Furniture" id="mr-furniture-img">
+                                    <img src="https://assets.thumbpin.in/thumbpin-photos/thumbpin-upload/our-work-2.webp" alt="Mr Furniture" id="mr-furniture-img" loading="lazy" decoding="async">
                                 </div>
                                 <div class="work-content">
                                     <span class="work-cat">Manufacturing</span>
@@ -798,7 +798,7 @@ marketing agency Gurgaon',
                                     <span class="work-link">View Case Study</span>
                                 </div>
                                 <div class="work-img">
-                                    <img src="https://assets.thumbpin.in/thumbpin-photos/thumbpin-upload/our-work-3.webp" alt="Bloom">
+                                    <img src="https://assets.thumbpin.in/thumbpin-photos/thumbpin-upload/our-work-3.webp" alt="Bloom" loading="lazy" decoding="async">
                                 </div>
                             </div>
                         </a>
