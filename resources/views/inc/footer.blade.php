@@ -52,6 +52,7 @@
                 @php
                 $sections = [
                     ['Services', [
+                        ['branding-agency',                         'Branding'],
                         ['search-engine-optimization-seo-services', 'SEO Services'],
                         ['web-design-agency',                       'Web Design'],
                         ['digital-marketing',                       'Digital Marketing'],
@@ -64,9 +65,12 @@
                         ['video-production-in-gurgaon',   'Video Production in Gurgaon'],
                     ]],
                     ['Company', [
-                        ['home',  'Home'],
-                        ['terms', 'Terms & Conditions'],
-                        ['home',  'Contact Us'],
+                        ['home',     'Home'],
+                        ['about',    'About Us'],
+                        ['services', 'All Services'],
+                        ['work',     'Our Work'],
+                        ['contact',  'Contact Us'],
+                        ['terms',    'Terms & Conditions'],
                     ]],
                 ];
                 @endphp

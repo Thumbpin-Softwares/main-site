@@ -48,14 +48,15 @@ marketing agency Gurgaon',
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
       "name": "Thumbpin",
-      "image": "",
-      "@id": "",
-      "url": "https://www.thumbpin.in/",
-      "telephone": "9773511447",
+      "image": "{{ asset('assets/img/logo/favicon.jpeg') }}",
+      "@id": "{{ config('app.url') }}/#organization",
+      "url": "{{ config('app.url') }}/",
+      "telephone": "+91 97735 11447",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Spaze Itech Park, Tower B1, 6th floor, office 657, sector- 49 Gurugram - 122018",
+        "streetAddress": "6th Floor, Office No. 657, Tower B1, Spaze I-Tech Park, Sector 49",
         "addressLocality": "Gurugram",
+        "addressRegion": "Haryana",
         "postalCode": "122018",
         "addressCountry": "IN"
       },
@@ -74,7 +75,7 @@ marketing agency Gurgaon',
           "Friday",
           "Saturday"
         ],
-        "opens": "10:00",
+        "opens": "09:00",
         "closes": "19:00"
       } 
     }

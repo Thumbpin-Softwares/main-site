@@ -42,23 +42,23 @@
   "@graph": [
     {
       "@type": "LocalBusiness",
-      "name": "Thumbpin Studios",
+      "name": "Thumbpin",
       "image": "{{ asset('assets/img/logo/favicon.jpeg') }}",
-      "@id": "{{ config('app.url') }}",
-      "url": "{{ config('app.url') }}",
-      "telephone": "+91-9773511447",
+      "@id": "{{ config('app.url') }}/#organization",
+      "url": "{{ config('app.url') }}/",
+      "telephone": "+91 97735 11447",
       "address": {
         "@type": "PostalAddress",
-        "streetAddress": "Gurgaon",
-        "addressLocality": "Gurgaon",
-        "addressRegion": "HR",
-        "postalCode": "122001",
+        "streetAddress": "6th Floor, Office No. 657, Tower B1, Spaze I-Tech Park, Sector 49",
+        "addressLocality": "Gurugram",
+        "addressRegion": "Haryana",
+        "postalCode": "122018",
         "addressCountry": "IN"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": 28.4595,
-        "longitude": 77.0266
+        "latitude": 28.4132213,
+        "longitude": 77.0434993
       },
       "openingHoursSpecification": {
         "@type": "OpeningHoursSpecification",
@@ -70,7 +70,7 @@
           "Friday",
           "Saturday"
         ],
-        "opens": "10:00",
+        "opens": "09:00",
         "closes": "19:00"
       },
       "sameAs": [
@@ -83,7 +83,7 @@
       "@type": "Service",
       "serviceType": "Video Production",
       "provider": {
-        "@id": "{{ config('app.url') }}"
+        "@id": "{{ config('app.url') }}/#organization"
       },
       "areaServed": "Gurgaon",
       "hasOfferCatalog": {

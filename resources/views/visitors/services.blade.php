@@ -407,7 +407,7 @@ $schema = [
     {{-- ====================== End CTA + Inquiry Form ====================== --}}
 
     {{-- ====================== FAQ Area ====================== --}}
-    <section class="bg-white py-[100px]">
+    <section class="bg-white pt-[120px]">
         <div class="container">
             <div class="text-center mb-[60px]">
                 <p class="text-[11px] tracking-[3px] text-tp-red uppercase font-bold mb-3">Got Questions</p>
@@ -443,39 +443,47 @@ $schema = [
     </section>
     {{-- ====================== End FAQ Area ====================== --}}
 
-    {{-- ====================== Sec-3 Area (Refined) ====================== --}}
-    <div class="sec-3 bg-white py-[120px]">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5 mb-5 mb-lg-0">
-                    <div class="relative">
-                        <div class="overflow-hidden transition-all duration-500">
-                            <img src="{{ config('app.url') }}/assets/img/service-01.png" alt="img" class="w-full block">
-                        </div>
-                    </div>
+    {{-- ====================== BOTTOM ====================== --}}
+    <section class="bg-white py-[100px]">
+        <div class="mx-auto max-w-[1140px] px-5">
+            <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+                <div class="lg:col-span-5">
+                    <img src="{{ asset('assets/img/home/home-04.png') }}"
+                         alt="Brand Story"
+                         loading="lazy"
+                         class="h-auto max-w-full">
                 </div>
-                <div class="col-lg-6 offset-lg-1">
-                    <div class="mb-10">
-                        <p class="text-[24px] tracking-[4px] text-tp-red uppercase mb-[10px] font-bold">Brand</p>
-                        <b class="text-[60px] leading-none text-black font-semibold block">
-                            Your Story
+
+                <div class="lg:col-span-7">
+                    <div class="mb-6">
+                        <p class="m-0 mb-[10px] text-[56px] font-light text-black max-[575px]:text-[38px]">Brand</p>
+                        <b class="text-[66px] font-extrabold text-black max-[575px]:block max-[575px]:text-[42px]">
+                            Your St<img src="{{ asset('assets/img/shape-03.png') }}"
+                                        alt=""
+                                        aria-hidden="true"
+                                        class="inline-block w-[78px] -mt-20 -mb-8 -ml-[10px] -mr-4 max-[575px]:mx-0 max-[575px]:mt-0 max-[575px]:mb-0 max-[575px]:w-10 max-[575px]:align-middle">ry
                         </b>
                     </div>
-                    <div class="text-[#555] text-[18px] leading-[1.7] mb-10">
-                        <p class="mb-5">
-                            We are creatively strategic and strategically creative. We follow a research-based strategy to create memorable brand identities. Advertising is the aftertaste of a good story. So, Thumbpin weaves a unique tale for your brand punched together with design and production.
+
+                    <div class="mb-5 text-[18px] leading-[1.8] text-neutral-600">
+                        <p class="m-0 mb-5">
+                            We are creatively strategic and strategically creative. We follow a research-based
+                            strategy to create memorable brand identities.
+                        </p>
+                        <p class="m-0">
+                            Advertising is the aftertaste of a good story. So, Thumbpin weaves a unique tale for
+                            your brand punched together with design and production.
                         </p>
                     </div>
-                    <a href="{{ route('contact') }}" class="inline-block bg-[#111] text-white no-underline font-bold uppercase tracking-[1px] py-[15px] px-[40px] rounded-[50px] transition-all duration-300">
+
+                    <a href="{{ route('contact') }}"
+                       class="inline-block rounded bg-[#e20a15] px-10 py-[15px] font-semibold text-white no-underline transition-all duration-300 hover:-translate-y-[2px] hover:bg-[#c91820]">
                         Get In Touch
                     </a>
                 </div>
             </div>
         </div>
-    </div>
-    {{-- ====================== End Sec-3 Area ====================== --}}
-
-
+    </section>
 </main>
 
 <script>
