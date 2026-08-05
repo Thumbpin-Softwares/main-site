@@ -34,6 +34,12 @@ var top_Sec_Height = $('.top-sec').outerHeight();
 $('.top-sec').css({'height' : `${top_Sec_Height}px`});
 
 
+// Mobile Services Accordion ==========================
+$(document).on('click', '.services-toggle', function(){
+    var $li = $(this).closest('.has-dropdown-mobile');
+    $li.toggleClass('open');
+});
+
 // Open Side-Menu Function ==========================
 
 var sideMenu_btn = $('.side_menu_btn');

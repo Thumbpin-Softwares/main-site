@@ -770,6 +770,121 @@ header .main-header .side_menu_btn img{
 }
 /* ===================== End Side-Menu Area ===================== */
 
+/* ===================== Services Dropdown ===================== */
+/* Desktop dropdown */
+header .main-header .nav ul li.has-dropdown {
+    position: relative;
+}
+header .main-header .nav ul li.has-dropdown > a {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+header .main-header .nav ul li.has-dropdown > a .dropdown-arrow {
+    font-size: 10px;
+    transition: transform 0.25s ease;
+    display: inline-block;
+}
+header .main-header .nav ul li.has-dropdown:hover > a .dropdown-arrow {
+    transform: rotate(180deg);
+}
+.nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: transparent;
+    min-width: 240px;
+    padding-top: 14px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 100;
+}
+.nav-dropdown-inner {
+    background: #111;
+    border-top: 2px solid var(--primary-color);
+    border-radius: 0 0 6px 6px;
+    padding: 10px 0;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+}
+header .main-header .nav ul li.has-dropdown:hover .nav-dropdown {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+.nav-dropdown-inner a {
+    display: block !important;
+    text-align: left;
+    padding: 10px 22px !important;
+    font-size: 14px !important;
+    color: #ccc !important;
+    margin: 0 !important;
+    white-space: nowrap;
+    transition: color 0.15s ease, background 0.15s ease;
+    border-left: 2px solid transparent;
+}
+.nav-dropdown-inner a:hover {
+    color: #fff !important;
+    background: rgba(229,9,20,0.08);
+    border-left-color: var(--primary-color);
+}
+.nav-dropdown-inner a.active {
+    color: var(--primary-color) !important;
+    border-left-color: var(--primary-color);
+}
+
+/* Mobile side-menu collapsible */
+.side-menu .nav ul li.has-dropdown-mobile > .services-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 28px;
+    color: #fff;
+    margin: 8px 0;
+    background: none;
+    border: none;
+    width: 100%;
+}
+.side-menu .nav ul li.has-dropdown-mobile > .services-toggle .arrow {
+    font-size: 14px;
+    transition: transform 0.25s ease;
+    display: inline-block;
+}
+.side-menu .nav ul li.has-dropdown-mobile.open > .services-toggle .arrow {
+    transform: rotate(180deg);
+}
+.mobile-submenu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+}
+.side-menu .nav ul li.has-dropdown-mobile.open .mobile-submenu {
+    max-height: 400px;
+}
+.mobile-submenu li a {
+    font-size: 16px !important;
+    color: #aaa !important;
+    margin: 5px 0 !important;
+    display: block !important;
+    padding: 4px 0;
+    border-left: 2px solid transparent;
+    padding-left: 10px;
+    transition: color 0.15s ease;
+}
+.mobile-submenu li a:hover,
+.mobile-submenu li a.active {
+    color: var(--primary-color) !important;
+}
+/* ===================== End Services Dropdown ===================== */
+
 
 /* ===================== Footer Area ===================== */
 footer .footer{
