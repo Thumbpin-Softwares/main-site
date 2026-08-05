@@ -23,7 +23,7 @@ $breadcrumbId = $servicesUrl . '/#breadcrumb';
 
 // name => route (null where no dedicated page exists yet)
 $serviceEntries = [
-    'Branding'               => null,
+    'Branding'               => 'branding-agency',
     'Strategy'               => null,
     'Digital Marketing'      => 'digital-marketing',
     'Real Estate Video Ads'  => 'real-estate-ads',
@@ -248,7 +248,7 @@ $schema = [
 
             @php
             $services = [
-                    ['01', 'Branding',               'Undertaking brand and market research to fathom brand goals and positioning, along with building on the existing voice and visual language.',                                                              null,                                     'branding.jpeg'],
+                    ['01', 'Branding',               'Undertaking brand and market research to fathom brand goals and positioning, along with building on the existing voice and visual language.',                                                              'branding-agency',                        'branding.jpeg'],
                     ['02', 'Strategy',               'Deploying a research-based strategy with room for innovative developments, across all forms of traditional & non-traditional media.',                                                                     null,                                     'strategy.jpeg'],
                     ['03', 'Digital Marketing',      'We integrate marketing strategies & solutions to create distinctive conversations and reach a diverse audience through a unique online presence.',                                                          'digital-marketing',                      'digital-marketing.webp'],
                     ['04', 'Real Estate Video Ads',  'Cinematic property walkthroughs, drone aerials and promo films that help builders and brokers showcase their projects and sell faster.',                                                                   'real-estate-ads',                        'real-estate-video-ads.webp'],

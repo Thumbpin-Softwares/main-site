@@ -29,12 +29,13 @@ Route::view('/advertising-agency-in-gurgaon', 'visitors.advertising-agency-in-gu
 Route::view('/video-production-in-gurgaon', 'visitors.video-production-in-gurgaon')->name('video-production-in-gurgaon');
 
 
-Route::view('/services/digital-marketing', 'visitors.digital-marketing')->name('digital-marketing');
-Route::view('/services/seo', 'visitors.search-engine-optimization-seo-services')->name('search-engine-optimization-seo-services');
-Route::view('/services/performance-marketing', 'visitors.performance-marketing-agency')->name('performance-marketing-agency');
-Route::view('/services/social-media-marketing', 'visitors.social-media-marketing-agency')->name('social-media-marketing-agency');
-Route::view('/services/web-design', 'visitors.web-design-agency')->name('web-design-agency');
-Route::view('/services/real-estate-ads', 'visitors.real-estate-ads')->name('real-estate-ads');
+Route::view('/services/digital-marketing', 'visitors.services.digital-marketing')->name('digital-marketing');
+Route::view('/services/seo', 'visitors.services.seo')->name('search-engine-optimization-seo-services');
+Route::view('/services/performance-marketing', 'visitors.services.performance-marketing')->name('performance-marketing-agency');
+Route::view('/services/social-media-marketing', 'visitors.services.social-media-marketing')->name('social-media-marketing-agency');
+Route::view('/services/web-design', 'visitors.services.web-design')->name('web-design-agency');
+Route::view('/services/real-estate-ads', 'visitors.services.real-estate-ads')->name('real-estate-ads');
+Route::view('/services/branding', 'visitors.services.branding')->name('branding-agency');
 
 
 Route::view('/work/digital', 'visitors.digital')->name('digital');
