@@ -55,7 +55,7 @@
                         ['branding-agency',                         'Branding'],
                         ['strategy-agency',                         'Strategy'],
                         ['search-engine-optimization-seo-services', 'SEO Services'],
-                        ['web-design-agency',                       'Web Design'],
+                        ['application-development',                    'Application Development'],
                         ['digital-marketing',                       'Digital Marketing'],
                         ['social-media-marketing-agency',           'Social Media Marketing'],
                     ]],

@@ -1,9 +1,7 @@
 @extends('layout.visitor', [
-    'title' => 'Best Branding Agency in Gurgaon | Brand Identity & Strategy | Thumbpin',
-    'description' => 'Thumbpin is a top branding agency in Gurgaon. We craft compelling brand identities, logos, brand guidelines, and brand strategies that make your business unforgettable.',
-    'keywords' => 'branding agency gurgaon, brand identity design, logo design agency, brand strategy, brand guidelines, brand naming, creative branding agency india',
-    'image' => config('app.url') . '/img/og/branding.png',
-    'image_alt' => 'Thumbpin branding agency — brand identity and strategy in Gurgaon',
+    'title' => 'Application Development Company in Gurgaon | Web & App Development | Thumbpin',
+    'description' => 'Thumbpin builds web and mobile applications with React, Next.js, Node.js and Express, backed by MongoDB and PostgreSQL — from UI design through API architecture to deployment.',
+    'keywords' => 'application development company gurgaon, web application development india, react development agency, next js development company, node js development, express js backend, mongodb development, postgresql development, full stack development agency, custom software development gurgaon, api development company, ui ux design agency',
     'footer_black' => 'footer-black',
 ])
 
@@ -21,10 +19,7 @@
 .hero-title-outline { color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,0.6); }
 @media (max-width: 767px) { .hero-title-outline { -webkit-text-stroke-width: 1px; } }
 
-/* Inquiry form. Unlike visitors/services.blade.php this one is always expanded,
-   so the accordion rules (.svc-inquiry-wrap / .is-open) are deliberately absent
-   -- their max-height:800px + overflow:hidden would also have clipped the form
-   on mobile, where the grid stacks to a single column and grows past 800px. */
+/* Inquiry form. Always expanded, so no accordion rules here. */
 ::placeholder { color: #444; }
 @media (max-width: 768px) {
     .inquiry-grid { grid-template-columns: 1fr !important; }
@@ -37,40 +32,40 @@
     never claim something the page does not actually say -- which is what
     triggers a manual action.
 
-    Organization @id matches /services and /about so all three describe the same
-    entity rather than three unrelated ones.
+    Organization @id matches /services, /about and the other service pages so all
+    of them describe the same entity rather than several unrelated ones.
 --}}
 @php
-$brandingFaqs = [
-    ['q' => 'How much does branding cost in Gurgaon?',
-     'a' => "Cost depends on scope. A logo and basic identity for an early-stage business sits at the lower end, while a full programme — research, naming, complete identity system, and guidelines — is a considerably larger engagement. We scope and quote each project individually after a discovery call, so you are paying for the work you actually need rather than a fixed package with filler in it."],
+$appFaqs = [
+    ['q' => 'What technologies do you build applications with?',
+     'a' => "React and Next.js on the front end, Node.js with Express on the back end, and MongoDB or PostgreSQL for data depending on what the application actually needs. We keep to a deliberately small, well-supported stack rather than picking something novel per project — it means any developer can pick the codebase up later, including one who is not us."],
 
-    ['q' => 'How long does a branding project take?',
-     'a' => "A focused identity project typically runs four to six weeks. A full branding programme including research, naming, and guidelines usually takes eight to twelve weeks. The single biggest variable is feedback speed on your side — projects with a clear decision-maker move considerably faster than those routed through a large committee."],
+    ['q' => 'How do you choose between MongoDB and PostgreSQL?',
+     'a' => "It comes down to the shape of your data. PostgreSQL suits anything with clear relationships and constraints you want enforced at the database level — orders, inventory, accounts, reporting. MongoDB suits flexible or rapidly changing document structures where the schema is still moving. We make the call during architecture rather than by default, because migrating later is expensive."],
 
-    ['q' => 'What is the difference between a logo and a brand identity?',
-     'a' => "A logo is one asset. A brand identity is the entire system it lives inside — colour palette, typography, imagery style, iconography, layout rules, and the guidelines governing how they combine. A logo alone gives you a mark; an identity gives your team the ability to produce consistent, on-brand material without a designer present for every decision."],
+    ['q' => 'How long does an application take to build?',
+     'a' => "A focused web application typically runs eight to sixteen weeks from kickoff to launch, depending on how many user roles, integrations, and edge cases are involved. We scope in phases so something usable ships early rather than everything arriving at the end, which is also how you find out whether the thing you specified is the thing you needed."],
 
-    ['q' => 'Do I need a rebrand or just a refresh?',
-     'a' => "If your business has fundamentally changed what it does or who it serves, that is a rebrand. If the business is sound but the identity looks dated or has become inconsistent across touchpoints, a refresh is usually sufficient and far less disruptive. We run a brand audit before recommending either, and we will tell you if you do not need the more expensive option."],
+    ['q' => 'Do you build mobile apps as well as web applications?',
+     'a' => "We build responsive web applications that work properly on phones, and progressive web apps where installability matters. For anything needing deep native device access we will tell you honestly whether a native build is the right call rather than stretching the web stack past where it works well."],
 
-    ['q' => 'Do you work with startups and small businesses?',
-     'a' => "Yes. A meaningful share of our branding work is for early-stage businesses building their first identity. Scope is matched to your stage — a startup preparing to launch needs a different engagement from a fifteen-year-old company repositioning itself, and we price accordingly."],
+    ['q' => 'Will I own the code?',
+     'a' => "Yes. On final payment the repository and all associated assets transfer to you, along with deployment documentation. We build on standard open-source frameworks with no proprietary layer, so another team can take over without a rewrite. You are never locked in by the architecture."],
 
-    ['q' => 'Will I own the rights to my brand assets?',
-     'a' => "Yes. On final payment, full ownership of the approved brand assets transfers to you, along with editable source files and export formats for print and digital use. You are never locked into us to make future changes."],
+    ['q' => 'Do you handle hosting, deployment and maintenance?',
+     'a' => "We set up deployment and hand over the runbook, and can stay on for maintenance if you want it. Applications need ongoing attention — dependency updates, security patches, monitoring — and pretending otherwise is how projects quietly rot. We are explicit about what that costs before you commit."],
 
-    ['q' => 'Can you handle marketing after the branding is finished?',
-     'a' => "That is the main reason clients come to us rather than a standalone design studio. Thumbpin also delivers digital marketing, SEO, performance marketing, social media, web design, and video production — so the brand strategy carries directly into execution instead of being reinterpreted by an agency that was not in the room when it was written."],
+    ['q' => 'Can you work on an existing codebase rather than starting fresh?',
+     'a' => "Regularly. We start with an audit of the current architecture, dependencies, and test coverage before touching anything, because inherited code usually contains decisions that made sense in context. We will say plainly whether it is worth extending or whether a rebuild would cost less than the workarounds."],
 
-    ['q' => 'Which locations do you take branding clients in?',
-     'a' => "We work with clients across Gurgaon, Delhi NCR, and the rest of India. Discovery sessions, presentations, and reviews run just as effectively remotely, and we travel for on-site work where a project genuinely warrants it."],
+    ['q' => 'Do you design the interface as well as build it?',
+     'a' => "Yes. UI and UX design sit inside the same engagement rather than being handed over from a separate team, which removes the usual gap between a design that looks right in a mockup and one that survives real data, long names, empty states, and slow connections."],
 ];
 
-$brandingUrl = url()->current();
-$orgId       = config('app.url') . '/#organization';
+$appUrl = url()->current();
+$orgId  = config('app.url') . '/#organization';
 
-$brandingSchema = [
+$appSchema = [
     '@context' => 'https://schema.org',
     '@graph'   => [
         [
@@ -81,37 +76,37 @@ $brandingSchema = [
         ],
         [
             '@type'       => 'Service',
-            '@id'         => $brandingUrl . '/#service',
-            'name'        => 'Branding & Brand Identity Design',
-            'serviceType' => 'Branding Agency',
-            'url'         => $brandingUrl,
+            '@id'         => $appUrl . '/#service',
+            'name'        => 'Application Development',
+            'serviceType' => 'Application Development',
+            'url'         => $appUrl,
             'provider'    => ['@id' => $orgId],
             'areaServed'  => ['@type' => 'City', 'name' => 'Gurugram'],
-            'description' => 'Brand identity design, brand strategy, brand guidelines, brand naming and rebranding from Thumbpin, serving Gurgaon and Delhi NCR.',
+            'description' => 'Web and application development with React, Next.js, Node.js, Express, MongoDB and PostgreSQL from Thumbpin, serving Gurgaon and Delhi NCR.',
         ],
         [
             '@type'      => 'FAQPage',
-            '@id'        => $brandingUrl . '/#faq',
+            '@id'        => $appUrl . '/#faq',
             'mainEntity' => array_map(fn ($faq) => [
                 '@type'          => 'Question',
                 'name'           => $faq['q'],
                 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq['a']],
-            ], $brandingFaqs),
+            ], $appFaqs),
         ],
         [
             '@type' => 'BreadcrumbList',
-            '@id'   => $brandingUrl . '/#breadcrumb',
+            '@id'   => $appUrl . '/#breadcrumb',
             'itemListElement' => [
-                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',     'item' => config('app.url') . '/'],
-                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Services', 'item' => route('services')],
-                ['@type' => 'ListItem', 'position' => 3, 'name' => 'Branding', 'item' => $brandingUrl],
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',                    'item' => config('app.url') . '/'],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Services',                'item' => route('services')],
+                ['@type' => 'ListItem', 'position' => 3, 'name' => 'Application Development', 'item' => $appUrl],
             ],
         ],
     ],
 ];
 @endphp
 <script type="application/ld+json">
-{!! json_encode($brandingSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+{!! json_encode($appSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
 @endsection
 
@@ -126,21 +121,21 @@ $brandingSchema = [
     --}}
     <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-black px-5 pt-[180px] pb-[110px] max-[767px]:min-h-0 max-[767px]:pt-[150px] max-[767px]:pb-20">
         <div class="absolute inset-0 z-[1] bg-center bg-cover grayscale contrast-[1.1] opacity-40"
-             style="background-image:url('{{ asset('img/services/branding.jpeg') }}');"></div>
+             style="background-image:url('{{ asset('img/services/web-design.jpeg') }}');"></div>
         <div class="absolute inset-0 z-[2] bg-black/60"></div>
         <div class="absolute inset-0 z-[2]" style="background:radial-gradient(ellipse at center,transparent 30%,#000 85%);"></div>
 
         <div class="relative z-[3] mx-auto max-w-[900px] text-center">
             <h1 class="m-0 mb-6 text-[clamp(44px,9vw,110px)] font-extrabold uppercase leading-[0.92] tracking-[-2px] text-white opacity-0 translate-y-[30px] animate-hero-reveal [animation-delay:300ms]">
-                Branding <span class="hero-title-outline">Agency</span>
+                Application <span class="hero-title-outline">Development</span>
             </h1>
 
             <p class="mx-auto mb-10 max-w-[600px] text-[18px] font-light leading-[1.7] text-[#999] opacity-0 animate-hero-reveal [animation-delay:600ms]">
-                We build brands that mean something. From logo to language, identity to strategy every element crafted with intention and precision.
+                Web and product applications built on React, Next.js and Node.js — designed to be maintained, not just delivered.
             </p>
 
             <div class="flex flex-wrap justify-center gap-[50px] opacity-0 animate-hero-reveal [animation-delay:900ms] max-[767px]:gap-[30px]">
-                @foreach([['50+','Brand Identities'],['20+','Industries Served'],['6+','Years Experience']] as [$num, $label])
+                @foreach([['40+','Projects Shipped'],['6','Core Technologies'],['6+','Years Experience']] as [$num, $label])
                 <div class="text-center">
                     <div class="text-[42px] font-black leading-none text-film-red max-[767px]:text-[32px]">{{ $num }}</div>
                     <div class="mt-[6px] text-[11px] uppercase tracking-[2px] text-[#666]">{{ $label }}</div>
@@ -154,67 +149,54 @@ $brandingSchema = [
     <section class="bg-white py-[60px]">
         <div class="mx-auto max-w-[1140px] px-5">
             <h2 class="m-0 mb-[30px] text-center text-[42px] font-bold text-black max-[575px]:text-[32px]">
-                Building Brands That People Remember
+                Applications Built to Last
             </h2>
             <p class="mx-auto m-0 max-w-[900px] text-center text-[18px] leading-[1.8] text-[#666]">
-                A brand is more than a logo it's the feeling people get when they hear your name.
-                At Thumbpin, we develop brand identities that are rooted in strategy, brought to life through design,
-                and built to last across every touchpoint. Whether you're starting from scratch or ready for a rebrand,
-                we bring clarity, creativity, and consistency to your story.
+                Most applications are not abandoned because they stopped working. They are abandoned because
+                nobody can safely change them any more. We build on a small, boring, well-supported stack —
+                React and Next.js on the front end, Node.js and Express behind it, PostgreSQL or MongoDB for
+                data — so the codebase you own in three years is still one a developer can pick up and extend.
             </p>
         </div>
     </section>
 
     {{-- ====================== SERVICES ====================== --}}
     {{--
-        Text-only by design. Stock imagery never matches a client's brand palette,
-        so the space goes to crawlable copy instead: each entry carries two
-        paragraphs plus a deliverables list, which is what actually earns the page
-        its long-tail queries.
+        Same editorial row layout as the other service pages: number + title on a
+        sticky left rail, copy on the right.
     --}}
-    <section class="bg-white pb-20" id="branding-services">
+    <section class="bg-white pb-20" id="app-services">
         <div class="mx-auto max-w-[1140px] px-5">
             @php
             $services = [
                 [
-                    'title' => 'Brand Identity Design',
-                    'lead'  => "Your visual identity is the first impression your brand makes, and usually the only one you get. We design logos, colour systems, typography hierarchies, and visual languages that feel distinct, consistent, and unmistakably yours across every medium.",
-                    'body'  => "A logo on its own is not an identity. We build the entire system around it — how it behaves at 16 pixels on a favicon and at six feet on a hoarding, which colours carry which meaning, how photography is treated, and what the brand looks like when it has to sit beside a competitor. The result is a toolkit your team can actually use without calling a designer every time.",
-                    'items' => ['Logo design & lockups', 'Colour palette systems', 'Typography hierarchy', 'Iconography & visual motifs', 'Photography & art direction', 'Stationery & collateral'],
+                    'title' => 'Frontend Development',
+                    'lead'  => "Interfaces built with React and Next.js — fast on first load, responsive across devices, and structured so features can be added without the whole thing becoming fragile.",
+                    'body'  => "Next.js gives us server rendering and static generation where they matter, which means pages that are quick for users and legible to search engines rather than an empty shell that only fills in after JavaScript runs. Component architecture is planned up front so the design system stays consistent as the product grows.",
                 ],
                 [
-                    'title' => 'Brand Strategy',
-                    'lead'  => "Before design comes direction. We define your brand's positioning, purpose, voice, and values, giving every future decision a foundation to stand on rather than a mood board to guess from.",
-                    'body'  => "Our strategy work starts with research: stakeholder interviews, competitor mapping, and audience study. From there we articulate what your brand stands for, who it is genuinely for, and how it should sound. That document becomes the reference every marketing decision is measured against — so your campaigns stop contradicting each other.",
-                    'items' => ['Market & competitor research', 'Brand positioning', 'Audience & persona mapping', 'Brand purpose & values', 'Tone of voice framework', 'Messaging architecture'],
+                    'title' => 'Backend Development',
+                    'lead'  => "APIs and server logic on Node.js with Express — the layer that decides what your application is actually allowed to do.",
+                    'body'  => "We build REST APIs with authentication, role-based access, validation, and error handling treated as requirements rather than afterthoughts. Business logic stays on the server where it can be trusted, and integrations with payment gateways, messaging services, and third-party systems are isolated so a change on their side does not cascade through yours.",
                 ],
                 [
-                    'title' => 'Brand Guidelines',
-                    'lead'  => "Consistency is what turns a brand into a legacy. We create comprehensive brand guidelines documenting how your brand looks, sounds, and behaves, so every team, vendor, and platform stays aligned.",
-                    'body'  => "Most brands do not fail from bad design; they fail from inconsistent application. A guidelines document removes the ambiguity — clear spacing rules, approved and unapproved usage, file formats, digital and print specifications, and writing standards. Hand it to a new agency, a printer, or an intern and the brand still comes out right.",
-                    'items' => ['Logo usage rules', 'Clear space & minimum sizes', 'Colour codes (CMYK, RGB, HEX, Pantone)', 'Typography specifications', 'Do & do-not examples', 'Digital and print applications'],
+                    'title' => 'Database Design & Architecture',
+                    'lead'  => "PostgreSQL or MongoDB, chosen for the shape of your data rather than by habit — because migrating later costs far more than deciding properly now.",
+                    'body'  => "PostgreSQL where relationships and constraints matter and you want the database enforcing correctness. MongoDB where documents are flexible and the schema is still moving. Either way we design indexes, plan for the query patterns you will actually run, and set up backups before launch rather than after the first incident.",
                 ],
                 [
-                    'title' => 'Brand Naming',
-                    'lead'  => "The right name carries your brand further than any advertisement ever could. We develop names that are memorable, meaningful, and built for longevity.",
-                    'body'  => "Naming is equal parts creative and practical. We generate territories, pressure-test shortlists for pronunciation and unintended meanings, and check trademark and domain viability before you commit. A name that cannot be registered, spelled, or said aloud on a phone call is not a name — it is a liability.",
-                    'items' => ['Naming territories & routes', 'Linguistic screening', 'Trademark viability checks', 'Domain & handle availability', 'Tagline development', 'Naming rationale document'],
+                    'title' => 'UI & UX Design',
+                    'lead'  => "Interface design that survives contact with real data — long names, empty states, error conditions, and slow connections.",
+                    'body'  => "Design and build sit in the same engagement, which removes the usual gap between a mockup that looks right and a screen that behaves. We work through the unglamorous states most designs skip, because those are where users actually get stuck and abandon what you built.",
                 ],
                 [
-                    'title' => 'Rebranding & Brand Refresh',
-                    'lead'  => "Brands age. Markets shift. Audiences move on. A considered rebrand realigns your identity with where the business is going, without discarding the equity you have already earned.",
-                    'body'  => "We begin with a brand audit to establish what is worth keeping — recognition, colour equity, customer associations — and what is holding you back. Some businesses need a full rebuild; many need a disciplined refresh. We will tell you honestly which one you are, and stage the rollout so nothing breaks mid-transition.",
-                    'items' => ['Brand audit & diagnosis', 'Equity assessment', 'Identity evolution', 'Migration & rollout planning', 'Internal launch support', 'Legacy asset transition'],
+                    'title' => 'API Development & Integration',
+                    'lead'  => "Connecting your application to the systems it needs — payments, CRMs, analytics, messaging — and exposing your own APIs where others need to connect to you.",
+                    'body'  => "Integrations are where applications quietly break, usually because a third party changed something without warning. We build them with retries, sensible failure handling, and logging that tells you what went wrong, so a partner's outage degrades one feature instead of taking down your product.",
                 ],
             ];
             @endphp
 
-            {{--
-                Full-width rows rather than a card grid: five items in two columns
-                leaves an orphan, and the deliverables list needs horizontal room
-                that a half-width card cannot give it. Title sticks to the left
-                rail on desktop while the copy scrolls past it.
-            --}}
             <div class="border-0 border-t border-solid border-[#e8e8e8]">
                 @foreach($services as $i => $service)
                 <article class="group grid grid-cols-1 gap-x-16 gap-y-6 border-0 border-b border-solid border-[#e8e8e8] py-14 lg:grid-cols-12 max-[767px]:py-10">
@@ -231,16 +213,56 @@ $brandingSchema = [
                         </div>
                     </div>
 
-                    {{-- Right: copy + deliverables --}}
+                    {{-- Right: copy --}}
                     <div class="lg:col-span-8">
                         <p class="m-0 mb-5 text-[18px] leading-[1.7] text-[#333] max-[575px]:text-[16px]">
                             {{ $service['lead'] }}
                         </p>
-                        <p class="m-0 mb-8 text-[15px] leading-[1.85] text-[#777]">
+                        <p class="m-0 text-[15px] leading-[1.85] text-[#777]">
                             {{ $service['body'] }}
                         </p>
                     </div>
                 </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    {{-- ====================== TECH STACK ====================== --}}
+    <section class="bg-[#f9f9f9] py-20" id="tech-stack">
+        <div class="mx-auto max-w-[1140px] px-5">
+            <div class="mb-12 max-w-[760px]">
+                <p class="m-0 mb-3 text-[11px] font-bold uppercase tracking-[3px] text-film-red">Our Stack</p>
+                <h2 class="m-0 mb-5 text-[42px] font-bold leading-[1.15] text-black max-[575px]:text-[30px]">
+                    Technologies We Build With
+                </h2>
+                <p class="m-0 text-[17px] leading-[1.8] text-[#666]">
+                    A deliberately small stack. Every tool here is mature, widely adopted, and easy to hire for —
+                    which matters more than novelty when you are the one who has to live with the codebase.
+                </p>
+            </div>
+
+            @php
+            $stack = [
+                ['Frontend',  'The layer your users touch',              ['React', 'Next.js']],
+                ['Backend',   'APIs, business logic, authentication',    ['Node.js', 'Express']],
+                ['Databases', 'Chosen per project, not by default',      ['PostgreSQL', 'MongoDB']],
+            ];
+            @endphp
+
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                @foreach($stack as [$group, $note, $items])
+                <div class="border-0 border-t-2 border-solid border-film-red bg-white p-7 max-[575px]:p-6">
+                    <h3 class="m-0 mb-2 text-[20px] font-extrabold uppercase tracking-[0.5px] text-black">{{ $group }}</h3>
+                    <p class="m-0 mb-6 text-[14px] leading-[1.6] text-[#777]">{{ $note }}</p>
+                    <ul class="m-0 flex list-none flex-wrap gap-2 p-0">
+                        @foreach($items as $tech)
+                        <li class="rounded-full border border-solid border-[#e0e0e0] bg-[#fafafa] px-4 py-[7px] text-[14px] font-semibold leading-none text-[#333]">
+                            {{ $tech }}
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
                 @endforeach
             </div>
         </div>
@@ -258,7 +280,7 @@ $brandingSchema = [
 
         {{-- Section header. A plain div, not a button: the form below is always
              expanded, so a control that toggles nothing would mislead both users
-             and screen readers. The chevron and "Inquire Now" label went with it. --}}
+             and screen readers. --}}
         <div class="w-full bg-black border-0 border-t border-b border-[#1e1e1e] flex items-center justify-between">
             <div class="max-w-[1300px] mx-auto px-5 py-7 flex items-center justify-between w-full gap-6 flex-wrap">
                 <div class="text-left">
@@ -338,6 +360,7 @@ $brandingSchema = [
                     <img src="{{ asset('assets/img/clients/' . $i . '.png') }}"
                          alt="Client Logo"
                          loading="lazy"
+                         decoding="async"
                          class="h-auto max-w-full opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
                 </div>
                 @endforeach
@@ -355,14 +378,14 @@ $brandingSchema = [
     {{-- ====================== QUOTE ====================== --}}
     <section class="relative bg-black py-[100px]">
         <div class="mx-auto max-w-[1140px] px-5">
-            {{-- The oversized decorative quote mark is a ::before in CSS terms; here it
-                 is a real element so it stays pure Tailwind. aria-hidden as it is decor. --}}
+            {{-- The oversized quote mark is a ::before in CSS terms; here it is a
+                 real element so it stays pure Tailwind. aria-hidden as it is decor. --}}
             <div class="relative mx-auto max-w-[900px] text-center">
                 <span aria-hidden="true"
                       class="pointer-events-none absolute left-1/2 top-[-80px] z-0 -translate-x-1/2 font-serif text-[200px] leading-none text-film-red/50 max-[575px]:top-[-60px] max-[575px]:text-[150px]">"</span>
                 <p class="relative z-[1] m-0 text-[32px] font-medium leading-[1.6] text-white max-[575px]:text-[22px]">
-                    A brand is the set of expectations, memories,<br>
-                    stories and relationships that account for a consumer's decision.
+                    Any fool can write code a computer understands.<br>
+                    Good programmers write code humans understand.
                 </p>
             </div>
         </div>
@@ -372,19 +395,19 @@ $brandingSchema = [
     {{--
         <details>/<summary> rather than a JS accordion: the answers stay in the DOM
         and remain crawlable whether or not the panel is open, and it works with
-        no script at all. $brandingFaqs is defined in @section('head') so the same
-        array feeds the FAQPage schema -- copy and markup cannot drift apart.
+        no script at all. $appFaqs is defined in @section('head') so the same array
+        feeds the FAQPage schema -- copy and markup cannot drift apart.
     --}}
-    <section class="bg-white py-20" id="branding-faq">
+    <section class="bg-white py-20" id="app-faq">
         <div class="mx-auto max-w-[900px] px-5">
             <div class="mb-12 text-center">
                 <p class="m-0 mb-3 text-[11px] font-bold uppercase tracking-[3px] text-film-red">Common Questions</p>
                 <h2 class="m-0 text-[42px] font-bold leading-[1.15] text-black max-[575px]:text-[30px]">
-                    Branding FAQs
+                    Application Development FAQs
                 </h2>
             </div>
 
-            @foreach($brandingFaqs as $faq)
+            @foreach($appFaqs as $faq)
             <details class="group border-0 border-b border-solid border-[#e8e8e8]">
                 <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 [&::-webkit-details-marker]:hidden">
                     <h3 class="m-0 text-[17px] font-bold leading-snug text-black max-[575px]:text-[15px]">{{ $faq['q'] }}</h3>
@@ -401,13 +424,13 @@ $brandingSchema = [
     <section class="bg-white pt-[100px]">
         <div class="mx-auto max-w-[1140px] px-5">
             <div class="mb-10 text-center">
-                <h4 class="m-0 mb-[10px] text-[38px] font-normal text-[#666] max-[575px]:text-[26px]">Think. Create. Launch.</h4>
-                <h2 class="m-0 text-[42px] font-bold text-black max-[575px]:text-[32px]">Branding That Works as Hard as You Do</h2>
+                <h4 class="m-0 mb-[10px] text-[38px] font-normal text-[#666] max-[575px]:text-[26px]">Design. Build. Maintain.</h4>
+                <h2 class="m-0 text-[42px] font-bold text-black max-[575px]:text-[32px]">Software You Can Still Change Next Year</h2>
             </div>
             <p class="mx-auto m-0 max-w-[900px] text-center text-[18px] leading-[1.8] text-[#666]">
-                We treat every branding project as if we were building our own brand from scratch.
-                That means deep research, honest strategy, and design that doesn't just look good on a slide
-                it holds up in the real world, at every scale, in every context.
+                We write code for the developer who inherits it, which is usually the same reason our clients
+                stay. Clear architecture, documented decisions, and a stack chosen because it is well supported
+                rather than because it was interesting that quarter.
             </p>
         </div>
     </section>
@@ -420,6 +443,7 @@ $brandingSchema = [
                     <img src="{{ asset('assets/img/home/home-04.png') }}"
                          alt="Brand Story"
                          loading="lazy"
+                         decoding="async"
                          class="h-auto max-w-full">
                 </div>
 

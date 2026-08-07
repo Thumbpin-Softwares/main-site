@@ -10,9 +10,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="preconnect" href="https://www.youtube.com">
 <link rel="preconnect" href="https://i.ytimg.com">
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </noscript>
 <link rel="stylesheet" href="@asset('css/app.css')">
 
@@ -32,7 +32,7 @@
 .hero-wrap::after {
     content: 'FILM';
     position: absolute; bottom: -60px; right: -20px;
-    font-size: clamp(120px,20vw,300px); font-family: 'Oswald',sans-serif;
+    font-size: clamp(120px,20vw,300px);
     font-weight: 700; color: rgba(255,255,255,0.02);
     z-index: 1; line-height: 1; pointer-events: none;
 }
@@ -42,7 +42,7 @@
 .reels-section::before {
     content: 'REELS';
     position: absolute; bottom: 50px; left: -20px;
-    font-size: 200px; font-family: 'Oswald',sans-serif;
+    font-size: 200px;
     font-weight: 700; color: rgba(0,0,0,0.03);
     pointer-events: none; line-height: 1;
 }
@@ -143,7 +143,7 @@
         <div class="absolute inset-0 z-[2]" style="background:radial-gradient(ellipse at center,transparent 30%,#000 85%);"></div>
 
         <div class="relative z-[3] text-center max-w-[900px]">
-            <h1 class="hero-title font-display font-bold uppercase leading-[0.9] text-white mb-6"
+            <h1 class="hero-title font-bold uppercase leading-[0.9] text-white mb-6"
                 style="font-size:clamp(48px,10vw,120px)">
                 Real Estate <span class="hero-title-outline">Video Ads</span>
             </h1>
@@ -153,7 +153,7 @@
             <div class="hero-stats flex justify-center gap-[50px] flex-wrap">
                 @foreach([['50+','Projects Filmed'],['20+','Brokers Served'],['200+','Shooting Hours']] as [$n,$l])
                 <div class="text-center">
-                    <div class="font-display text-[42px] font-bold text-film-red leading-none">{{ $n }}</div>
+                    <div class="text-[42px] font-bold text-film-red leading-none">{{ $n }}</div>
                     <div class="text-[11px] text-[#666] uppercase tracking-[2px] mt-1">{{ $l }}</div>
                 </div>
                 @endforeach
@@ -163,7 +163,7 @@
 
     {{-- ====================== KINETIC DIVIDER ====================== --}}
     <div class="bg-film-red py-[15px] overflow-hidden">
-        <div class="kinetic-text font-display font-bold text-[50px] text-black/20">
+        <div class="kinetic-text font-bold text-[50px] text-black/20">
             REELS • SHORTS • ADS • INSTAGRAM • YOUTUBE • PERFORMANCE • SOCIAL •
             REELS • SHORTS • ADS • INSTAGRAM • YOUTUBE • PERFORMANCE • SOCIAL •
         </div>
@@ -174,7 +174,7 @@
         <div class="max-w-[1300px] mx-auto px-3 max-[768px]:px-3">
             <div class="film-reveal mb-[30px]">
                 <p class="text-[11px] font-bold uppercase tracking-[3px] text-film-red mb-[15px]">What It Is — 01 — Short-Form Videos</p>
-                <h2 class="font-display font-bold uppercase leading-[1.1] text-black mb-[15px]" style="font-size:clamp(36px,5vw,56px)">Scroll-Stopping<br>Short Content</h2>
+                <h2 class="font-bold uppercase leading-[1.1] text-black mb-[15px]" style="font-size:clamp(36px,5vw,56px)">Scroll-Stopping<br>Short Content</h2>
                 <p class="text-[16px] text-[#555] max-w-[500px] leading-[1.6]">Fast-paced vertical videos tailored for real estate. Capture attention instantly and generate quick leads.</p>
             </div>
 
@@ -221,7 +221,7 @@
         <div class="max-w-[1300px] mx-auto px-3 max-[768px]:px-3">
             <div class="film-reveal mb-[30px]">
                 <p class="text-[11px] font-bold uppercase tracking-[3px] text-film-red mb-[15px]">What It Is — 02 — Long-Form Videos</p>
-                <h2 class="font-display font-bold uppercase leading-[1.1] text-black mb-[15px]" style="font-size:clamp(36px,5vw,56px)">Cinematic<br>Property Walkthroughs</h2>
+                <h2 class="font-bold uppercase leading-[1.1] text-black mb-[15px]" style="font-size:clamp(36px,5vw,56px)">Cinematic<br>Property Walkthroughs</h2>
                 <p class="text-[16px] text-[#555] max-w-[500px] leading-[1.6]">Cinematic tours and detailed walkthroughs. Designed to keep buyers watching and drive deep engagement.</p>
             </div>
 
@@ -263,7 +263,7 @@
         <div class="bg-film-dark text-center" style="padding-top:50px; padding-bottom:50px;">
             <div class="max-w-[1300px] mx-auto px-5 max-[768px]:px-3">
                 <h2 class="font-bold uppercase flex flex-col tracking-[1px] text-white m-0 leading-[1.25]">
-                    <span style="font-size:clamp(22px,3vw,38px); font-family:'Oswald',sans-serif;">Model Shooting. Editing. Distribution.</span>
+                    <span style="font-size:clamp(22px,3vw,38px);">Model Shooting. Editing. Distribution.</span>
                     <span class="text-film-red" style="font-size:clamp(14px,1.8vw,22px); font-family:'Poppins',sans-serif;">We Already Have You Covered.</span>
                 </h2>
             </div>
@@ -342,7 +342,7 @@
         <div class="max-w-[1300px] mx-auto px-3 max-[768px]:px-3">
             <div class="film-reveal mb-[30px]">
                 <p class="text-[11px] font-bold uppercase tracking-[3px] text-film-red mb-[15px]">03 — Beyond The Shoot</p>
-                <h2 class="font-display font-bold uppercase leading-[1.1] text-black mb-[15px]" style="font-size:clamp(36px,5vw,56px)">We Don't Just Shoot.<br>We Build The Machine.</h2>
+                <h2 class="font-bold uppercase leading-[1.1] text-black mb-[15px]" style="font-size:clamp(36px,5vw,56px)">We Don't Just Shoot.<br>We Build The Machine.</h2>
                 <p class="text-[16px] text-[#555] max-w-[500px] leading-[1.6]">We're not just a camera crew — we build the full system that turns these videos into actual leads.</p>
             </div>
 
@@ -352,11 +352,11 @@
                 <div class="film-reveal flex overflow-hidden min-h-[320px] bg-white max-[1024px]:flex-col-reverse max-[1024px]:min-h-0">
                     <div class="flex-1 px-[50px] py-[50px] flex flex-col justify-center border-l-4 border-film-red max-[768px]:px-[15px] max-[768px]:py-[25px]">
                         <p class="text-[11px] font-bold uppercase tracking-[2px] text-film-red mb-[15px]">Additional Service</p>
-                        <h3 class="font-display text-[26px] font-bold uppercase text-black mb-[15px]">Landing Page Design</h3>
+                        <h3 class="text-[26px] font-bold uppercase text-black mb-[15px]">Landing Page Design</h3>
                         <p class="text-[15px] text-[#555] leading-[1.7] mb-[25px] flex-grow">
                             We build custom, high-converting landing pages tailored to the property or the agent's brand — built to turn video views into enquiries.
                         </p>
-                        <a href="{{ route('web-design-agency') }}"
+                        <a href="{{ route('application-development') }}"
                            class="group inline-flex items-center gap-2 text-black text-[13px] font-bold uppercase tracking-[1px] no-underline transition-colors duration-[400ms] hover:text-film-red w-fit">
                             Explore This Service
                             <svg class="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
@@ -372,7 +372,7 @@
                 <div class="film-reveal flex flex-row-reverse overflow-hidden min-h-[320px] bg-white border-t border-[#eee] max-[1024px]:!flex-col-reverse max-[1024px]:min-h-0">
                     <div class="flex-1 px-[50px] py-[50px] flex flex-col justify-center border-r-4 border-film-red max-[1024px]:border-r-0 max-[1024px]:border-l-4 max-[768px]:px-[15px] max-[768px]:py-[25px]">
                         <p class="text-[11px] font-bold uppercase tracking-[2px] text-film-red mb-[15px]">Additional Service</p>
-                        <h3 class="font-display text-[26px] font-bold uppercase text-black mb-[15px]">Meta & Google Ads</h3>
+                        <h3 class="text-[26px] font-bold uppercase text-black mb-[15px]">Meta & Google Ads</h3>
                         <p class="text-[15px] text-[#555] leading-[1.7] mb-[25px] flex-grow">
                             We set up the targeting and optimization to put these videos in front of actual buyers and sellers, not just random views.
                         </p>
@@ -397,12 +397,12 @@
         <div class="max-w-[1300px] mx-auto px-3 max-[768px]:px-3">
             <div class="film-reveal mb-[30px]">
                 <p class="text-[11px] font-bold uppercase tracking-[3px] text-film-red mb-[15px]">04 — Transparency & Logistics</p>
-                <h2 class="font-display font-bold uppercase leading-[1.1] text-black mb-[15px]" style="font-size:clamp(36px,5vw,56px)">No Surprises.<br>Just Clarity.</h2>
+                <h2 class="font-bold uppercase leading-[1.1] text-black mb-[15px]" style="font-size:clamp(36px,5vw,56px)">No Surprises.<br>Just Clarity.</h2>
                 <p class="text-[16px] text-[#555] max-w-[500px] leading-[1.6]">Addressing the logistics upfront so there are no surprises later here's exactly how travel works.</p>
             </div>
 
             <div class="film-reveal bg-white border-l-[3px] border-film-red p-[50px] max-[768px]:p-[25px_15px]">
-                <h3 class="font-display font-bold text-black leading-[1.3] mb-[30px] max-w-[700px]"
+                <h3 class="font-bold text-black leading-[1.3] mb-[30px] max-w-[700px]"
                     style="font-size:clamp(24px,3vw,34px)">
                     We shoot anywhere in India travel and accommodation expenses for our team are covered by the client.
                 </h3>
@@ -429,7 +429,7 @@
              style="background:radial-gradient(circle,rgba(229,9,20,0.05),transparent 70%)"></div>
 
         <div class="max-w-[1300px] mx-auto film-reveal relative z-[1]">
-            <h2 class="font-display font-bold uppercase mb-5 leading-none text-black" style="font-size:clamp(36px,6vw,72px)">
+            <h2 class="font-bold uppercase mb-5 leading-none text-black" style="font-size:clamp(36px,6vw,72px)">
                 Your Story.<br><span class="text-film-red">Our Lens.</span>
             </h2>
             <p class="text-[18px] text-[#555] mb-10 max-w-[500px] mx-auto">

@@ -25,7 +25,7 @@
                                     <a href="{{ route('digital-marketing') }}" class="{{ request()->is('services/digital-marketing') ? 'active' : '' }}">Digital Marketing</a>
                                     <a href="{{ route('performance-marketing-agency') }}" class="{{ request()->is('services/performance-marketing') ? 'active' : '' }}">Performance Marketing</a>
                                     <a href="{{ route('social-media-marketing-agency') }}" class="{{ request()->is('services/social-media-marketing') ? 'active' : '' }}">Social Media Marketing</a>
-                                    <a href="{{ route('web-design-agency') }}" class="{{ request()->is('services/web-design') ? 'active' : '' }}">Web Design</a>
+                                    <a href="{{ route('application-development') }}" class="{{ request()->is('services/application-development') ? 'active' : '' }}">Application Development</a>
                                     <a href="{{ route('real-estate-ads') }}" class="{{ request()->is('services/real-estate-ads') ? 'active' : '' }}">Real Estate Video Ads</a>
                                     <a href="{{ route('branding-agency') }}" class="{{ request()->is('services/branding') ? 'active' : '' }}">Branding</a>
                                     <a href="{{ route('strategy-agency') }}" class="{{ request()->is('services/strategy') ? 'active' : '' }}">Strategy</a>
@@ -95,7 +95,7 @@
                             <li><a href="{{ route('digital-marketing') }}">Digital Marketing</a></li>
                             <li><a href="{{ route('performance-marketing-agency') }}">Performance Marketing</a></li>
                             <li><a href="{{ route('social-media-marketing-agency') }}">Social Media Marketing</a></li>
-                            <li><a href="{{ route('web-design-agency') }}">Web Design</a></li>
+                            <li><a href="{{ route('application-development') }}">Application Development</a></li>
                             <li><a href="{{ route('real-estate-ads') }}">Real Estate Video Ads</a></li>
                             <li><a href="{{ route('branding-agency') }}">Branding</a></li>
                             <li><a href="{{ route('strategy-agency') }}">Strategy</a></li>

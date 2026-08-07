@@ -27,7 +27,7 @@ $serviceEntries = [
     'Strategy'               => 'strategy-agency',
     'Digital Marketing'      => 'digital-marketing',
     'Real Estate Video Ads'  => 'real-estate-ads',
-    'Web Design'             => 'web-design-agency',
+    'Application Development' => 'application-development',
     'Social Media Marketing' => 'social-media-marketing-agency',
     'Performance Marketing'  => 'performance-marketing-agency',
 ];
@@ -253,7 +253,7 @@ $schema = [
                     ['Strategy',               'Deploying a research-based strategy with room for innovative developments, across all forms of traditional & non-traditional media.',                                                                     'strategy-agency',                        'strategy.jpeg'],
                     ['Digital Marketing',      'We integrate marketing strategies & solutions to create distinctive conversations and reach a diverse audience through a unique online presence.',                                                          'digital-marketing',                      'digital-marketing.webp'],
                     ['Real Estate Video Ads',  'Cinematic property walkthroughs, drone aerials and promo films that help builders and brokers showcase their projects and sell faster.',                                                                   'real-estate-ads',                        'real-estate-video-ads.webp'],
-                    ['Web Designing',          'Working with innovative UI/UX designs and infographics to establish a platform to connect with people.',                                                                                                   'web-design-agency',                      'web-design.jpeg'],
+                    ['Application Development',      'Web and product applications built on React, Next.js and Node.js, with PostgreSQL or MongoDB behind them and UI/UX designed in the same engagement.',                                                          'application-development',                 'web-design.jpeg'],
                     ['AI Automation',          'Automating repetitive workflows, customer touchpoints and data pipelines with AI so your team focuses on work that actually moves the needle.',                                                            null,                                     'ai-automation.webp'],
                     ['Social Media Marketing', 'Content and community management that turns followers into a audience which actually converts.',                                                                                                           'social-media-marketing-agency',          'digital-marketing.webp'],
                     ['Performance Marketing',  'Paid campaigns built around measurable outcomes, optimised continuously against cost per acquisition.',                                                                                                   'performance-marketing-agency',           'performance-marketing.jpg'],

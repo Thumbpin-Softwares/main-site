@@ -33,7 +33,14 @@ Route::view('/services/digital-marketing', 'visitors.services.digital-marketing'
 Route::view('/services/seo', 'visitors.services.seo')->name('search-engine-optimization-seo-services');
 Route::view('/services/performance-marketing', 'visitors.services.performance-marketing')->name('performance-marketing-agency');
 Route::view('/services/social-media-marketing', 'visitors.services.social-media-marketing')->name('social-media-marketing-agency');
-Route::view('/services/web-design', 'visitors.services.web-design')->name('web-design-agency');
+Route::view('/services/application-development', 'visitors.services.application-development')->name('application-development');
+
+// "Web Design" was renamed to "Application Development". 301 rather than dropping
+// the old URL: it has existing search rankings and inbound links, and a permanent
+// redirect passes those to the new page instead of throwing them away.
+// The old route name is kept as an alias so any missed route('web-design-agency')
+// call still resolves rather than throwing a RouteNotFoundException.
+Route::redirect('/services/web-design', '/services/application-development', 301)->name('web-design-agency');
 Route::view('/services/real-estate-ads', 'visitors.services.real-estate-ads')->name('real-estate-ads');
 Route::view('/services/branding', 'visitors.services.branding')->name('branding-agency');
 Route::view('/services/strategy', 'visitors.services.strategy')->name('strategy-agency');
