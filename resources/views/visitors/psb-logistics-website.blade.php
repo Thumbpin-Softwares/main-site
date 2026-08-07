@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Website design and development for PSB Logistics. See the site Thumbpin designed and built for the logistics brand.','title' => 'PSB Logistics | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Website design and development for PSB Logistics. See the site Thumbpin designed and built for the logistics brand.','title' => 'PSB Logistics', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 

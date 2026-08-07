@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'title' => 'Leading Branding & Advertising Agency in Gurugram | Thumbpin',
+    'title' => 'Leading Branding & Advertising Agency in Gurugram',
     'description' => 'Thumbpin is a 360 creative and digital advertising agency in Gurugram that will help your business flourish with its effective strategy and ideas.',
     'keywords' => 'Thumbpin,
 branding agency Gurgaon,
@@ -123,8 +123,8 @@ marketing agency Gurgaon',
       },{
         "@type": "ListItem", 
         "position": 7, 
-        "name": "Social Media Marketing",
-        "item": "https://www.thumbpin.in/services/social-media-marketing"  
+        "name": "Social Media Management",
+        "item": "https://www.thumbpin.in/services/social-media-management"
       },{
         "@type": "ListItem", 
         "position": 8, 

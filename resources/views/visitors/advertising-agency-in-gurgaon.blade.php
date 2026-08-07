@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-'title' => 'Best Advertising Agency in Gurgaon | Thumbpin',
+'title' => 'Best Advertising Agency in Gurgaon',
 'description' => 'Leading advertising agency in Gurgaon offering creative branding, digital marketing, and strategic
 solutions for businesses',
 'hideDefaultHeader' => true,

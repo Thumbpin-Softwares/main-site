@@ -55,9 +55,10 @@
                         ['branding-agency',                         'Branding'],
                         ['strategy-agency',                         'Strategy'],
                         ['search-engine-optimization-seo-services', 'SEO Services'],
-                        ['application-development',                    'Application Development'],
+                        ['application-development',                 'Application Development'],
+                        ['ai-automation',                           'AI Automation'],
                         ['digital-marketing',                       'Digital Marketing'],
-                        ['social-media-marketing-agency',           'Social Media Marketing'],
+                        ['social-media-management',                 'Social Media Management'],
                     ]],
                     ['Solutions', [
                         ['performance-marketing-agency',  'Performance Marketing'],

@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Brand identity design for Bloom. See the logo, palette and visual system Thumbpin built for the brand.','title' => 'Bloom | Thumbpin', 'footer_black' => 'footer-black'])
+    'description' => 'Brand identity design for Bloom. See the logo, palette and visual system Thumbpin built for the brand.','title' => 'Bloom', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>

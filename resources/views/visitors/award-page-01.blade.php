@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'A closer look at one of Thumbpin’s award-winning campaigns — the brief, the challenge and the creative solution behind it.','title' => 'Award | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'A closer look at one of Thumbpin’s award-winning campaigns — the brief, the challenge and the creative solution behind it.','title' => 'Award', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 

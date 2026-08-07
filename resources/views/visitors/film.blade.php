@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'title' => 'Film & Video Production Portfolio | Thumbpin',
+    'title' => 'Film & Video Production Portfolio',
     'description' => 'Explore Thumbpin\'s award-worthy film portfolio — cinematic corporate films, ad commercials, product shoots, and scroll-stopping reels. View our best video production work.',
     'footer_black' => 'footer-black',
 ])

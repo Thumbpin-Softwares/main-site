@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Print and packaging design for S21 Cafe. How Thumbpin shaped the cafe brand through menus, signage and printed collateral.','title' => 'S21 Cafe | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Print and packaging design for S21 Cafe. How Thumbpin shaped the cafe brand through menus, signage and printed collateral.','title' => 'S21 Cafe', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>

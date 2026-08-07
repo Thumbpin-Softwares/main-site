@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Website design and development for Mr Furniture. A look at the site Thumbpin designed and built for the furniture brand.','title' => 'Mr Furniture | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Website design and development for Mr Furniture. A look at the site Thumbpin designed and built for the furniture brand.','title' => 'Mr Furniture', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 

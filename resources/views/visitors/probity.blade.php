@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Print and packaging design for Probity. See the collateral Thumbpin designed to give the brand a consistent, credible presence in print.','title' => 'Probity | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Print and packaging design for Probity. See the collateral Thumbpin designed to give the brand a consistent, credible presence in print.','title' => 'Probity', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>

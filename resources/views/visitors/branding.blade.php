@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Brand identity work by Thumbpin. We build identities that resonate with your customers and scale across every demographic you want to reach.','title' => 'Branding | Thumbpin', 'footer_black' => 'footer-black'])
+    'description' => 'Brand identity work by Thumbpin. We build identities that resonate with your customers and scale across every demographic you want to reach.','title' => 'Branding', 'footer_black' => 'footer-black'])
 
 @section('head')
 

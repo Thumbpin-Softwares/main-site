@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Website design and development for Mr Skips. See the site Thumbpin designed and built for the brand.','title' => 'Mr Skips | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Website design and development for Mr Skips. See the site Thumbpin designed and built for the brand.','title' => 'Mr Skips', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 

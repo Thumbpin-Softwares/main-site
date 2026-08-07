@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Website design and development work by Thumbpin. Browse the sites we have designed and built for brands across sectors.','title' => 'Website | Thumbpin', 'footer_black' => 'footer-black'])
+    'description' => 'Website design and development work by Thumbpin. Browse the sites we have designed and built for brands across sectors.','title' => 'Website', 'footer_black' => 'footer-black'])
 
 @section('head')
 

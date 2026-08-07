@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Print and packaging design for Cure J. See the collateral Thumbpin created to bring the brand to life across printed touchpoints.','title' => 'Cure J | Thumbpin', 'footer_black' => 'footer-black'])
+    'description' => 'Print and packaging design for Cure J. See the collateral Thumbpin created to bring the brand to life across printed touchpoints.','title' => 'Cure J', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>

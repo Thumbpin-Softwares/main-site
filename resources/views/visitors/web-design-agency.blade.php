@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'title' => 'Best Web Design & Development Agency in Gurgaon | Thumbpin',
+    'title' => 'Best Web Design & Development Agency in Gurgaon',
     'description' => 'Thumbpin is a web design and development agency in Gurgaon building high-converting websites, custom software, mobile apps, and UX-first digital experiences.',
     'footer_black' => 'footer-black',
 ])

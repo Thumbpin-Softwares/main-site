@@ -1,7 +1,7 @@
 {{-- The description prefers the post's own meta_description, then its excerpt,
      then a trimmed body, so every post ships a real one instead of the site default. --}}
 @extends('layout.visitor', [
-    'title' => $post->title.' | Thumbpin',
+    'title' => $post->title,
     'description' => \Illuminate\Support\Str::limit(
         trim(strip_tags($post->meta_description ?: ($post->excerpt ?: $post->body))), 155
     ),

@@ -1,9 +1,7 @@
 @extends('layout.visitor', [
-    'title' => 'Marketing Strategy Agency in Gurgaon | Brand & Media Planning',
-    'description' => 'Thumbpin builds research-led marketing and brand strategies — positioning, consumer insight, go-to-market planning and media strategy across traditional and digital channels.',
-    'keywords' => 'marketing strategy agency gurgaon, brand strategy consultant, go to market strategy, media planning agency, communication strategy, market research agency india, content strategy agency',
-    'image' => config('app.url') . '/img/og/strategy.png',
-    'image_alt' => 'Thumbpin marketing strategy agency — brand and media planning in Gurgaon',
+    'title' => 'Social Media Management Agency in Gurgaon',
+    'description' => 'Thumbpin manages social media for brands in Gurgaon and Delhi NCR — content calendars, community management, reels and short-form video, reputation management and monthly reporting.',
+    'keywords' => 'social media management agency gurgaon, social media management company india, instagram management agency, facebook page management, linkedin content agency, community management agency, reel production gurgaon, short form video agency, online reputation management india, social media content calendar, social media agency delhi ncr',
     'footer_black' => 'footer-black',
 ])
 
@@ -21,10 +19,7 @@
 .hero-title-outline { color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,0.6); }
 @media (max-width: 767px) { .hero-title-outline { -webkit-text-stroke-width: 1px; } }
 
-/* Inquiry form. Unlike visitors/services.blade.php this one is always expanded,
-   so the accordion rules (.svc-inquiry-wrap / .is-open) are deliberately absent
-   -- their max-height:800px + overflow:hidden would also have clipped the form
-   on mobile, where the grid stacks to a single column and grows past 800px. */
+/* Inquiry form. Always expanded, so no accordion rules here. */
 ::placeholder { color: #444; }
 @media (max-width: 768px) {
     .inquiry-grid { grid-template-columns: 1fr !important; }
@@ -37,40 +32,40 @@
     never claim something the page does not actually say -- which is what
     triggers a manual action.
 
-    Organization @id matches /services and /about so all three describe the same
-    entity rather than three unrelated ones.
+    Organization @id matches /services, /about and the other service pages so all
+    of them describe the same entity rather than several unrelated ones.
 --}}
 @php
-$strategyFaqs = [
-    ['q' => 'What does a marketing strategy actually include?',
-     'a' => "At minimum: who you are competing against and how, which audience segments are worth pursuing, what you will say to them, and which channels will carry it. We deliver that as a written document with the reasoning attached — positioning, audience definition, messaging framework, channel plan, and the measures you will judge it by. It is meant to be used, not filed."],
+$smmFaqs = [
+    ['q' => "What is the difference between social media management and social media marketing?",
+     'a' => "Management is the ongoing running of your channels — planning the calendar, producing content, publishing, replying to comments and DMs, and reporting on what happened. Marketing usually means the paid layer on top: ad budgets, targeting and campaign optimisation. We do both, but they are separate engagements, and confusing the two is how brands end up paying for ads pointing at an account nobody is maintaining."],
 
-    ['q' => 'How is strategy different from just running campaigns?',
-     'a' => "Campaigns answer 'what are we posting this month'. Strategy answers 'why this audience, this message, this channel, at this price'. Without it, campaigns drift — each one reasonable in isolation, collectively contradictory. Strategy is what makes twelve months of activity add up to something instead of cancelling itself out."],
+    ['q' => "Which platforms do you manage?",
+     'a' => "Instagram and Facebook for most consumer brands, LinkedIn where the audience is B2B, and X where the category has a real conversation happening. Short-form video — Reels and YouTube Shorts — runs across whichever of those apply. We would rather run three channels properly than seven badly, so part of the first month is deciding which ones actually deserve your time."],
 
-    ['q' => 'How long does a strategy engagement take?',
-     'a' => "A focused positioning or go-to-market sprint typically runs three to five weeks. A full strategy programme with primary research, segmentation, and a twelve-month channel plan usually takes six to ten weeks. Research depth is the main variable — desk research moves quickly, while primary consumer interviews take longer to schedule than to analyse."],
+    ['q' => "How much content do you produce each month?",
+     'a' => "It depends on the channels and the format mix, and we set it during planning rather than selling a fixed number. A typical retainer covers a monthly calendar of static posts, carousels and reels, plus stories through the month. Volume matters far less than consistency — an account that posts eight considered things a month beats one that posts twenty forgettable ones and then goes quiet."],
 
-    ['q' => 'Do you do research, or work from what we already know?',
-     'a' => "Both, depending on what exists. We start by auditing what you already have — sales data, past campaign performance, customer feedback. Where there are gaps that matter to the decision, we run primary research: stakeholder interviews, customer conversations, competitor and category analysis. We will not commission research you do not need."],
+    ['q' => "Do you handle replying to comments and DMs?",
+     'a' => "Yes, community management sits inside the retainer rather than being an add-on. Someone asking about price under a post is a lead, and leaving it unanswered for three days is the most common way brands waste the reach they just paid for. We agree response guidelines with you up front, and escalate anything sensitive rather than improvising."],
 
-    ['q' => 'Will you execute the strategy or just hand over a document?',
-     'a' => "Either. Many clients take the strategy and run it with an in-house team, and that is a legitimate outcome. Where we do execute, the same team that wrote the strategy briefs the creative and performance work — which removes the usual gap between what was recommended and what actually ships."],
+    ['q' => "Do you shoot reels and video, or only edit?",
+     'a' => "Both. We run shoot days for reels and short-form video, and we also work with footage you already have — product clips, event coverage, founder pieces. Short-form is where organic reach still exists on Instagram, so it is treated as a core part of the calendar rather than something added when there is budget left over."],
 
-    ['q' => 'How do you measure whether a strategy is working?',
-     'a' => "We define the measures as part of the strategy, before anything launches, so success is not decided retroactively. Depending on the objective that might be share of search, cost per qualified lead, brand recall, or contribution margin by channel. We set a review cadence and adjust against the data rather than defending the original plan."],
+    ['q' => "How do you report on results?",
+     'a' => "A monthly report covering reach, engagement, follower growth, saves and shares, and — where the tracking allows — the enquiries and website traffic that came from social. We are explicit about what the platforms can and cannot attribute. Follower count on its own is the easiest number to make look good and the least useful, so it is never the headline."],
 
-    ['q' => 'Is strategy worth it for a small business or early-stage startup?',
-     'a' => "Often more so, because the cost of pointing a small budget at the wrong audience is proportionally higher. The engagement is scoped smaller — a tighter positioning and channel exercise rather than a full research programme — but the questions it answers are the same ones."],
+    ['q' => "What do you need from us to get started?",
+     'a' => "Access to your accounts, whatever brand assets and past content exist, and one person on your side who can approve the calendar without a committee. The last one matters more than people expect — most social delays are approval delays, not production delays. Onboarding usually takes two weeks before the first calendar goes live."],
 
-    ['q' => 'Which locations do you take strategy clients in?',
-     'a' => "We work with clients across Gurgaon, Delhi NCR, and the rest of India. Workshops, stakeholder interviews, and presentations run effectively remotely, and we travel for on-site sessions where a project genuinely warrants it."],
+    ['q' => "Is there a minimum commitment?",
+     'a' => "We work on retainers of three months minimum, because social does not produce anything meaningful in four weeks. The first month is largely setup, testing formats and finding out what your audience responds to; the results that justify the spend generally show up in months two and three."],
 ];
 
-$strategyUrl = url()->current();
-$orgId       = config('app.url') . '/#organization';
+$smmUrl = url()->current();
+$orgId  = config('app.url') . '/#organization';
 
-$strategySchema = [
+$smmSchema = [
     '@context' => 'https://schema.org',
     '@graph'   => [
         [
@@ -81,37 +76,37 @@ $strategySchema = [
         ],
         [
             '@type'       => 'Service',
-            '@id'         => $strategyUrl . '/#service',
-            'name'        => 'Marketing & Brand Strategy',
-            'serviceType' => 'Marketing Strategy',
-            'url'         => $strategyUrl,
+            '@id'         => $smmUrl . '/#service',
+            'name'        => 'Social Media Management',
+            'serviceType' => 'Social Media Management',
+            'url'         => $smmUrl,
             'provider'    => ['@id' => $orgId],
             'areaServed'  => ['@type' => 'City', 'name' => 'Gurugram'],
-            'description' => 'Research-led brand and marketing strategy — positioning, consumer insight, go-to-market planning, media strategy and content strategy from Thumbpin, serving Gurgaon and Delhi NCR.',
+            'description' => 'Social media management from Thumbpin — content calendars, community management, reels and short-form video, reputation management and monthly reporting, serving Gurgaon and Delhi NCR.',
         ],
         [
             '@type'      => 'FAQPage',
-            '@id'        => $strategyUrl . '/#faq',
+            '@id'        => $smmUrl . '/#faq',
             'mainEntity' => array_map(fn ($faq) => [
                 '@type'          => 'Question',
                 'name'           => $faq['q'],
                 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq['a']],
-            ], $strategyFaqs),
+            ], $smmFaqs),
         ],
         [
             '@type' => 'BreadcrumbList',
-            '@id'   => $strategyUrl . '/#breadcrumb',
+            '@id'   => $smmUrl . '/#breadcrumb',
             'itemListElement' => [
-                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',     'item' => config('app.url') . '/'],
-                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Services', 'item' => route('services')],
-                ['@type' => 'ListItem', 'position' => 3, 'name' => 'Strategy', 'item' => $strategyUrl],
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',                    'item' => config('app.url') . '/'],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Services',                'item' => route('services')],
+                ['@type' => 'ListItem', 'position' => 3, 'name' => 'Social Media Management', 'item' => $smmUrl],
             ],
         ],
     ],
 ];
 @endphp
 <script type="application/ld+json">
-{!! json_encode($strategySchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+{!! json_encode($smmSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
 @endsection
 
@@ -126,21 +121,21 @@ $strategySchema = [
     --}}
     <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-black px-5 pt-[180px] pb-[110px] max-[767px]:min-h-0 max-[767px]:pt-[150px] max-[767px]:pb-20">
         <div class="absolute inset-0 z-[1] bg-center bg-cover grayscale contrast-[1.1] opacity-40"
-             style="background-image:url('{{ asset('img/services/strategy.jpeg') }}');"></div>
+             style="background-image:url('{{ asset('img/services/digital-marketing.webp') }}');"></div>
         <div class="absolute inset-0 z-[2] bg-black/60"></div>
         <div class="absolute inset-0 z-[2]" style="background:radial-gradient(ellipse at center,transparent 30%,#000 85%);"></div>
 
         <div class="relative z-[3] mx-auto max-w-[900px] text-center">
             <h1 class="m-0 mb-6 text-[clamp(44px,9vw,110px)] font-extrabold uppercase leading-[0.92] tracking-[-2px] text-white opacity-0 translate-y-[30px] animate-hero-reveal [animation-delay:300ms]">
-                Marketing <span class="hero-title-outline">Strategy</span>
+                Social Media <span class="hero-title-outline">Management</span>
             </h1>
 
-            <p class="mx-auto mb-10 max-w-[600px] text-[18px] font-light leading-[1.7] text-[#999] opacity-0 animate-hero-reveal [animation-delay:600ms]">
-                Research-led thinking that decides where you play and how you win, before a single rupee goes into media.
+            <p class="mx-auto mb-10 max-w-[620px] text-[18px] font-light leading-[1.7] text-[#999] opacity-0 animate-hero-reveal [animation-delay:600ms]">
+                Calendars, content, community and reporting — your channels run properly, every week, not in bursts.
             </p>
 
             <div class="flex flex-wrap justify-center gap-[50px] opacity-0 animate-hero-reveal [animation-delay:900ms] max-[767px]:gap-[30px]">
-                @foreach([['35+','Strategy Projects'],['12+','Categories Mapped'],['6+','Years Experience']] as [$num, $label])
+                @foreach([['6','Platforms Managed'],['5','Core Deliverables'],['6+','Years Experience']] as [$num, $label])
                 <div class="text-center">
                     <div class="text-[42px] font-black leading-none text-film-red max-[767px]:text-[32px]">{{ $num }}</div>
                     <div class="mt-[6px] text-[11px] uppercase tracking-[2px] text-[#666]">{{ $label }}</div>
@@ -154,60 +149,55 @@ $strategySchema = [
     <section class="bg-white py-[60px]">
         <div class="mx-auto max-w-[1140px] px-5">
             <h2 class="m-0 mb-[30px] text-center text-[42px] font-bold text-black max-[575px]:text-[32px]">
-                Strategy Before Execution
+                Consistency Beats Bursts
             </h2>
             <p class="mx-auto m-0 max-w-[900px] text-center text-[18px] leading-[1.8] text-[#666]">
-                Most marketing budgets are not wasted on bad execution. They are wasted on good execution
-                pointed at the wrong audience, saying the wrong thing, in the wrong place. We deploy a
-                research-based strategy with room for innovative developments, across all forms of
-                traditional and non-traditional media — so every rupee that follows has a reason behind it.
+                Most brands do not have a content problem. They have a rhythm problem — three weeks of good
+                posts, then a month of silence while everyone is busy, then a scramble to catch up. Social
+                media management is the discipline of turning that into something steady: a calendar planned
+                in advance, content produced before it is needed, comments answered the same day, and a
+                monthly read on what actually worked.
             </p>
         </div>
     </section>
 
     {{-- ====================== SERVICES ====================== --}}
     {{--
-        Text-only by design. Stock imagery never matches a client's brand palette,
-        so the space goes to crawlable copy instead: each entry carries two
-        paragraphs, which is what actually earns the page its long-tail queries.
+        Same editorial row layout as the other service pages: number + title on a
+        sticky left rail, copy on the right.
     --}}
-    <section class="bg-white pb-20" id="strategy-services">
+    <section class="bg-white pb-20" id="smm-services">
         <div class="mx-auto max-w-[1140px] px-5">
             @php
             $services = [
                 [
-                    'title' => 'Brand & Communication Strategy',
-                    'lead'  => "Before design, before media, before a single campaign — the decisions about what your brand stands for, who it is genuinely for, and how it should sound when it speaks.",
-                    'body'  => "We define positioning, purpose, personality, and messaging architecture, then write them down in a form your whole team can act on. This becomes the reference every later decision gets measured against, which is what stops your campaigns from quietly contradicting each other across channels and quarters.",
+                    'title' => 'Social Media Strategy',
+                    'lead'  => "The blueprint before the posting — who you are talking to, on which platforms, about what, and how you will know whether it worked.",
+                    'body'  => "We start with your audience and your category rather than a template calendar: what your competitors are doing, where your buyers actually spend time, and which formats earn attention in your space. That produces clear goals, a channel mix, content pillars and a measurement plan — so every post afterwards has a reason to exist beyond filling a slot.",
                 ],
                 [
-                    'title' => 'Market Research & Consumer Insight',
-                    'lead'  => "Opinion is cheap and abundant. We replace it with evidence — what your market actually believes, what your competitors actually own, and where the genuine opening is.",
-                    'body'  => "Depending on the decision at hand we run stakeholder interviews, customer conversations, category and competitor analysis, search demand study, and audits of your own sales and campaign data. The output is not a deck of charts; it is a short list of things that are true, and what each one means for where you spend next.",
+                    'title' => 'Content Strategy & Calendar',
+                    'lead'  => "A month planned in advance — static posts, carousels, reels and stories mapped to pillars rather than assembled the night before.",
+                    'body'  => "Content is the part of social people see, and the part that most often gets rushed. We build the calendar ahead of the month, produce against it, and route everything through one approval cycle instead of a rolling scramble. Mixing formats deliberately matters too: carousels for saves, reels for reach, stories for the daily presence that keeps an account from looking dormant.",
                 ],
                 [
-                    'title' => 'Go-To-Market Strategy',
-                    'lead'  => "A launch is the most expensive moment to be wrong. Go-to-market strategy sequences the audience, message, pricing, channel, and timing so a launch compounds instead of fizzling.",
-                    'body'  => "We define the beachhead segment, the proposition that will move it, the proof required to make that proposition credible, and the channel sequence to reach it efficiently. We also define what we expect to happen — so if reality disagrees in week three, you find out in week three rather than after the budget is spent.",
+                    'title' => 'Community Management',
+                    'lead'  => "Comments, DMs and mentions answered the same day — because an unanswered question under a post is a lead you already paid to get.",
+                    'body'  => "Someone asking about price, availability or delivery in your comments is further down the funnel than anyone you will reach with the next post. We agree tone and response guidelines with you, handle the routine questions, and escalate anything sensitive rather than improvising. Conversations that turn into enquiries get passed to your team with the context attached.",
                 ],
                 [
-                    'title' => 'Media Planning & Channel Strategy',
-                    'lead'  => "Every channel will happily take your money. Channel strategy decides which ones deserve it, in what proportion, and what each is actually being asked to achieve.",
-                    'body'  => "We build the channel mix against your objective and margin rather than against fashion — balancing reach and conversion, paid and organic, digital and traditional. Budgets are allocated with a stated rationale and a review cadence, so spend shifts on evidence rather than on whoever argues hardest in the meeting.",
+                    'title' => 'Reels & Short-Form Video',
+                    'lead'  => "Shoots and edits for the format where organic reach still exists — treated as core to the calendar, not an occasional extra.",
+                    'body'  => "We run shoot days for reels and short-form video, and cut from footage you already have — product clips, event coverage, founder pieces, customer stories. Hooks are written for sound-off viewing, captions are burned in, and formats are adapted per platform rather than one export posted everywhere. Volume is planned so the account is never waiting on a shoot.",
                 ],
                 [
-                    'title' => 'Content Strategy',
-                    'lead'  => "Publishing more is not a strategy. Content strategy decides what is worth making, for whom, on which platform, and how it earns its keep.",
-                    'body'  => "We map content to the questions your buyers actually ask at each stage, identify the search and social demand worth competing for, and set the formats, cadence, and ownership to sustain it. The point is a system your team can keep running after we leave, not a burst of activity that stops when the retainer does.",
+                    'title' => 'Reputation Management & Reporting',
+                    'lead'  => "Monitoring what is being said about you, and a monthly report that separates the numbers that matter from the ones that flatter.",
+                    'body'  => "We track mentions and reviews, respond to criticism in a way that does not escalate it, and flag the patterns worth acting on rather than only the individual complaints. Reporting covers reach, engagement, saves, shares, follower growth and — where tracking allows — enquiries and site traffic from social. Follower count is never the headline; it is the easiest number to make look good and the least useful.",
                 ],
             ];
             @endphp
 
-            {{--
-                Full-width rows rather than a card grid: five items in two columns
-                leaves an orphan. Title sticks to the left rail on desktop while
-                the copy scrolls past it.
-            --}}
             <div class="border-0 border-t border-solid border-[#e8e8e8]">
                 @foreach($services as $i => $service)
                 <article class="group grid grid-cols-1 gap-x-16 gap-y-6 border-0 border-b border-solid border-[#e8e8e8] py-14 lg:grid-cols-12 max-[767px]:py-10">
@@ -229,11 +219,57 @@ $strategySchema = [
                         <p class="m-0 mb-5 text-[18px] leading-[1.7] text-[#333] max-[575px]:text-[16px]">
                             {{ $service['lead'] }}
                         </p>
-                        <p class="m-0 mb-8 text-[15px] leading-[1.85] text-[#777]">
+                        <p class="m-0 text-[15px] leading-[1.85] text-[#777]">
                             {{ $service['body'] }}
                         </p>
                     </div>
                 </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    {{-- ====================== PLATFORMS ====================== --}}
+    {{--
+        Structural twin of the Tech Stack block on /services/application-development
+        and the Channels block on /services/ai-automation -- same grid and card
+        treatment, filled with what a buyer is shopping for on this page.
+    --}}
+    <section class="bg-[#f9f9f9] py-20" id="platforms">
+        <div class="mx-auto max-w-[1140px] px-5">
+            <div class="mb-12 max-w-[760px]">
+                <p class="m-0 mb-3 text-[11px] font-bold uppercase tracking-[3px] text-film-red">Where We Work</p>
+                <h2 class="m-0 mb-5 text-[42px] font-bold leading-[1.15] text-black max-[575px]:text-[30px]">
+                    Platforms We Manage
+                </h2>
+                <p class="m-0 text-[17px] leading-[1.8] text-[#666]">
+                    Not all of them, and not all at once. Part of the first month is working out which of these
+                    your audience is genuinely on — three channels run properly will always beat seven kept
+                    barely alive.
+                </p>
+            </div>
+
+            @php
+            $platforms = [
+                ['Consumer',     'Where most brands need daily presence', ['Instagram', 'Facebook']],
+                ['Professional', 'B2B audiences and company voice',       ['LinkedIn', 'X (Twitter)']],
+                ['Video First',  'Where organic reach still lives',       ['Reels', 'YouTube Shorts']],
+            ];
+            @endphp
+
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                @foreach($platforms as [$group, $note, $items])
+                <div class="border-0 border-t-2 border-solid border-film-red bg-white p-7 max-[575px]:p-6">
+                    <h3 class="m-0 mb-2 text-[20px] font-extrabold uppercase tracking-[0.5px] text-black">{{ $group }}</h3>
+                    <p class="m-0 mb-6 text-[14px] leading-[1.6] text-[#777]">{{ $note }}</p>
+                    <ul class="m-0 flex list-none flex-wrap gap-2 p-0">
+                        @foreach($items as $item)
+                        <li class="rounded-full border border-solid border-[#e0e0e0] bg-[#fafafa] px-4 py-[7px] text-[14px] font-semibold leading-none text-[#333]">
+                            {{ $item }}
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
                 @endforeach
             </div>
         </div>
@@ -251,7 +287,7 @@ $strategySchema = [
 
         {{-- Section header. A plain div, not a button: the form below is always
              expanded, so a control that toggles nothing would mislead both users
-             and screen readers. The chevron and "Inquire Now" label went with it. --}}
+             and screen readers. --}}
         <div class="w-full bg-black border-0 border-t border-b border-[#1e1e1e] flex items-center justify-between">
             <div class="max-w-[1300px] mx-auto px-5 py-7 flex items-center justify-between w-full gap-6 flex-wrap">
                 <div class="text-left">
@@ -321,7 +357,7 @@ $strategySchema = [
         <div class="mx-auto max-w-[1140px] px-5">
             <div class="mb-[60px] text-center">
                 <h2 class="m-0 text-[56px] font-extrabold text-black max-[575px]:text-[32px]">
-                    Brands We've <span class="text-film-red">Built For</span>
+                    Friends <span class="text-film-red">On Board</span>
                 </h2>
             </div>
 
@@ -331,6 +367,7 @@ $strategySchema = [
                     <img src="{{ asset('assets/img/clients/' . $i . '.png') }}"
                          alt="Client Logo"
                          loading="lazy"
+                         decoding="async"
                          class="h-auto max-w-full opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
                 </div>
                 @endforeach
@@ -348,14 +385,14 @@ $strategySchema = [
     {{-- ====================== QUOTE ====================== --}}
     <section class="relative bg-black py-[100px]">
         <div class="mx-auto max-w-[1140px] px-5">
-            {{-- The oversized decorative quote mark is a ::before in CSS terms; here it
-                 is a real element so it stays pure Tailwind. aria-hidden as it is decor. --}}
+            {{-- The oversized quote mark is a ::before in CSS terms; here it is a
+                 real element so it stays pure Tailwind. aria-hidden as it is decor. --}}
             <div class="relative mx-auto max-w-[900px] text-center">
                 <span aria-hidden="true"
                       class="pointer-events-none absolute left-1/2 top-[-80px] z-0 -translate-x-1/2 font-serif text-[200px] leading-none text-film-red/50 max-[575px]:top-[-60px] max-[575px]:text-[150px]">"</span>
                 <p class="relative z-[1] m-0 text-[32px] font-medium leading-[1.6] text-white max-[575px]:text-[22px]">
-                    Strategy is not about doing more.<br>
-                    It is about deciding what to leave out.
+                    Social media is not a media.<br>
+                    The key is to listen, engage and build relationships.
                 </p>
             </div>
         </div>
@@ -365,19 +402,19 @@ $strategySchema = [
     {{--
         <details>/<summary> rather than a JS accordion: the answers stay in the DOM
         and remain crawlable whether or not the panel is open, and it works with
-        no script at all. $strategyFaqs is defined in @section('head') so the same
-        array feeds the FAQPage schema -- copy and markup cannot drift apart.
+        no script at all. $smmFaqs is defined in @section('head') so the same array
+        feeds the FAQPage schema -- copy and markup cannot drift apart.
     --}}
-    <section class="bg-white py-20" id="strategy-faq">
+    <section class="bg-white py-20" id="smm-faq">
         <div class="mx-auto max-w-[900px] px-5">
             <div class="mb-12 text-center">
                 <p class="m-0 mb-3 text-[11px] font-bold uppercase tracking-[3px] text-film-red">Common Questions</p>
                 <h2 class="m-0 text-[42px] font-bold leading-[1.15] text-black max-[575px]:text-[30px]">
-                    Strategy FAQs
+                    Social Media Management FAQs
                 </h2>
             </div>
 
-            @foreach($strategyFaqs as $faq)
+            @foreach($smmFaqs as $faq)
             <details class="group border-0 border-b border-solid border-[#e8e8e8]">
                 <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 [&::-webkit-details-marker]:hidden">
                     <h3 class="m-0 text-[17px] font-bold leading-snug text-black max-[575px]:text-[15px]">{{ $faq['q'] }}</h3>
@@ -394,13 +431,14 @@ $strategySchema = [
     <section class="bg-white pt-[100px]">
         <div class="mx-auto max-w-[1140px] px-5">
             <div class="mb-10 text-center">
-                <h4 class="m-0 mb-[10px] text-[38px] font-normal text-[#666] max-[575px]:text-[26px]">Research. Decide. Execute.</h4>
-                <h2 class="m-0 text-[42px] font-bold text-black max-[575px]:text-[32px]">Strategy That Survives Contact With the Market</h2>
+                <h4 class="m-0 mb-[10px] text-[38px] font-normal text-[#666] max-[575px]:text-[26px]">Innovate. Influence. Inspire.</h4>
+                <h2 class="m-0 text-[42px] font-bold text-black max-[575px]:text-[32px]">Channels That Stay Alive</h2>
             </div>
             <p class="mx-auto m-0 max-w-[900px] text-center text-[18px] leading-[1.8] text-[#666]">
-                A strategy that only works in the deck is not a strategy. We pressure-test every
-                recommendation against budget, timeline, and the team who has to run it — then stay
-                close enough to adjust when the market says something we did not expect.
+                Every platform has its own algorithm, its own formats and its own reasons people open it, so
+                the same post shipped everywhere performs nowhere. We plan per channel, produce ahead of the
+                month, and stay in the comments — which is the unglamorous half of social media that decides
+                whether the rest of it was worth doing.
             </p>
         </div>
     </section>
@@ -413,6 +451,7 @@ $strategySchema = [
                     <img src="{{ asset('assets/img/home/home-04.png') }}"
                          alt="Brand Story"
                          loading="lazy"
+                         decoding="async"
                          class="h-auto max-w-full">
                 </div>
 

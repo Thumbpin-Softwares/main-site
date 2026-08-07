@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Print and packaging design for Mr Furniture. A look at the collateral Thumbpin created to carry the brand across retail and print touchpoints.','title' => 'Mr Furniture | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Print and packaging design for Mr Furniture. A look at the collateral Thumbpin created to carry the brand across retail and print touchpoints.','title' => 'Mr Furniture', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>

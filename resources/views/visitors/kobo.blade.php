@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Brand identity design for Kobo. A look at the logo, visual language and brand system Thumbpin developed.','title' => 'Kobo | Thumbpin', 'footer_black' => 'footer-black'])
+    'description' => 'Brand identity design for Kobo. A look at the logo, visual language and brand system Thumbpin developed.','title' => 'Kobo', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>

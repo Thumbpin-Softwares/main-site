@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'title' => 'Top Video Production House in Gurgaon | Cinematic Commercials & Corporate Films | Thumbpin',
+    'title' => 'Top Video Production House in Gurgaon | Cinematic Commercials & Corporate Films',
     'description' => 'Thumbpin is a premier video production house in Gurgaon specializing in high-end corporate films, TV commercials, product shoots, and creative storytelling. Transform your brand with cinematic excellence.',
     'keywords' => 'video production house in gurgaon, corporate film makers in gurgaon, ad filmmaking gurgaon, product shoot gurgaon, podcast production gurgaon, video agency gurgaon, Thumbpin Studios',
     'hideDefaultHeader' => true,

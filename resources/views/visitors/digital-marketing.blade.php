@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'title' => 'Best Digital Marketing Agency in Gurgaon - IND| Thumbpin',
+    'title' => 'Best Digital Marketing Agency in Gurgaon - IND',
     'description' => 'Thumbpin is a digital advertising agency in Gurgaon that can help your business expand and stay connected effectively with your customer throughout their digital journey.',
     'footer_black' => 'footer-black',
 ])
@@ -483,7 +483,7 @@
                     </div>
                     <div class="col-lg-6 order-lg-1">
                         <div class="content">
-                            <h3 class="title">Social Media Marketing</h3>
+                            <h3 class="title">Social Media Management</h3>
                             <div class="des">
                                 <p>
                                     Social media marketing leverages number of platforms to cultivate brand communities, engage audiences with relevant content and expand reach through strategic campaigns. 
@@ -491,7 +491,7 @@
                                 </p>
                             </div>
                             <div class="cta-btn">
-                                <a href="{{ route('social-media-marketing-agency') }}">Explore More</a>
+                                <a href="{{ route('social-media-management') }}">Explore More</a>
                             </div>
                         </div>
                     </div>

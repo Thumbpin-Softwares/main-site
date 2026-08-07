@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'title' => 'Best Social Media Marketing Agency in Gurgaon | Thumbpin',
+    'title' => 'Best Social Media Marketing Agency in Gurgaon',
     'description' => 'Thumbpin is a digital advertising agency in Gurgaon that can help your business expand and stay connected effectively with your customer throughout their digital journey.',
     'footer_black' => 'footer-black',
 ])

@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'title' => 'Application Development Company in Gurgaon | Web & App Development | Thumbpin',
+    'title' => 'Application Development Company in Gurgaon | Web & App Development',
     'description' => 'Thumbpin builds web and mobile applications with React, Next.js, Node.js and Express, backed by MongoDB and PostgreSQL — from UI design through API architecture to deployment.',
     'keywords' => 'application development company gurgaon, web application development india, react development agency, next js development company, node js development, express js backend, mongodb development, postgresql development, full stack development agency, custom software development gurgaon, api development company, ui ux design agency',
     'footer_black' => 'footer-black',

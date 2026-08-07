@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Print and packaging design for Zero Waste, a UAE waste recycling company. See how Thumbpin turned recycled material into an elegant brand brochure.','title' => 'Zero Waste | Thumbpin', 'footer_black' => 'footer-black'])
+    'description' => 'Print and packaging design for Zero Waste, a UAE waste recycling company. See how Thumbpin turned recycled material into an elegant brand brochure.','title' => 'Zero Waste', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>

@@ -24,8 +24,9 @@
                                 <div class="nav-dropdown-inner">
                                     <a href="{{ route('digital-marketing') }}" class="{{ request()->is('services/digital-marketing') ? 'active' : '' }}">Digital Marketing</a>
                                     <a href="{{ route('performance-marketing-agency') }}" class="{{ request()->is('services/performance-marketing') ? 'active' : '' }}">Performance Marketing</a>
-                                    <a href="{{ route('social-media-marketing-agency') }}" class="{{ request()->is('services/social-media-marketing') ? 'active' : '' }}">Social Media Marketing</a>
+                                    <a href="{{ route('social-media-management') }}" class="{{ request()->is('services/social-media-management') ? 'active' : '' }}">Social Media Management</a>
                                     <a href="{{ route('application-development') }}" class="{{ request()->is('services/application-development') ? 'active' : '' }}">Application Development</a>
+                                    <a href="{{ route('ai-automation') }}" class="{{ request()->is('services/ai-automation') ? 'active' : '' }}">AI Automation</a>
                                     <a href="{{ route('real-estate-ads') }}" class="{{ request()->is('services/real-estate-ads') ? 'active' : '' }}">Real Estate Video Ads</a>
                                     <a href="{{ route('branding-agency') }}" class="{{ request()->is('services/branding') ? 'active' : '' }}">Branding</a>
                                     <a href="{{ route('strategy-agency') }}" class="{{ request()->is('services/strategy') ? 'active' : '' }}">Strategy</a>
@@ -94,8 +95,9 @@
                             <li><a href="{{ route('services') }}">All Services</a></li>
                             <li><a href="{{ route('digital-marketing') }}">Digital Marketing</a></li>
                             <li><a href="{{ route('performance-marketing-agency') }}">Performance Marketing</a></li>
-                            <li><a href="{{ route('social-media-marketing-agency') }}">Social Media Marketing</a></li>
+                            <li><a href="{{ route('social-media-management') }}">Social Media Management</a></li>
                             <li><a href="{{ route('application-development') }}">Application Development</a></li>
+                            <li><a href="{{ route('ai-automation') }}">AI Automation</a></li>
                             <li><a href="{{ route('real-estate-ads') }}">Real Estate Video Ads</a></li>
                             <li><a href="{{ route('branding-agency') }}">Branding</a></li>
                             <li><a href="{{ route('strategy-agency') }}">Strategy</a></li>

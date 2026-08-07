@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Digital design and campaign work by Thumbpin. Browse the digital creative, social and online campaigns we have produced for brands.','title' => 'Digital | Thumbpin', 'footer_black' => 'footer-black'])
+    'description' => 'Digital design and campaign work by Thumbpin. Browse the digital creative, social and online campaigns we have produced for brands.','title' => 'Digital', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>

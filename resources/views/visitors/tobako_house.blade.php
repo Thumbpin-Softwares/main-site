@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Brand identity design for Tobako House. See the logo and visual identity Thumbpin created for the brand.','title' => 'Tobako House | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Brand identity design for Tobako House. See the logo and visual identity Thumbpin created for the brand.','title' => 'Tobako House', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 

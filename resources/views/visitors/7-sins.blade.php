@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Packaging design for Zagovor Brewery’s Seven Sins range. See how Thumbpin built a distinct label system for the beer line.','title' => '7 Sins | Thumbpin', 'footer_black' => 'footer-black'])
+    'description' => 'Packaging design for Zagovor Brewery’s Seven Sins range. See how Thumbpin built a distinct label system for the beer line.','title' => '7 Sins', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>

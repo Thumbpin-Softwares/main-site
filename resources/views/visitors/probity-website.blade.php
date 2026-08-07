@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Website design and development for Probity. A look at the site Thumbpin designed and built for the brand.','title' => 'Probity | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Website design and development for Probity. A look at the site Thumbpin designed and built for the brand.','title' => 'Probity', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 

@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'title' => 'Best Digital Marketing Agency in Gurgaon - IND| Thumbpin',
+    'title' => 'Best Digital Marketing Agency in Gurgaon - IND',
     'description' => 'Thumbpin is a digital advertising agency in Gurgaon that can help your business expand and stay connected effectively with your customer throughout their digital journey.',
     'keywords' => 'digital marketing agency gurgaon, digital marketing company gurugram, online marketing agency delhi ncr, social media marketing agency, performance marketing agency, seo services gurgaon, ppc agency india, google ads agency, meta ads agency, digital advertising agency, full service digital marketing, lead generation agency, how much does digital marketing cost, how long does seo take to work, which marketing channels should i use, difference between seo and paid ads',
     'footer_black' => 'footer-black',
@@ -171,9 +171,9 @@ $dmSchema = [
             @php
             $services = [
                 [
-                    'title' => 'Social Media Marketing',
-                    'route' => 'social-media-marketing-agency',
-                    'lead'  => "Social media marketing leverages a number of platforms to cultivate brand communities, engage audiences with relevant content, and expand reach through strategic campaigns.",
+                    'title' => 'Social Media Management',
+                    'route' => 'social-media-management',
+                    'lead'  => "Social media management runs your channels day to day — cultivating brand communities, engaging audiences with relevant content, and expanding reach through a planned calendar rather than ad-hoc posting.",
                     'body'  => "We harness current trends, influencers, and user-generated content to increase your brand's visibility digitally. Community management sits alongside the content calendar rather than after it, because a following that never hears back is an audience you are renting, not one you own.",
                 ],
                 [

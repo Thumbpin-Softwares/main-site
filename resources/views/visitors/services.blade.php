@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'title' => 'Creative Agency Services in Gurgaon & Gurugram | Thumbpin',
+    'title' => 'Creative Agency Services in Gurgaon & Gurugram',
     'description' => 'Branding, digital marketing, SEO, web design, video production and performance marketing from Thumbpin, a creative agency in Gurgaon and Gurugram.',
     'image' => config('app.url') . '/img/og/services.png',
     'image_alt' => 'Thumbpin creative agency services in Gurgaon and Gurugram',
@@ -28,7 +28,8 @@ $serviceEntries = [
     'Digital Marketing'      => 'digital-marketing',
     'Real Estate Video Ads'  => 'real-estate-ads',
     'Application Development' => 'application-development',
-    'Social Media Marketing' => 'social-media-marketing-agency',
+    'AI Automation'          => 'ai-automation',
+    'Social Media Management' => 'social-media-management',
     'Performance Marketing'  => 'performance-marketing-agency',
 ];
 
@@ -61,7 +62,7 @@ $schema = [
             '@type'       => 'CollectionPage',
             '@id'         => $servicesUrl . '/#webpage',
             'url'         => $servicesUrl,
-            'name'        => 'Creative Agency Services in Gurgaon & Gurugram | Thumbpin',
+            'name'        => 'Creative Agency Services in Gurgaon & Gurugram',
             'description' => 'Branding, digital marketing, SEO, web design, video production and performance marketing from Thumbpin, a creative agency in Gurgaon and Gurugram.',
             'inLanguage'  => 'en-IN',
             'about'       => ['@id' => $orgId],
@@ -254,8 +255,8 @@ $schema = [
                     ['Digital Marketing',      'We integrate marketing strategies & solutions to create distinctive conversations and reach a diverse audience through a unique online presence.',                                                          'digital-marketing',                      'digital-marketing.webp'],
                     ['Real Estate Video Ads',  'Cinematic property walkthroughs, drone aerials and promo films that help builders and brokers showcase their projects and sell faster.',                                                                   'real-estate-ads',                        'real-estate-video-ads.webp'],
                     ['Application Development',      'Web and product applications built on React, Next.js and Node.js, with PostgreSQL or MongoDB behind them and UI/UX designed in the same engagement.',                                                          'application-development',                 'web-design.jpeg'],
-                    ['AI Automation',          'Automating repetitive workflows, customer touchpoints and data pipelines with AI so your team focuses on work that actually moves the needle.',                                                            null,                                     'ai-automation.webp'],
-                    ['Social Media Marketing', 'Content and community management that turns followers into a audience which actually converts.',                                                                                                           'social-media-marketing-agency',          'digital-marketing.webp'],
+                    ['AI Automation',          'Automation across WhatsApp, Instagram, Facebook, LinkedIn and email so every enquiry gets answered, captured and followed up without anyone chasing it.',                                                'ai-automation',                          'ai-automation.webp'],
+                    ['Social Media Management','Day-to-day running of your channels content calendars, publishing, community management and reporting so the accounts stay active and answered.',                                                        'social-media-management',                'digital-marketing.webp'],
                     ['Performance Marketing',  'Paid campaigns built around measurable outcomes, optimised continuously against cost per acquisition.',                                                                                                   'performance-marketing-agency',           'performance-marketing.jpg'],
                     ['Events & Live',          'We take your brand out on a walk amidst society & concerts.',                                                                                                                                            null,                                     'events.jpg'],
                     ['Disruptive Ideas',       'We plan unprecedented solutions and ideas that take your brand to the front line of unique marketing campaigns.',                                                                                         null,                                     'disruptive-ideas.jpg'],
@@ -400,7 +401,7 @@ $schema = [
             <div class="max-w-[800px] mx-auto">
                 @php
                 $faqs = [
-                    ['q' => 'What services does Thumbpin offer?', 'a' => 'Thumbpin is a full-service creative agency offering branding, digital marketing, SEO, social media marketing, performance marketing, web design, video production, real estate advertising, and AI automation everything your brand needs under one roof.'],
+                    ['q' => 'What services does Thumbpin offer?', 'a' => 'Thumbpin is a full-service creative agency offering branding, digital marketing, SEO, social media management, performance marketing, application development, video production, real estate advertising, and AI automation everything your brand needs under one roof.'],
                     ['q' => 'How long does it take to see results from digital marketing?', 'a' => 'It depends on the channel. Paid ads can drive results within days, while SEO typically takes 3–6 months to gain momentum. Branding and social media build over time but create lasting equity. We set honest expectations from day one.'],
                     ['q' => 'Do you work with small businesses or only large brands?', 'a' => 'We work with businesses of all sizes from early-stage startups to established enterprises. Our strategies are tailored to your budget and goals, not a one-size-fits-all package.'],
                     ['q' => 'How does the onboarding process work?', 'a' => 'Start by filling out our inquiry form. We\'ll schedule a discovery call to understand your brand, goals, and challenges. From there we put together a custom strategy and get to work usually within a week of sign-off.'],

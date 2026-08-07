@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'title' => 'Best Branding Agency in Gurgaon | Brand Identity & Strategy | Thumbpin',
+    'title' => 'Best Branding Agency in Gurgaon | Brand Identity & Strategy',
     'description' => 'Thumbpin is a top branding agency in Gurgaon. We craft compelling brand identities, logos, brand guidelines, and brand strategies that make your business unforgettable.',
     'keywords' => 'branding agency gurgaon, brand identity design, logo design agency, brand strategy, brand guidelines, brand naming, creative branding agency india',
     'image' => config('app.url') . '/img/og/branding.png',

@@ -32,8 +32,9 @@ Route::view('/video-production-in-gurgaon', 'visitors.video-production-in-gurgao
 Route::view('/services/digital-marketing', 'visitors.services.digital-marketing')->name('digital-marketing');
 Route::view('/services/seo', 'visitors.services.seo')->name('search-engine-optimization-seo-services');
 Route::view('/services/performance-marketing', 'visitors.services.performance-marketing')->name('performance-marketing-agency');
-Route::view('/services/social-media-marketing', 'visitors.services.social-media-marketing')->name('social-media-marketing-agency');
+Route::view('/services/social-media-management', 'visitors.services.social-media-management')->name('social-media-management');
 Route::view('/services/application-development', 'visitors.services.application-development')->name('application-development');
+Route::view('/services/ai-automation', 'visitors.services.ai-automation')->name('ai-automation');
 
 // "Web Design" was renamed to "Application Development". 301 rather than dropping
 // the old URL: it has existing search rankings and inbound links, and a permanent
@@ -41,6 +42,10 @@ Route::view('/services/application-development', 'visitors.services.application-
 // The old route name is kept as an alias so any missed route('web-design-agency')
 // call still resolves rather than throwing a RouteNotFoundException.
 Route::redirect('/services/web-design', '/services/application-development', 301)->name('web-design-agency');
+
+// Same treatment for "Social Media Marketing" -> "Social Media Management": the old
+// URL keeps its rankings via the 301, and the old route name survives as an alias.
+Route::redirect('/services/social-media-marketing', '/services/social-media-management', 301)->name('social-media-marketing-agency');
 Route::view('/services/real-estate-ads', 'visitors.services.real-estate-ads')->name('real-estate-ads');
 Route::view('/services/branding', 'visitors.services.branding')->name('branding-agency');
 Route::view('/services/strategy', 'visitors.services.strategy')->name('strategy-agency');

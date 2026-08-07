@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Brand identity design for PSB Logistics. The logo and visual identity Thumbpin built for the logistics brand.','title' => 'PSB Logistics | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Brand identity design for PSB Logistics. The logo and visual identity Thumbpin built for the logistics brand.','title' => 'PSB Logistics', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 

@@ -1,9 +1,7 @@
 @extends('layout.visitor', [
-    'title' => 'Marketing Strategy Agency in Gurgaon | Brand & Media Planning',
-    'description' => 'Thumbpin builds research-led marketing and brand strategies — positioning, consumer insight, go-to-market planning and media strategy across traditional and digital channels.',
-    'keywords' => 'marketing strategy agency gurgaon, brand strategy consultant, go to market strategy, media planning agency, communication strategy, market research agency india, content strategy agency',
-    'image' => config('app.url') . '/img/og/strategy.png',
-    'image_alt' => 'Thumbpin marketing strategy agency — brand and media planning in Gurgaon',
+    'title' => 'AI Automation Agency in Gurgaon | WhatsApp, Instagram & Email Automation',
+    'description' => 'Thumbpin builds AI automation for WhatsApp, Instagram, Facebook, LinkedIn and email — auto-replies, lead capture, follow-up sequences and CRM workflows that run without your team chasing them.',
+    'keywords' => 'ai automation agency gurgaon, whatsapp automation india, whatsapp business api agency, instagram dm automation, facebook messenger automation, linkedin outreach automation, email marketing automation agency, ai chatbot for business, marketing automation gurgaon, lead automation system, crm automation agency, business process automation india',
     'footer_black' => 'footer-black',
 ])
 
@@ -21,10 +19,7 @@
 .hero-title-outline { color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,0.6); }
 @media (max-width: 767px) { .hero-title-outline { -webkit-text-stroke-width: 1px; } }
 
-/* Inquiry form. Unlike visitors/services.blade.php this one is always expanded,
-   so the accordion rules (.svc-inquiry-wrap / .is-open) are deliberately absent
-   -- their max-height:800px + overflow:hidden would also have clipped the form
-   on mobile, where the grid stacks to a single column and grows past 800px. */
+/* Inquiry form. Always expanded, so no accordion rules here. */
 ::placeholder { color: #444; }
 @media (max-width: 768px) {
     .inquiry-grid { grid-template-columns: 1fr !important; }
@@ -37,40 +32,40 @@
     never claim something the page does not actually say -- which is what
     triggers a manual action.
 
-    Organization @id matches /services and /about so all three describe the same
-    entity rather than three unrelated ones.
+    Organization @id matches /services, /about and the other service pages so all
+    of them describe the same entity rather than several unrelated ones.
 --}}
 @php
-$strategyFaqs = [
-    ['q' => 'What does a marketing strategy actually include?',
-     'a' => "At minimum: who you are competing against and how, which audience segments are worth pursuing, what you will say to them, and which channels will carry it. We deliver that as a written document with the reasoning attached — positioning, audience definition, messaging framework, channel plan, and the measures you will judge it by. It is meant to be used, not filed."],
+$aiFaqs = [
+    ['q' => 'What does AI automation actually mean for my business?',
+     'a' => "It means the repetitive parts of your day stop needing a person. A customer messages on WhatsApp at 11pm and gets a real answer. A lead fills your form and is followed up in ninety seconds instead of the next morning. An enquiry lands in your CRM already tagged with where it came from. Nothing here replaces your team — it removes the copy-pasting, the chasing, and the forgetting."],
 
-    ['q' => 'How is strategy different from just running campaigns?',
-     'a' => "Campaigns answer 'what are we posting this month'. Strategy answers 'why this audience, this message, this channel, at this price'. Without it, campaigns drift — each one reasonable in isolation, collectively contradictory. Strategy is what makes twelve months of activity add up to something instead of cancelling itself out."],
+    ['q' => 'Do you use the official WhatsApp Business API?',
+     'a' => "Yes. We set up automation on the official WhatsApp Business Platform, which is the only way to send at scale without risking your number. Unofficial tools that automate a personal WhatsApp app get numbers banned, usually right after you have built your entire customer list on them. We would rather do the approval paperwork than hand you something that dies in a month."],
 
-    ['q' => 'How long does a strategy engagement take?',
-     'a' => "A focused positioning or go-to-market sprint typically runs three to five weeks. A full strategy programme with primary research, segmentation, and a twelve-month channel plan usually takes six to ten weeks. Research depth is the main variable — desk research moves quickly, while primary consumer interviews take longer to schedule than to analyse."],
+    ['q' => 'Will automated replies sound like a robot?',
+     'a' => "That is the main thing we work on. We write the flows in your brand voice, keep answers short, and — crucially — build a clean handoff to a human the moment the conversation goes past what the automation knows. A bot that admits it is fetching a colleague reads far better than one that keeps confidently guessing."],
 
-    ['q' => 'Do you do research, or work from what we already know?',
-     'a' => "Both, depending on what exists. We start by auditing what you already have — sales data, past campaign performance, customer feedback. Where there are gaps that matter to the decision, we run primary research: stakeholder interviews, customer conversations, competitor and category analysis. We will not commission research you do not need."],
+    ['q' => 'Can you automate Instagram and Facebook DMs and comments?',
+     'a' => "Yes, through the official Meta APIs. Common setups: auto-replying to comments on an ad, sending a price list or brochure when someone DMs a keyword, capturing the enquiry into your CRM, and routing anything unusual to a person. Story replies and click-to-WhatsApp ads can feed the same flow so every channel lands in one inbox."],
 
-    ['q' => 'Will you execute the strategy or just hand over a document?',
-     'a' => "Either. Many clients take the strategy and run it with an in-house team, and that is a legitimate outcome. Where we do execute, the same team that wrote the strategy briefs the creative and performance work — which removes the usual gap between what was recommended and what actually ships."],
+    ['q' => 'Is LinkedIn automation safe for my account?',
+     'a' => "Only within limits, and we are strict about them. LinkedIn actively restricts accounts that behave like software — mass connection requests, identical messages, inhuman volume. We keep outreach to conservative daily caps with personalised copy, and focus more on the parts with no risk at all: routing replies, syncing leads to your CRM, and automating follow-up reminders rather than the first contact."],
 
-    ['q' => 'How do you measure whether a strategy is working?',
-     'a' => "We define the measures as part of the strategy, before anything launches, so success is not decided retroactively. Depending on the objective that might be share of search, cost per qualified lead, brand recall, or contribution margin by channel. We set a review cadence and adjust against the data rather than defending the original plan."],
+    ['q' => 'How long does it take to set up?',
+     'a' => "A single-channel setup — WhatsApp auto-replies with lead capture, say — is usually live in two to three weeks including platform approvals. A full multi-channel system with CRM sync and email sequences runs four to eight weeks. Approvals from Meta are the usual bottleneck and are outside anyone's control, so we start those on day one."],
 
-    ['q' => 'Is strategy worth it for a small business or early-stage startup?',
-     'a' => "Often more so, because the cost of pointing a small budget at the wrong audience is proportionally higher. The engagement is scoped smaller — a tighter positioning and channel exercise rather than a full research programme — but the questions it answers are the same ones."],
+    ['q' => 'Does this work with the tools we already use?',
+     'a' => "In most cases, yes. We connect to mainstream CRMs, spreadsheets, calendars, payment tools and email platforms through their APIs. If something in your stack has no integration path, we will tell you before the project starts rather than discovering it halfway through and quietly building a workaround you have to maintain."],
 
-    ['q' => 'Which locations do you take strategy clients in?',
-     'a' => "We work with clients across Gurgaon, Delhi NCR, and the rest of India. Workshops, stakeholder interviews, and presentations run effectively remotely, and we travel for on-site sessions where a project genuinely warrants it."],
+    ['q' => 'What happens after the automation goes live?',
+     'a' => "It needs watching. Platforms change their APIs, message templates get rejected, and real customers ask things your flows never anticipated. We review the conversations that failed, fix the gaps, and adjust — automation set up once and never revisited slowly gets worse at exactly the moments that matter."],
 ];
 
-$strategyUrl = url()->current();
-$orgId       = config('app.url') . '/#organization';
+$aiUrl = url()->current();
+$orgId = config('app.url') . '/#organization';
 
-$strategySchema = [
+$aiSchema = [
     '@context' => 'https://schema.org',
     '@graph'   => [
         [
@@ -81,37 +76,37 @@ $strategySchema = [
         ],
         [
             '@type'       => 'Service',
-            '@id'         => $strategyUrl . '/#service',
-            'name'        => 'Marketing & Brand Strategy',
-            'serviceType' => 'Marketing Strategy',
-            'url'         => $strategyUrl,
+            '@id'         => $aiUrl . '/#service',
+            'name'        => 'AI Automation',
+            'serviceType' => 'AI Automation',
+            'url'         => $aiUrl,
             'provider'    => ['@id' => $orgId],
             'areaServed'  => ['@type' => 'City', 'name' => 'Gurugram'],
-            'description' => 'Research-led brand and marketing strategy — positioning, consumer insight, go-to-market planning, media strategy and content strategy from Thumbpin, serving Gurgaon and Delhi NCR.',
+            'description' => 'AI automation for WhatsApp, Instagram, Facebook, LinkedIn and email — auto-replies, lead capture, follow-up sequences and CRM workflows from Thumbpin, serving Gurgaon and Delhi NCR.',
         ],
         [
             '@type'      => 'FAQPage',
-            '@id'        => $strategyUrl . '/#faq',
+            '@id'        => $aiUrl . '/#faq',
             'mainEntity' => array_map(fn ($faq) => [
                 '@type'          => 'Question',
                 'name'           => $faq['q'],
                 'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq['a']],
-            ], $strategyFaqs),
+            ], $aiFaqs),
         ],
         [
             '@type' => 'BreadcrumbList',
-            '@id'   => $strategyUrl . '/#breadcrumb',
+            '@id'   => $aiUrl . '/#breadcrumb',
             'itemListElement' => [
-                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',     'item' => config('app.url') . '/'],
-                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Services', 'item' => route('services')],
-                ['@type' => 'ListItem', 'position' => 3, 'name' => 'Strategy', 'item' => $strategyUrl],
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',          'item' => config('app.url') . '/'],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Services',      'item' => route('services')],
+                ['@type' => 'ListItem', 'position' => 3, 'name' => 'AI Automation', 'item' => $aiUrl],
             ],
         ],
     ],
 ];
 @endphp
 <script type="application/ld+json">
-{!! json_encode($strategySchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+{!! json_encode($aiSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
 @endsection
 
@@ -126,21 +121,21 @@ $strategySchema = [
     --}}
     <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-black px-5 pt-[180px] pb-[110px] max-[767px]:min-h-0 max-[767px]:pt-[150px] max-[767px]:pb-20">
         <div class="absolute inset-0 z-[1] bg-center bg-cover grayscale contrast-[1.1] opacity-40"
-             style="background-image:url('{{ asset('img/services/strategy.jpeg') }}');"></div>
+             style="background-image:url('{{ asset('img/services/ai-automation.webp') }}');"></div>
         <div class="absolute inset-0 z-[2] bg-black/60"></div>
         <div class="absolute inset-0 z-[2]" style="background:radial-gradient(ellipse at center,transparent 30%,#000 85%);"></div>
 
         <div class="relative z-[3] mx-auto max-w-[900px] text-center">
             <h1 class="m-0 mb-6 text-[clamp(44px,9vw,110px)] font-extrabold uppercase leading-[0.92] tracking-[-2px] text-white opacity-0 translate-y-[30px] animate-hero-reveal [animation-delay:300ms]">
-                Marketing <span class="hero-title-outline">Strategy</span>
+                AI <span class="hero-title-outline">Automation</span>
             </h1>
 
-            <p class="mx-auto mb-10 max-w-[600px] text-[18px] font-light leading-[1.7] text-[#999] opacity-0 animate-hero-reveal [animation-delay:600ms]">
-                Research-led thinking that decides where you play and how you win, before a single rupee goes into media.
+            <p class="mx-auto mb-10 max-w-[620px] text-[18px] font-light leading-[1.7] text-[#999] opacity-0 animate-hero-reveal [animation-delay:600ms]">
+                WhatsApp, Instagram, Facebook, LinkedIn and email — automated to answer, capture and follow up while your team sleeps.
             </p>
 
             <div class="flex flex-wrap justify-center gap-[50px] opacity-0 animate-hero-reveal [animation-delay:900ms] max-[767px]:gap-[30px]">
-                @foreach([['35+','Strategy Projects'],['12+','Categories Mapped'],['6+','Years Experience']] as [$num, $label])
+                @foreach([['5','Channels Automated'],['24/7','Always Responding'],['6+','Years Experience']] as [$num, $label])
                 <div class="text-center">
                     <div class="text-[42px] font-black leading-none text-film-red max-[767px]:text-[32px]">{{ $num }}</div>
                     <div class="mt-[6px] text-[11px] uppercase tracking-[2px] text-[#666]">{{ $label }}</div>
@@ -154,60 +149,55 @@ $strategySchema = [
     <section class="bg-white py-[60px]">
         <div class="mx-auto max-w-[1140px] px-5">
             <h2 class="m-0 mb-[30px] text-center text-[42px] font-bold text-black max-[575px]:text-[32px]">
-                Strategy Before Execution
+                Stop Losing Leads to Slow Replies
             </h2>
             <p class="mx-auto m-0 max-w-[900px] text-center text-[18px] leading-[1.8] text-[#666]">
-                Most marketing budgets are not wasted on bad execution. They are wasted on good execution
-                pointed at the wrong audience, saying the wrong thing, in the wrong place. We deploy a
-                research-based strategy with room for innovative developments, across all forms of
-                traditional and non-traditional media — so every rupee that follows has a reason behind it.
+                Most businesses do not lose enquiries because their marketing failed. They lose them because
+                someone messaged on WhatsApp at 9pm, or dropped a comment under an ad, and nobody got to it
+                for eleven hours. We build automation across the channels your customers already use — so
+                every message gets answered, every lead lands in one place, and follow-up happens whether
+                or not anyone remembers to do it.
             </p>
         </div>
     </section>
 
     {{-- ====================== SERVICES ====================== --}}
     {{--
-        Text-only by design. Stock imagery never matches a client's brand palette,
-        so the space goes to crawlable copy instead: each entry carries two
-        paragraphs, which is what actually earns the page its long-tail queries.
+        Same editorial row layout as the other service pages: number + title on a
+        sticky left rail, copy on the right.
     --}}
-    <section class="bg-white pb-20" id="strategy-services">
+    <section class="bg-white pb-20" id="ai-services">
         <div class="mx-auto max-w-[1140px] px-5">
             @php
             $services = [
                 [
-                    'title' => 'Brand & Communication Strategy',
-                    'lead'  => "Before design, before media, before a single campaign — the decisions about what your brand stands for, who it is genuinely for, and how it should sound when it speaks.",
-                    'body'  => "We define positioning, purpose, personality, and messaging architecture, then write them down in a form your whole team can act on. This becomes the reference every later decision gets measured against, which is what stops your campaigns from quietly contradicting each other across channels and quarters.",
+                    'title' => 'WhatsApp Automation',
+                    'lead'  => "Built on the official WhatsApp Business Platform — auto-replies, lead capture, order updates and follow-up sequences on the channel your customers actually check.",
+                    'body'  => "Enquiries get an instant, useful reply instead of a read receipt six hours later. Common questions about pricing, availability and location are answered automatically, appointments and quotes are confirmed without a phone call, and anything the automation cannot handle is handed to a human with the conversation history attached. We use the official API rather than an unofficial workaround, because those get numbers banned once your entire customer list is sitting on them.",
                 ],
                 [
-                    'title' => 'Market Research & Consumer Insight',
-                    'lead'  => "Opinion is cheap and abundant. We replace it with evidence — what your market actually believes, what your competitors actually own, and where the genuine opening is.",
-                    'body'  => "Depending on the decision at hand we run stakeholder interviews, customer conversations, category and competitor analysis, search demand study, and audits of your own sales and campaign data. The output is not a deck of charts; it is a short list of things that are true, and what each one means for where you spend next.",
+                    'title' => 'Instagram & Facebook Automation',
+                    'lead'  => "DM and comment automation through the Meta APIs — turning ad engagement into captured leads instead of unread notifications.",
+                    'body'  => "Someone comments on your ad and gets a reply with the details. Someone DMs a keyword and receives your catalogue, price list or booking link straight away. Story replies and click-to-WhatsApp ads feed into the same flow, so a lead from Instagram and a lead from WhatsApp end up in one inbox rather than two apps nobody checks consistently. Every conversation is logged and attributed to the campaign that produced it.",
                 ],
                 [
-                    'title' => 'Go-To-Market Strategy',
-                    'lead'  => "A launch is the most expensive moment to be wrong. Go-to-market strategy sequences the audience, message, pricing, channel, and timing so a launch compounds instead of fizzling.",
-                    'body'  => "We define the beachhead segment, the proposition that will move it, the proof required to make that proposition credible, and the channel sequence to reach it efficiently. We also define what we expect to happen — so if reality disagrees in week three, you find out in week three rather than after the budget is spent.",
+                    'title' => 'LinkedIn Automation',
+                    'lead'  => "Outreach and follow-up for B2B, kept inside limits that will not get the account restricted.",
+                    'body'  => "Connection requests and messages go out at conservative, human-scale volumes with copy written per segment rather than one template blasted at a list. The bigger win is behind the scenes: replies routed to the right person, leads synced into your CRM automatically, and follow-up reminders that fire on schedule. We are deliberately cautious here — LinkedIn restricts accounts that behave like software, and a banned profile costs more than the outreach was worth.",
                 ],
                 [
-                    'title' => 'Media Planning & Channel Strategy',
-                    'lead'  => "Every channel will happily take your money. Channel strategy decides which ones deserve it, in what proportion, and what each is actually being asked to achieve.",
-                    'body'  => "We build the channel mix against your objective and margin rather than against fashion — balancing reach and conversion, paid and organic, digital and traditional. Budgets are allocated with a stated rationale and a review cadence, so spend shifts on evidence rather than on whoever argues hardest in the meeting.",
+                    'title' => 'Email Automation',
+                    'lead'  => "Sequences that run themselves — welcome flows, nurture series, abandoned enquiry follow-ups and re-engagement.",
+                    'body'  => "Emails triggered by what someone actually did rather than by a calendar: downloaded a brochure, requested a quote, went quiet after three conversations. We handle segmentation, deliverability setup (SPF, DKIM, DMARC — the unglamorous part that decides whether you land in inbox or spam), and reporting that shows which sequence produced revenue instead of which one had a nice open rate.",
                 ],
                 [
-                    'title' => 'Content Strategy',
-                    'lead'  => "Publishing more is not a strategy. Content strategy decides what is worth making, for whom, on which platform, and how it earns its keep.",
-                    'body'  => "We map content to the questions your buyers actually ask at each stage, identify the search and social demand worth competing for, and set the formats, cadence, and ownership to sustain it. The point is a system your team can keep running after we leave, not a burst of activity that stops when the retainer does.",
+                    'title' => 'Workflow & CRM Automation',
+                    'lead'  => "The connective layer — moving leads, data and tasks between the tools you already use so nothing needs manual re-entry.",
+                    'body'  => "Form submissions, ad leads and chat enquiries flow into your CRM already tagged with source and campaign. Deals move stages automatically, owners get notified, reports build themselves, and reminders fire when a lead has gone cold. This is the least visible part of the work and usually the highest return, because it removes the copy-pasting between systems where information quietly gets lost.",
                 ],
             ];
             @endphp
 
-            {{--
-                Full-width rows rather than a card grid: five items in two columns
-                leaves an orphan. Title sticks to the left rail on desktop while
-                the copy scrolls past it.
-            --}}
             <div class="border-0 border-t border-solid border-[#e8e8e8]">
                 @foreach($services as $i => $service)
                 <article class="group grid grid-cols-1 gap-x-16 gap-y-6 border-0 border-b border-solid border-[#e8e8e8] py-14 lg:grid-cols-12 max-[767px]:py-10">
@@ -229,11 +219,57 @@ $strategySchema = [
                         <p class="m-0 mb-5 text-[18px] leading-[1.7] text-[#333] max-[575px]:text-[16px]">
                             {{ $service['lead'] }}
                         </p>
-                        <p class="m-0 mb-8 text-[15px] leading-[1.85] text-[#777]">
+                        <p class="m-0 text-[15px] leading-[1.85] text-[#777]">
                             {{ $service['body'] }}
                         </p>
                     </div>
                 </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    {{-- ====================== CHANNELS ====================== --}}
+    {{--
+        Structural twin of the Tech Stack block on /services/application-development
+        (same grid, same card treatment) -- what fills it is channels rather than
+        libraries, since that is what a buyer is shopping for here.
+    --}}
+    <section class="bg-[#f9f9f9] py-20" id="channels">
+        <div class="mx-auto max-w-[1140px] px-5">
+            <div class="mb-12 max-w-[760px]">
+                <p class="m-0 mb-3 text-[11px] font-bold uppercase tracking-[3px] text-film-red">What We Automate</p>
+                <h2 class="m-0 mb-5 text-[42px] font-bold leading-[1.15] text-black max-[575px]:text-[30px]">
+                    Channels We Work Across
+                </h2>
+                <p class="m-0 text-[17px] leading-[1.8] text-[#666]">
+                    Every one of these runs on the platform's official API. It is slower to set up than the
+                    unofficial tools — and it is the difference between a system you can build a business on
+                    and one that gets your account banned in month three.
+                </p>
+            </div>
+
+            @php
+            $channels = [
+                ['Messaging', 'Where your customers already are',      ['WhatsApp', 'Instagram DM', 'Facebook Messenger']],
+                ['Outreach',  'B2B conversations, at safe volumes',    ['LinkedIn', 'Email']],
+                ['Behind It', 'The layer that stops leads going cold', ['CRM Sync', 'Workflows']],
+            ];
+            @endphp
+
+            <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+                @foreach($channels as [$group, $note, $items])
+                <div class="border-0 border-t-2 border-solid border-film-red bg-white p-7 max-[575px]:p-6">
+                    <h3 class="m-0 mb-2 text-[20px] font-extrabold uppercase tracking-[0.5px] text-black">{{ $group }}</h3>
+                    <p class="m-0 mb-6 text-[14px] leading-[1.6] text-[#777]">{{ $note }}</p>
+                    <ul class="m-0 flex list-none flex-wrap gap-2 p-0">
+                        @foreach($items as $item)
+                        <li class="rounded-full border border-solid border-[#e0e0e0] bg-[#fafafa] px-4 py-[7px] text-[14px] font-semibold leading-none text-[#333]">
+                            {{ $item }}
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
                 @endforeach
             </div>
         </div>
@@ -251,7 +287,7 @@ $strategySchema = [
 
         {{-- Section header. A plain div, not a button: the form below is always
              expanded, so a control that toggles nothing would mislead both users
-             and screen readers. The chevron and "Inquire Now" label went with it. --}}
+             and screen readers. --}}
         <div class="w-full bg-black border-0 border-t border-b border-[#1e1e1e] flex items-center justify-between">
             <div class="max-w-[1300px] mx-auto px-5 py-7 flex items-center justify-between w-full gap-6 flex-wrap">
                 <div class="text-left">
@@ -321,7 +357,7 @@ $strategySchema = [
         <div class="mx-auto max-w-[1140px] px-5">
             <div class="mb-[60px] text-center">
                 <h2 class="m-0 text-[56px] font-extrabold text-black max-[575px]:text-[32px]">
-                    Brands We've <span class="text-film-red">Built For</span>
+                    Brands We've <span class="text-film-red">Worked With</span>
                 </h2>
             </div>
 
@@ -331,6 +367,7 @@ $strategySchema = [
                     <img src="{{ asset('assets/img/clients/' . $i . '.png') }}"
                          alt="Client Logo"
                          loading="lazy"
+                         decoding="async"
                          class="h-auto max-w-full opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
                 </div>
                 @endforeach
@@ -348,14 +385,14 @@ $strategySchema = [
     {{-- ====================== QUOTE ====================== --}}
     <section class="relative bg-black py-[100px]">
         <div class="mx-auto max-w-[1140px] px-5">
-            {{-- The oversized decorative quote mark is a ::before in CSS terms; here it
-                 is a real element so it stays pure Tailwind. aria-hidden as it is decor. --}}
+            {{-- The oversized quote mark is a ::before in CSS terms; here it is a
+                 real element so it stays pure Tailwind. aria-hidden as it is decor. --}}
             <div class="relative mx-auto max-w-[900px] text-center">
                 <span aria-hidden="true"
                       class="pointer-events-none absolute left-1/2 top-[-80px] z-0 -translate-x-1/2 font-serif text-[200px] leading-none text-film-red/50 max-[575px]:top-[-60px] max-[575px]:text-[150px]">"</span>
                 <p class="relative z-[1] m-0 text-[32px] font-medium leading-[1.6] text-white max-[575px]:text-[22px]">
-                    Strategy is not about doing more.<br>
-                    It is about deciding what to leave out.
+                    Automation applied to an efficient operation<br>
+                    will magnify the efficiency.
                 </p>
             </div>
         </div>
@@ -365,19 +402,19 @@ $strategySchema = [
     {{--
         <details>/<summary> rather than a JS accordion: the answers stay in the DOM
         and remain crawlable whether or not the panel is open, and it works with
-        no script at all. $strategyFaqs is defined in @section('head') so the same
-        array feeds the FAQPage schema -- copy and markup cannot drift apart.
+        no script at all. $aiFaqs is defined in @section('head') so the same array
+        feeds the FAQPage schema -- copy and markup cannot drift apart.
     --}}
-    <section class="bg-white py-20" id="strategy-faq">
+    <section class="bg-white py-20" id="ai-faq">
         <div class="mx-auto max-w-[900px] px-5">
             <div class="mb-12 text-center">
                 <p class="m-0 mb-3 text-[11px] font-bold uppercase tracking-[3px] text-film-red">Common Questions</p>
                 <h2 class="m-0 text-[42px] font-bold leading-[1.15] text-black max-[575px]:text-[30px]">
-                    Strategy FAQs
+                    AI Automation FAQs
                 </h2>
             </div>
 
-            @foreach($strategyFaqs as $faq)
+            @foreach($aiFaqs as $faq)
             <details class="group border-0 border-b border-solid border-[#e8e8e8]">
                 <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 [&::-webkit-details-marker]:hidden">
                     <h3 class="m-0 text-[17px] font-bold leading-snug text-black max-[575px]:text-[15px]">{{ $faq['q'] }}</h3>
@@ -394,13 +431,13 @@ $strategySchema = [
     <section class="bg-white pt-[100px]">
         <div class="mx-auto max-w-[1140px] px-5">
             <div class="mb-10 text-center">
-                <h4 class="m-0 mb-[10px] text-[38px] font-normal text-[#666] max-[575px]:text-[26px]">Research. Decide. Execute.</h4>
-                <h2 class="m-0 text-[42px] font-bold text-black max-[575px]:text-[32px]">Strategy That Survives Contact With the Market</h2>
+                <h4 class="m-0 mb-[10px] text-[38px] font-normal text-[#666] max-[575px]:text-[26px]">Answer. Capture. Follow Up.</h4>
+                <h2 class="m-0 text-[42px] font-bold text-black max-[575px]:text-[32px]">Systems That Work While You Don't</h2>
             </div>
             <p class="mx-auto m-0 max-w-[900px] text-center text-[18px] leading-[1.8] text-[#666]">
-                A strategy that only works in the deck is not a strategy. We pressure-test every
-                recommendation against budget, timeline, and the team who has to run it — then stay
-                close enough to adjust when the market says something we did not expect.
+                The point is not to sound clever about AI. It is that a customer who messages you at midnight
+                gets an answer, the lead reaches the right person with context attached, and the follow-up
+                happens on the fourth day whether or not anyone remembered.
             </p>
         </div>
     </section>
@@ -413,6 +450,7 @@ $strategySchema = [
                     <img src="{{ asset('assets/img/home/home-04.png') }}"
                          alt="Brand Story"
                          loading="lazy"
+                         decoding="async"
                          class="h-auto max-w-full">
                 </div>
 

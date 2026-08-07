@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Website design and development for Zero Waste. See the site Thumbpin designed and built for the recycling company.','title' => 'Zero Waste | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Website design and development for Zero Waste. See the site Thumbpin designed and built for the recycling company.','title' => 'Zero Waste', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 

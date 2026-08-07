@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Brand identity design for Mr Furniture. The logo, palette and visual system Thumbpin built for the furniture brand.','title' => 'Mr Furniture | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Brand identity design for Mr Furniture. The logo, palette and visual system Thumbpin built for the furniture brand.','title' => 'Mr Furniture', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 

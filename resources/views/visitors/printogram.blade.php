@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Brand identity design for Printogram. A look at the logo and brand system Thumbpin developed.','title' => 'Printogram | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Brand identity design for Printogram. A look at the logo and brand system Thumbpin developed.','title' => 'Printogram', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 

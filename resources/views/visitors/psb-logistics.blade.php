@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Print and packaging design for PSB Logistics. How Thumbpin translated a logistics brand into clear, practical printed collateral.','title' => 'PSB Logistics | Thumbpin', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
+    'description' => 'Print and packaging design for PSB Logistics. How Thumbpin translated a logistics brand into clear, practical printed collateral.','title' => 'PSB Logistics', 'header_black' => 'bg-black', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>

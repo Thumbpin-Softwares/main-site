@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Sticker and packaging design for Grafis Nusantara. A closer look at the print work Thumbpin produced for the brand.','title' => 'Grafis Nusantara Sticker | Thumbpin', 'footer_black' => 'footer-black'])
+    'description' => 'Sticker and packaging design for Grafis Nusantara. A closer look at the print work Thumbpin produced for the brand.','title' => 'Grafis Nusantara Sticker', 'footer_black' => 'footer-black'])
 
 @section('head')
 <style>

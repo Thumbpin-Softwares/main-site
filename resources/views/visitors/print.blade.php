@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'description' => 'Print and packaging design work by Thumbpin. Browse the collateral, packaging and printed campaigns we have produced for brands.','title' => 'Print | Thumbpin', 'footer_black' => 'footer-black'])
+    'description' => 'Print and packaging design work by Thumbpin. Browse the collateral, packaging and printed campaigns we have produced for brands.','title' => 'Print', 'footer_black' => 'footer-black'])
 
 @section('head')
 

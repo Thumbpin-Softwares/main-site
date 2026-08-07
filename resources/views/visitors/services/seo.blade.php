@@ -1,5 +1,5 @@
 @extends('layout.visitor', [
-    'title' => 'Best SEO Service Agency in Gurgaon | Thumbpin',
+    'title' => 'Best SEO Service Agency in Gurgaon',
     'description' => 'Thumbpin is a digital advertising agency in Gurgaon that can help your business expand and stay connected effectively with your customer throughout their digital journey.',
     'footer_black' => 'footer-black',
 ])
