@@ -21,12 +21,11 @@
 .hero-title-outline { color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,0.6); }
 @media (max-width: 767px) { .hero-title-outline { -webkit-text-stroke-width: 1px; } }
 
-/* Inquiry form -- copied verbatim from visitors/services.blade.php so the two
-   behave identically. The .is-open max-height drives the accordion; without
-   these rules the toggle button does nothing. */
+/* Inquiry form. Unlike visitors/services.blade.php this one is always expanded,
+   so the accordion rules (.svc-inquiry-wrap / .is-open) are deliberately absent
+   -- their max-height:800px + overflow:hidden would also have clipped the form
+   on mobile, where the grid stacks to a single column and grows past 800px. */
 ::placeholder { color: #444; }
-.svc-inquiry-wrap { overflow: hidden; max-height: 0; opacity: 0; transition: max-height 0.45s ease, opacity 0.35s ease; }
-.svc-inquiry-wrap.is-open { max-height: 800px; opacity: 1; }
 @media (max-width: 768px) {
     .inquiry-grid { grid-template-columns: 1fr !important; }
 }
@@ -141,7 +140,7 @@ $strategySchema = [
             </p>
 
             <div class="flex flex-wrap justify-center gap-[50px] opacity-0 animate-hero-reveal [animation-delay:900ms] max-[767px]:gap-[30px]">
-                @foreach([['50+','Brands Built'],['20+','Industries'],['7+','Years Experience']] as [$num, $label])
+                @foreach([['35+','Strategy Projects'],['12+','Categories Mapped'],['6+','Years Experience']] as [$num, $label])
                 <div class="text-center">
                     <div class="text-[42px] font-black leading-none text-film-red max-[767px]:text-[32px]">{{ $num }}</div>
                     <div class="mt-[6px] text-[11px] uppercase tracking-[2px] text-[#666]">{{ $label }}</div>
@@ -250,40 +249,20 @@ $strategySchema = [
             <p class="text-[16px] text-[#888] max-w-[480px] mx-auto leading-[1.65]">Tell us about your project we'll get back within 24 hours.</p>
         </div>
 
-        {{-- Toggle strip --}}
-        <button id="inquire-toggle"
-            aria-expanded="false"
-            onclick="(function(){
-                var wrap = document.getElementById('svc-inquiry-form-wrap');
-                var btn  = document.getElementById('inquire-toggle');
-                var open = btn.getAttribute('aria-expanded') === 'true';
-                if(open){
-                    wrap.classList.remove('is-open');
-                    btn.setAttribute('aria-expanded','false');
-                    btn.querySelector('.btn-label').textContent = 'Inquire Now';
-                } else {
-                    wrap.classList.add('is-open');
-                    btn.setAttribute('aria-expanded','true');
-                    btn.querySelector('.btn-label').textContent = 'Close Form';
-                }
-            })()"
-            class="w-full bg-black border-0 border-t border-b border-[#1e1e1e] p-0 cursor-pointer flex items-center justify-between">
+        {{-- Section header. A plain div, not a button: the form below is always
+             expanded, so a control that toggles nothing would mislead both users
+             and screen readers. The chevron and "Inquire Now" label went with it. --}}
+        <div class="w-full bg-black border-0 border-t border-b border-[#1e1e1e] flex items-center justify-between">
             <div class="max-w-[1300px] mx-auto px-5 py-7 flex items-center justify-between w-full gap-6 flex-wrap">
                 <div class="text-left">
                     <p class="text-[11px] tracking-[3px] text-tp-red uppercase font-bold mb-[6px]">Start Here</p>
                     <span class="text-[clamp(18px,2.5vw,26px)] font-extrabold text-white uppercase tracking-[-0.5px] block">Let's Get You Onboarded</span>
                 </div>
-                <div class="flex items-center gap-3 flex-shrink-0">
-                    <span class="btn-label text-[13px] font-bold uppercase tracking-[1.5px] text-white">Inquire Now</span>
-                    <span class="w-10 h-10 bg-tp-red flex items-center justify-center flex-shrink-0">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                    </span>
-                </div>
             </div>
-        </button>
+        </div>
 
-        {{-- Collapsible form body --}}
-        <div id="svc-inquiry-form-wrap" class="svc-inquiry-wrap bg-black border-b border-[#1e1e1e]">
+        {{-- Form body -- always visible --}}
+        <div id="svc-inquiry-form-wrap" class="bg-black border-b border-[#1e1e1e]">
             <div class="max-w-[1300px] mx-auto px-5">
                 <form action="{{ route('inquiry-form') }}" method="POST" class="py-12">
                     @csrf

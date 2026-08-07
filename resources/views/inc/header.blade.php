@@ -23,7 +23,6 @@
                             <div class="nav-dropdown">
                                 <div class="nav-dropdown-inner">
                                     <a href="{{ route('digital-marketing') }}" class="{{ request()->is('services/digital-marketing') ? 'active' : '' }}">Digital Marketing</a>
-                                    <a href="{{ route('search-engine-optimization-seo-services') }}" class="{{ request()->is('services/seo') ? 'active' : '' }}">SEO</a>
                                     <a href="{{ route('performance-marketing-agency') }}" class="{{ request()->is('services/performance-marketing') ? 'active' : '' }}">Performance Marketing</a>
                                     <a href="{{ route('social-media-marketing-agency') }}" class="{{ request()->is('services/social-media-marketing') ? 'active' : '' }}">Social Media Marketing</a>
                                     <a href="{{ route('web-design-agency') }}" class="{{ request()->is('services/web-design') ? 'active' : '' }}">Web Design</a>
@@ -94,7 +93,6 @@
                         <ul class="mobile-submenu">
                             <li><a href="{{ route('services') }}">All Services</a></li>
                             <li><a href="{{ route('digital-marketing') }}">Digital Marketing</a></li>
-                            <li><a href="{{ route('search-engine-optimization-seo-services') }}">SEO</a></li>
                             <li><a href="{{ route('performance-marketing-agency') }}">Performance Marketing</a></li>
                             <li><a href="{{ route('social-media-marketing-agency') }}">Social Media Marketing</a></li>
                             <li><a href="{{ route('web-design-agency') }}">Web Design</a></li>

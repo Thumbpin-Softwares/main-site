@@ -1,764 +1,441 @@
 @extends('layout.visitor', [
     'title' => 'Best Digital Marketing Agency in Gurgaon - IND| Thumbpin',
     'description' => 'Thumbpin is a digital advertising agency in Gurgaon that can help your business expand and stay connected effectively with your customer throughout their digital journey.',
+    'keywords' => 'digital marketing agency gurgaon, digital marketing company gurugram, online marketing agency delhi ncr, social media marketing agency, performance marketing agency, seo services gurgaon, ppc agency india, google ads agency, meta ads agency, digital advertising agency, full service digital marketing, lead generation agency, how much does digital marketing cost, how long does seo take to work, which marketing channels should i use, difference between seo and paid ads',
     'footer_black' => 'footer-black',
 ])
 
 @section('head')
-<link rel="stylesheet" href="{{ config('app.url') }}/assets/css/new-home-page.css">
-    <style>
-        /* ====================== HERO SECTION ====================== */
-        .dm-hero {
-            background: #000;
-            padding: 150px 0 100px;
-            position: relative;
-            overflow: hidden;
-        }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</noscript>
+<link rel="stylesheet" href="@asset('css/app.css')">
 
-        .dm-hero .content-box .title {
-            font-family: Arial, sans-serif;
-            font-size: 72px;
-            line-height: 1.1;
-            font-weight: 800;
-            color: #fff;
-            letter-spacing: -2px;
-            margin-bottom: 30px;
-            text-transform: none;
-        }
+{{-- The only rule Tailwind has no utility for: -webkit-text-stroke. --}}
+<style>
+.hero-title-outline { color: transparent; -webkit-text-stroke: 2px rgba(255,255,255,0.6); }
+@media (max-width: 767px) { .hero-title-outline { -webkit-text-stroke-width: 1px; } }
 
-        .dm-hero .content-box .des {
-            font-family: sans-serif;
-            font-weight: 300;
-            font-size: 20px;
-            color: #ccc;
-            letter-spacing: 0.3px;
-            line-height: 1.7;
-        }
+/* Inquiry form. Always expanded, so no accordion rules here. */
+::placeholder { color: #444; }
+@media (max-width: 768px) {
+    .inquiry-grid { grid-template-columns: 1fr !important; }
+}
+</style>
 
-        .dm-hero .sec-img img {
-            max-width: 100%;
-            display: block;
-        }
+{{--
+    One source of truth for the FAQs: this array renders the visible <details>
+    list further down AND the FAQPage schema below, so the structured data can
+    never claim something the page does not actually say -- which is what
+    triggers a manual action.
 
-        /* ====================== STATS SECTION ====================== */
-        .dm-stats {
-            padding: 80px 0;
-            background: #fff;
-        }
+    Organization @id matches /services, /about and the other service pages so all
+    of them describe the same entity rather than several unrelated ones.
+--}}
+@php
+$dmFaqs = [
+    ['q' => 'How much does digital marketing cost in Gurgaon?',
+     'a' => "It depends on which channels you need and how competitive your category is. A focused engagement on one or two channels sits well below a full-funnel programme running SEO, paid search, paid social and content together. Media spend is separate from our fee, and we are explicit about which is which so you always know what buys reach and what buys work."],
 
-        .dm-stats .stat-card {
-            text-align: center;
-            padding: 40px 20px;
-            border: 1px solid #eee;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-            background: #fff;
-        }
+    ['q' => 'How long before digital marketing shows results?',
+     'a' => "Paid channels can produce measurable traffic and leads within days of launch, though the first few weeks are largely learning and optimisation. SEO is slower by nature — typically three to six months before meaningful movement, longer in competitive categories. Social and content build gradually but compound. We set the expected timeline per channel before anything starts."],
 
-        .dm-stats .stat-card:hover {
-            border-color: var(--tp-red);
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
-        }
+    ['q' => 'Which channels should my business actually be on?',
+     'a' => "Fewer than most agencies will tell you. The right mix depends on where your buyers already spend attention, your margin per sale, and how considered the purchase is. A high-ticket B2B service and an impulse-buy consumer product need almost opposite plans. We decide this from research rather than defaulting to whichever platform is fashionable."],
 
-        .dm-stats .stat-card h5 {
-            text-transform: uppercase;
-            font-size: 14px;
-            font-weight: 600;
-            color: #666;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-        }
+    ['q' => 'Do you handle the creative as well as the media buying?',
+     'a' => "Yes, and that is the point of using us rather than a media-only agency. The same team that plans the channel strategy briefs the design and video work, so what runs is what was intended. Creative quality is usually a bigger lever on performance than bid tuning, and separating the two is where most campaigns lose their edge."],
 
-        .dm-stats .stat-card span {
-            font-weight: 700;
-            font-size: 48px;
-            line-height: 1.0;
-            color: var(--tp-red);
-            display: block;
-        }
+    ['q' => 'How do you report on performance?',
+     'a' => "Against the measures agreed before launch, not whichever metric happened to look good that month. Depending on the objective that could be cost per qualified lead, return on ad spend, organic visibility, or contribution by channel. You get a regular review with the numbers, what we changed, and what we are changing next."],
 
-        /* ====================== INTRO SECTION ====================== */
-        .dm-intro {
-            padding: 60px 0;
-            background: #fff;
-        }
+    ['q' => 'Do you work with small businesses and startups?',
+     'a' => "Yes. Smaller budgets need tighter targeting, not lower standards — the cost of pointing a modest budget at the wrong audience is proportionally higher. Scope is matched to your stage rather than pushed into a fixed retainer that does not fit."],
 
-        .dm-intro h2 {
-            font-weight: 700;
-            font-size: 42px;
-            text-align: center;
-            margin-bottom: 30px;
-            color: #000;
-        }
+    ['q' => 'Can you take over an account another agency set up?',
+     'a' => "Regularly. We start with an audit of the existing account structure, tracking, and historical performance before changing anything, because inherited accounts often contain useful learning alongside the problems. You keep ownership of your ad accounts and analytics throughout."],
 
-        .dm-intro p {
-            text-align: center;
-            color: #666;
-            font-size: 18px;
-            line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto;
-        }
+    ['q' => 'Which locations do you take digital marketing clients in?',
+     'a' => "We work with clients across Gurgaon, Delhi NCR, and the rest of India. Reviews, reporting, and strategy sessions run effectively remotely, and we travel for on-site work where a project genuinely warrants it."],
+];
 
-        /* ====================== SERVICE CARDS SECTION ====================== */
-        .dm-services {
-            padding: 80px 0;
-            background: #fff;
-        }
+$dmUrl = url()->current();
+$orgId = config('app.url') . '/#organization';
 
-        .dm-service-card {
-            margin-bottom: 80px;
-            position: relative;
-        }
-
-        .dm-service-card .img {
-            border-radius: 8px;
-            overflow: hidden;
-        }
-
-        .dm-service-card .img img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.4s ease;
-        }
-
-        .dm-service-card:hover .img img {
-            transform: scale(1.05);
-        }
-
-        .dm-service-card .content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 0 40px;
-        }
-
-        .dm-service-card .title {
-            font-size: 36px;
-            font-weight: 800;
-            color: #000;
-            margin-bottom: 20px;
-            text-transform: capitalize;
-        }
-
-        .dm-service-card .des {
-            font-size: 17px;
-            color: #666;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        .dm-service-card .cta-btn a {
-            display: inline-block;
-            color: #000;
-            font-size: 16px;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 12px 30px;
-            border: 2px solid #000;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-        }
-
-        .dm-service-card .cta-btn a:hover {
-            background: var(--tp-red);
-            border-color: var(--tp-red);
-            color: #000;
-        }
-
-        /* ====================== CLIENTS SECTION ====================== */
-        .dm-clients {
-            padding: 80px 0;
-            background: #fff;
-        }
-
-        .dm-clients .section-title {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .dm-clients .section-title h2 {
-            font-size: 56px;
-            font-weight: 800;
-            color: #000;
-            margin-bottom: 10px;
-        }
-
-        .dm-clients .section-title .highlight {
-            color: var(--tp-red);
-        }
-
-        .dm-clients .brand-images .img {
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 120px;
-            transition: transform 0.3s ease;
-        }
-
-        .dm-clients .brand-images .img:hover {
-            transform: scale(1.1);
-        }
-
-        .dm-clients .brand-images .img img {
-            max-width: 100%;
-            height: auto;
-            filter: grayscale(100%);
-            opacity: 0.6;
-            transition: all 0.3s ease;
-        }
-
-        .dm-clients .brand-images .img:hover img {
-            filter: grayscale(0%);
-            opacity: 1;
-        }
-
-        /* ====================== QUOTE SECTION ====================== */
-        .dm-quote {
-            padding: 100px 0;
-            background: #f9f9f9;
-            position: relative;
-        }
-
-        .dm-quote .quote-container {
-            position: relative;
-            font-family: Arial, sans-serif;
-            font-size: 32px;
-            font-weight: 500;
-            line-height: 1.6;
-            color: #000;
-            text-align: center;
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .dm-quote .quote-container p {
-            margin: 0 0 10px 0;
-        }
-
-        .dm-quote .quote-container::before {
-            content: '"';
-            font-size: 200px;
-            color: rgba(235, 28, 36, 0.1);
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            top: -80px;
-            z-index: 0;
-            font-family: Georgia, serif;
-        }
-
-        /* ====================== CTA SECTION ====================== */
-        .dm-cta {
-            padding: 100px 0;
-            background: #fff;
-        }
-
-        .dm-cta .section-title {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .dm-cta .section-title h4 {
-            font-weight: 400;
-            font-size: 38px;
-            color: #666;
-            margin-bottom: 10px;
-        }
-
-        .dm-cta .section-title h2 {
-            font-weight: 700;
-            font-size: 42px;
-            color: #000;
-        }
-
-        .dm-cta .description {
-            text-align: center;
-            color: #666;
-            font-size: 18px;
-            line-height: 1.8;
-            max-width: 900px;
-            margin: 0 auto 50px;
-        }
-
-        /* ====================== BOTTOM SECTION ====================== */
-        .dm-bottom {
-            padding: 100px 0;
-            background: #000;
-        }
-
-        .dm-bottom .sec-title p {
-            font-size: 56px;
-            font-weight: 300;
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .dm-bottom .sec-title b {
-            font-size: 66px;
-            font-weight: 800;
-            color: #fff;
-        }
-
-        .dm-bottom .sec-title b .shape-img {
-            width: 78px;
-            margin: -80px -16px -32px -10px;
-        }
-
-        .dm-bottom .des {
-            font-size: 18px;
-            color: #ccc;
-            line-height: 1.8;
-            margin-bottom: 20px;
-        }
-
-        .dm-bottom .btn-1 {
-            background: var(--tp-red);
-            color: #fff;
-            padding: 15px 40px;
-            border-radius: 4px;
-            text-decoration: none;
-            display: inline-block;
-            font-weight: 600;
-            transition: all 0.3s ease;
-        }
-
-        .dm-bottom .btn-1:hover {
-            background: #c91820;
-            transform: translateY(-2px);
-        }
-
-        /* ====================== RESPONSIVE ====================== */
-        @media screen and (max-width: 991px) {
-            .dm-hero .content-box .title {
-                font-size: 52px;
-            }
-
-            .dm-service-card .content {
-                padding: 40px 0;
-            }
-
-            .dm-service-card {
-                margin-bottom: 60px;
-            }
-        }
-
-        @media screen and (max-width: 575px) {
-            .dm-hero .content-box .title {
-                font-size: 42px;
-            }
-
-            .dm-hero .content-box .des {
-                font-size: 16px;
-            }
-
-            .dm-stats .stat-card span {
-                font-size: 36px;
-            }
-
-            .dm-intro h2,
-            .dm-clients .section-title h2,
-            .dm-cta .section-title h2 {
-                font-size: 32px;
-            }
-
-            .dm-service-card .title {
-                font-size: 28px;
-            }
-
-            .dm-quote .quote-container {
-                font-size: 22px;
-            }
-
-            .dm-quote .quote-container::before {
-                font-size: 150px;
-                top: -60px;
-            }
-
-            .dm-bottom .sec-title p {
-                font-size: 38px;
-            }
-
-            .dm-bottom .sec-title b {
-                font-size: 42px;
-                display: block; /* Ensure it breaks properly */
-            }
-
-            .dm-bottom .sec-title b .shape-img {
-                width: 40px; /* Slightly smaller */
-                margin: -10px 0 0 0; /* Reset negative margins */
-                vertical-align: middle;
-                display: inline-block;
-            }
-            
-            .dm-bottom .sec-img-1 {
-                margin-bottom: 30px;
-            }
-            
-            .dm-bottom .sec-img-1 img {
-                max-width: 100%;
-                height: auto;
-            }
-        }
-    </style>
+$dmSchema = [
+    '@context' => 'https://schema.org',
+    '@graph'   => [
+        [
+            '@type' => 'Organization',
+            '@id'   => $orgId,
+            'name'  => 'Thumbpin',
+            'url'   => config('app.url') . '/',
+        ],
+        [
+            '@type'       => 'Service',
+            '@id'         => $dmUrl . '/#service',
+            'name'        => 'Digital Marketing',
+            'serviceType' => 'Digital Marketing Agency',
+            'url'         => $dmUrl,
+            'provider'    => ['@id' => $orgId],
+            'areaServed'  => ['@type' => 'City', 'name' => 'Gurugram'],
+            'description' => 'Social media marketing, performance marketing and SEO from Thumbpin, serving Gurgaon and Delhi NCR.',
+        ],
+        [
+            '@type'      => 'FAQPage',
+            '@id'        => $dmUrl . '/#faq',
+            'mainEntity' => array_map(fn ($faq) => [
+                '@type'          => 'Question',
+                'name'           => $faq['q'],
+                'acceptedAnswer' => ['@type' => 'Answer', 'text' => $faq['a']],
+            ], $dmFaqs),
+        ],
+        [
+            '@type' => 'BreadcrumbList',
+            '@id'   => $dmUrl . '/#breadcrumb',
+            'itemListElement' => [
+                ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',              'item' => config('app.url') . '/'],
+                ['@type' => 'ListItem', 'position' => 2, 'name' => 'Services',          'item' => route('services')],
+                ['@type' => 'ListItem', 'position' => 3, 'name' => 'Digital Marketing', 'item' => $dmUrl],
+            ],
+        ],
+    ],
+];
+@endphp
+<script type="application/ld+json">
+{!! json_encode($dmSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
 @endsection
 
 @section('content')
-<main>
-    {{-- ====================== Hero Section ====================== --}}
-    <div class="dm-hero">
-        <div class="container h-100-only">
-            <div class="row align-items-center h-100-only">
-                <div class="col-lg-7">
-                    <div class="content-box">
-                        <h1 class="title">Best Digital Marketing Agency</h1>
-                        <div class="des">
-                            <p>
-                                We empower brands to tell their stories authentically and creatively, connecting with audiences on more than a surface level.
-                            </p>
-                        </div>
-                    </div>
+<main class="bg-white font-body overflow-x-hidden">
+
+    {{-- ====================== HERO ====================== --}}
+    {{--
+        Matches /services/branding and /services/strategy. pt-[180px] clears the
+        navbar: `header` is position:absolute; top:0 (assets/css/style.css), so it
+        floats over this section rather than pushing it down.
+    --}}
+    <section class="relative min-h-[70vh] flex items-center justify-center overflow-hidden bg-black px-5 pt-[180px] pb-[110px] max-[767px]:min-h-0 max-[767px]:pt-[150px] max-[767px]:pb-20">
+        <div class="absolute inset-0 z-[1] bg-center bg-cover grayscale contrast-[1.1] opacity-40"
+             style="background-image:url('{{ asset('img/services/digital-marketing.webp') }}');"></div>
+        <div class="absolute inset-0 z-[2] bg-black/60"></div>
+        <div class="absolute inset-0 z-[2]" style="background:radial-gradient(ellipse at center,transparent 30%,#000 85%);"></div>
+
+        <div class="relative z-[3] mx-auto max-w-[900px] text-center">
+            <h1 class="m-0 mb-6 text-[clamp(44px,9vw,110px)] font-extrabold uppercase leading-[0.92] tracking-[-2px] text-white opacity-0 translate-y-[30px] animate-hero-reveal [animation-delay:300ms]">
+                Digital <span class="hero-title-outline">Marketing</span>
+            </h1>
+
+            <p class="mx-auto mb-10 max-w-[600px] text-[18px] font-light leading-[1.7] text-[#999] opacity-0 animate-hero-reveal [animation-delay:600ms]">
+                We empower brands to tell their stories authentically and creatively, connecting with audiences on more than a surface level.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-[50px] opacity-0 animate-hero-reveal [animation-delay:900ms] max-[767px]:gap-[30px]">
+                @foreach([['50+','Brands Served'],['12+','Channels Managed'],['6+','Years Experience']] as [$num, $label])
+                <div class="text-center">
+                    <div class="text-[42px] font-black leading-none text-film-red max-[767px]:text-[32px]">{{ $num }}</div>
+                    <div class="mt-[6px] text-[11px] uppercase tracking-[2px] text-[#666]">{{ $label }}</div>
                 </div>
-                <div class="col-lg-5 d-none d-lg-block">
-                    <div class="sec-img">
-                        <img src="{{ config('app.url') }}/assets/img/digital-marketing.png" alt="Digital Marketing Agency">
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
-    </div>
-    {{-- ====================== End Hero Section ====================== --}}
-    
-    {{-- ====================== Stats Section ====================== --}}
-    <div class="dm-stats">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <div class="stat-card">
-                        <h5>Team Experience</h5>
-                        <span>100+</span>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <div class="stat-card">
-                        <h5>Audience Reached</h5>
-                        <span>1000+</span>
-                    </div>
-                </div>
-                <div class="col-sm-12 col-md-4 col-lg-4">
-                    <div class="stat-card">
-                        <h5>Campaigns</h5>
-                        <span>10000+</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    {{-- ====================== End Stats Section ====================== --}}
-    {{-- ====================== Intro Section ====================== --}}
-    <div class="dm-intro">
-        <div class="container">
-            <h2>Driving Digital Marketing Success and Beyond</h2>
-            <p>
-                Every day is a new opportunity to shape the digital landscape for your brand and let the synergy of creativity flow with the strategy. 
-                We stay ahead in pushing boundaries by utilising AI for personalised marketing and adopting new platforms for enhanced reach. 
-                From captivating visuals to content, we create work that leaves a lasting impression on the audience.
+    </section>
+
+    {{-- ====================== INTRO ====================== --}}
+    <section class="bg-white py-[60px]">
+        <div class="mx-auto max-w-[1140px] px-5">
+            <h2 class="m-0 mb-[30px] text-center text-[42px] font-bold text-black max-[575px]:text-[32px]">
+                Driving Digital Marketing Success and Beyond
+            </h2>
+            <p class="mx-auto m-0 max-w-[900px] text-center text-[18px] leading-[1.8] text-[#666]">
+                Every day is a new opportunity to shape the digital landscape for your brand and let the synergy of
+                creativity flow with the strategy. We stay ahead in pushing boundaries by utilising AI for personalised
+                marketing and adopting new platforms for enhanced reach. From captivating visuals to content, we create
+                work that leaves a lasting impression on the audience.
             </p>
         </div>
-    </div>
-    {{-- ====================== End Intro Section ====================== --}}
-    {{-- ====================== Services Section ====================== --}}
-    <div class="dm-services">
-        <div class="container">
-            {{-- Social Media Marketing --}}
-            <div class="dm-service-card">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 order-lg-2">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/smo.png" alt="Social Media Marketing">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 order-lg-1">
-                        <div class="content">
-                            <h3 class="title">Social Media Marketing</h3>
-                            <div class="des">
-                                <p>
-                                    Social media marketing leverages number of platforms to cultivate brand communities, engage audiences with relevant content and expand reach through strategic campaigns. 
-                                    We harness current trends, influencers and user-generated content to increase the visibility of your brand digitally.
-                                </p>
-                            </div>
-                            <div class="cta-btn">
-                                <a href="{{ route('social-media-marketing-agency') }}">Explore More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    </section>
 
-            {{-- Performance Marketing --}}
-            <div class="dm-service-card">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/performance_marketing.png" alt="Performance Marketing Agency">
-                        </div>
-                    </div>
-                    <div class="col-lg-6">
-                        <div class="content">
-                            <h3 class="title">Performance Marketing</h3>
-                            <div class="des">
-                                <p>
-                                    Performance marketing focuses on driving measurable outcomes through targeted advertising campaigns and data-driven optimisation techniques. 
-                                    It aims to maximise return on investment by analysing key metrics of a brand by aligning it's objective with significant growth.
-                                </p>
-                            </div>
-                            <div class="cta-btn">
-                                <a href="{{ route('performance-marketing-agency') }}">Explore More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    {{-- ====================== SERVICES ====================== --}}
+    {{--
+        Same editorial row layout as /services/branding and /services/strategy:
+        number + title on a sticky left rail, copy on the right. Text-only, so the
+        space goes to crawlable content rather than stock imagery.
+    --}}
+    <section class="bg-white pb-20" id="dm-services">
+        <div class="mx-auto max-w-[1140px] px-5">
+            @php
+            $services = [
+                [
+                    'title' => 'Social Media Marketing',
+                    'route' => 'social-media-marketing-agency',
+                    'lead'  => "Social media marketing leverages a number of platforms to cultivate brand communities, engage audiences with relevant content, and expand reach through strategic campaigns.",
+                    'body'  => "We harness current trends, influencers, and user-generated content to increase your brand's visibility digitally. Community management sits alongside the content calendar rather than after it, because a following that never hears back is an audience you are renting, not one you own.",
+                ],
+                [
+                    'title' => 'Performance Marketing',
+                    'route' => 'performance-marketing-agency',
+                    'lead'  => "Performance marketing focuses on driving measurable outcomes through targeted advertising campaigns and continuous, data-driven optimisation.",
+                    'body'  => "The objective is return on investment, not impressions. We structure accounts around your actual margin, watch the metrics that predict revenue rather than the ones that flatter a report, and shift budget between channels on evidence. Creative is briefed by the same team, because a well-tuned bid on a weak ad is a ceiling you cannot optimise past.",
+                ],
+                [
+                    'title' => 'Search Engine Optimization (SEO)',
+                    'route' => 'search-engine-optimization-seo-services',
+                    'lead'  => "Search Engine Optimization is the backbone of digital visibility, positioning your site to rank for the searches your buyers are already making.",
+                    'body'  => "Through keyword strategy, content optimisation, and technical fixes, SEO grows organic traffic you do not pay per click for. It compounds slowly and then holds — the opposite shape to paid, which is why the two belong in the same plan rather than competing for the same budget.",
+                ],
+            ];
+            @endphp
 
-            {{-- Web Design --}}
-            <div class="dm-service-card">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 order-lg-2">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/web_design.png" alt="Web Design Services">
-                        </div>
-                    </div>
-                    <div class="col-lg-6 order-lg-1">
-                        <div class="content">
-                            <h3 class="title">Web Design</h3>
-                            <div class="des">
-                                <p>
-                                    Web design is important in creating immersive digital experiences that align with brand identity and optimise user interactions. Through intuitive navigation and responsive design, 
-                                    we enhance user experience across devices. It helps in aiming to convert visitors into loyal customers through seamless digital journeys.
-                                </p>
-                            </div>
-                            <div class="cta-btn">
-                                <a href="{{ route('web-design-agency') }}">Explore More</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <div class="border-0 border-t border-solid border-[#e8e8e8]">
+                @foreach($services as $i => $service)
+                <article class="group grid grid-cols-1 gap-x-16 gap-y-6 border-0 border-b border-solid border-[#e8e8e8] py-14 lg:grid-cols-12 max-[767px]:py-10">
 
-            {{-- SEO --}}
-            <div class="dm-service-card">
-                <div class="row align-items-center">
-                    <div class="col-lg-6">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/seo.png" alt="SEO Services">
+                    {{-- Left rail: number + title --}}
+                    <div class="lg:col-span-4">
+                        <div class="lg:sticky lg:top-32">
+                            <span class="mb-3 block font-mono text-[12px] font-bold tracking-[1px] text-film-red">
+                                {{ str_pad($i + 1, 2, '0', STR_PAD_LEFT) }}
+                            </span>
+                            <h3 class="m-0 text-[30px] font-extrabold leading-[1.15] tracking-[-0.5px] text-black transition-colors duration-300 group-hover:text-film-red max-[991px]:text-[26px] max-[575px]:text-[23px]">
+                                {{ $service['title'] }}
+                            </h3>
                         </div>
                     </div>
-                    <div class="col-lg-6">
-                        <div class="content">
-                            <h3 class="title">Search Engine Optimization (SEO)</h3>
-                            <div class="des">
-                                <p>
-                                    Search Engine Optimization serves as the backbone of digital visibility strategies, optimising websites to rank higher in search engine results. By strategically using keywords, 
-                                    content optimization and technical enhancements, it enhances organic traffic and brand visibility to discover businesses online.
-                                </p>
-                            </div>
-                            <div class="cta-btn">
-                                <a href="{{ route('search-engine-optimization-seo-services') }}">Explore More</a>
-                            </div>
-                        </div>
+
+                    {{-- Right: copy + link --}}
+                    <div class="lg:col-span-8">
+                        <p class="m-0 mb-5 text-[18px] leading-[1.7] text-[#333] max-[575px]:text-[16px]">
+                            {{ $service['lead'] }}
+                        </p>
+                        <p class="m-0 mb-6 text-[15px] leading-[1.85] text-[#777]">
+                            {{ $service['body'] }}
+                        </p>
+                        <a href="{{ route($service['route']) }}"
+                           class="inline-flex items-center gap-2 text-[13px] font-bold uppercase tracking-[1.5px] text-black no-underline transition-colors duration-200 hover:text-film-red">
+                            Explore More
+                            <span aria-hidden="true" class="transition-transform duration-200 group-hover:translate-x-1">&rarr;</span>
+                        </a>
                     </div>
+                </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    {{-- ====================== CTA + Inquiry Form ====================== --}}
+    <section id="cta-inquiry" class="bg-black">
+
+        {{-- Top strip: centered heading --}}
+        <div class="text-center px-5 pt-[72px] pb-[20px]">
+            <p class="text-[18px] tracking-[3px] text-tp-red uppercase font-bold mb-[14px]">Work With Us</p>
+            <h2 class="text-[clamp(34px,5vw,60px)] font-black uppercase leading-[1.05] text-white mb-[18px] tracking-[-1.5px]">Ready to Get Started?</h2>
+            <p class="text-[16px] text-[#888] max-w-[480px] mx-auto leading-[1.65]">Tell us about your project we'll get back within 24 hours.</p>
+        </div>
+
+        {{-- Section header. A plain div, not a button: the form below is always
+             expanded, so a control that toggles nothing would mislead both users
+             and screen readers. --}}
+        <div class="w-full bg-black border-0 border-t border-b border-[#1e1e1e] flex items-center justify-between">
+            <div class="max-w-[1300px] mx-auto px-5 py-7 flex items-center justify-between w-full gap-6 flex-wrap">
+                <div class="text-left">
+                    <p class="text-[11px] tracking-[3px] text-tp-red uppercase font-bold mb-[6px]">Start Here</p>
+                    <span class="text-[clamp(18px,2.5vw,26px)] font-extrabold text-white uppercase tracking-[-0.5px] block">Let's Get You Onboarded</span>
                 </div>
             </div>
         </div>
-    </div>
-    {{-- ====================== End Services Section ====================== --}}
 
-    {{-- ====================== Clients Section ====================== --}}
-    <div class="dm-clients">
-        <div class="container">
-            <div class="section-title">
-                <h2>Friends <span class="highlight">On Board</span></h2>
+        {{-- Form body -- always visible --}}
+        <div id="svc-inquiry-form-wrap" class="bg-black border-b border-[#1e1e1e]">
+            <div class="max-w-[1300px] mx-auto px-5">
+                <form action="{{ route('inquiry-form') }}" method="POST" class="py-12">
+                    @csrf
+                    <input type="hidden" name="url" value="{{ url()->current() }}">
+
+                    <div class="inquiry-grid grid grid-cols-2 gap-x-[60px]">
+                        <div class="field-diag field-diag-dark relative">
+                            <input type="text" name="name" required placeholder="Your Name"
+                                class="w-full bg-transparent text-white text-[14px] py-4 px-1 outline-none transition-colors duration-200 box-border"
+                                style="border:none;border-bottom:1px solid #444;"
+                                onfocus="this.style.borderBottomColor='#E50914'" onblur="this.style.borderBottomColor='#444'">
+                        </div>
+                        <div class="field-diag field-diag-dark relative">
+                            <input type="email" name="email" required placeholder="Email Address"
+                                class="w-full bg-transparent text-white text-[14px] py-4 px-1 outline-none transition-colors duration-200 box-border"
+                                style="border:none;border-bottom:1px solid #444;"
+                                onfocus="this.style.borderBottomColor='#E50914'" onblur="this.style.borderBottomColor='#444'">
+                        </div>
+                        <div class="field-diag field-diag-dark relative">
+                            <input type="tel" name="mobile" required placeholder="Contact Number"
+                                class="w-full bg-transparent text-white text-[14px] py-4 px-1 outline-none transition-colors duration-200 box-border"
+                                style="border:none;border-bottom:1px solid #444;"
+                                onfocus="this.style.borderBottomColor='#E50914'" onblur="this.style.borderBottomColor='#444'">
+                        </div>
+                        <div class="field-diag field-diag-dark relative">
+                            <input type="text" name="country" placeholder="Country"
+                                class="w-full bg-transparent text-white text-[14px] py-4 px-1 outline-none transition-colors duration-200 box-border"
+                                style="border:none;border-bottom:1px solid #444;"
+                                onfocus="this.style.borderBottomColor='#E50914'" onblur="this.style.borderBottomColor='#444'">
+                        </div>
+                    </div>
+
+                    <div class="flex items-end gap-4 flex-wrap mt-0">
+                        <div class="field-diag field-diag-dark relative flex-1 min-w-[200px]">
+                            <input type="text" name="requirement" required placeholder="What do you need?"
+                                class="w-full bg-transparent text-white text-[14px] py-4 px-1 outline-none transition-colors duration-200 box-border"
+                                style="border:none;border-bottom:1px solid #444;"
+                                onfocus="this.style.borderBottomColor='#E50914'" onblur="this.style.borderBottomColor='#444'">
+                        </div>
+                        <button type="submit"
+                            class="bg-tp-red hover:bg-[#c0070f] text-white border-0 py-4 px-9 text-[12px] font-bold uppercase tracking-[1.5px] cursor-pointer whitespace-nowrap flex-shrink-0 transition-colors duration-200 mb-px">
+                            Send Enquiry
+                        </button>
+                    </div>
+
+                    <p class="text-[12px] text-[#444] mt-5">We'll respond within 24 hours. No spam, ever.</p>
+                </form>
             </div>
-            <div class="brand-images">
-                <div class="row">
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/1.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/2.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/3.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/4.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/5.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/6.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/7.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/8.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/9.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/10.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/11.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/12.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/13.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/14.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/15.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/16.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/17.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/18.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/19.png" alt="Client Logo">
-                        </div>
-                    </div>
-                    <div class="col-6 col-md-4 col-lg-3">
-                        <div class="img">
-                            <img src="{{ config('app.url') }}/assets/img/clients/20.png" alt="Client Logo">
-                        </div>
-                    </div>
+        </div>
+
+    </section>
+    {{-- ====================== End CTA + Inquiry Form ====================== --}}
+
+    {{-- ====================== CLIENTS ====================== --}}
+    <section class="bg-white py-20">
+        <div class="mx-auto max-w-[1140px] px-5">
+            <div class="mb-[60px] text-center">
+                <h2 class="m-0 text-[56px] font-extrabold text-black max-[575px]:text-[32px]">
+                    Friends <span class="text-film-red">On Board</span>
+                </h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                @foreach(range(1, 20) as $i)
+                <div class="group flex min-h-[120px] items-center justify-center p-5 transition-transform duration-300 hover:scale-110">
+                    <img src="{{ asset('assets/img/clients/' . $i . '.png') }}"
+                         alt="Client Logo"
+                         loading="lazy"
+                         decoding="async"
+                         class="h-auto max-w-full opacity-60 grayscale transition-all duration-300 group-hover:opacity-100 group-hover:grayscale-0">
                 </div>
+                @endforeach
+            </div>
+
+            <div class="mt-6 text-center max-[575px]:mt-10">
+                <a href="{{ route('work') }}"
+                   class="inline-block rounded border-2 border-solid border-black px-10 py-[14px] text-[14px] font-bold uppercase tracking-[1px] text-black no-underline transition-all duration-300 hover:border-film-red hover:bg-film-red hover:text-white">
+                    View Our Work
+                </a>
             </div>
         </div>
-    </div>
-    {{-- ====================== End Clients Section ====================== --}}
+    </section>
 
-    {{-- ====================== Quote Section ====================== --}}
-    <div class="dm-quote">
-        <div class="container">
-            <div class="quote-container">
-                <p>Good marketing makes the company look smart.</p>
-                <p>Great marketing makes the customer feel smart</p>
-            </div>
-        </div>
-    </div>
-    {{-- ====================== End Quote Section ====================== --}}
-
-    {{-- ====================== CTA Section ====================== --}}
-    <div class="dm-cta">
-        <div class="container">
-            <div class="section-title">
-                <h4>Innovate. Influence. Inspire</h4>
-                <h2>Transforming Ideas into Digital Marketing Services</h2>
-            </div>
-            <div class="description">
-                <p>
-                    We begin by understanding your brand's aspirations and challenges to track and analyse the overall performance. This makes us an extension of your team, achieving shared goals by incorporating strategy, innovation, 
-                    creativity and data driven insights on multiple channels. Our integrated approach works together to enhance brand visibility and drive meaningful engagement.
+    {{-- ====================== QUOTE ====================== --}}
+    <section class="relative bg-black py-[100px]">
+        <div class="mx-auto max-w-[1140px] px-5">
+            {{-- The oversized quote mark is a ::before in CSS terms; here it is a
+                 real element so it stays pure Tailwind. aria-hidden as it is decor. --}}
+            <div class="relative mx-auto max-w-[900px] text-center">
+                <span aria-hidden="true"
+                      class="pointer-events-none absolute left-1/2 top-[-80px] z-0 -translate-x-1/2 font-serif text-[200px] leading-none text-film-red/50 max-[575px]:top-[-60px] max-[575px]:text-[150px]">"</span>
+                <p class="relative z-[1] m-0 text-[32px] font-medium leading-[1.6] text-white max-[575px]:text-[22px]">
+                    Good marketing makes the company look smart.<br>
+                    Great marketing makes the customer feel smart.
                 </p>
             </div>
         </div>
-    </div>
-    {{-- ====================== End CTA Section ====================== --}}
+    </section>
 
-    {{-- ====================== Bottom Section ====================== --}}
-    <div class="dm-bottom">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-5">
-                    <div class="sec-img-1">
-                        <img src="{{ config('app.url') }}/assets/img/home/home-04.png" alt="Brand Story">
-                    </div>
+    {{-- ====================== FAQ ====================== --}}
+    {{--
+        <details>/<summary> rather than a JS accordion: the answers stay in the DOM
+        and remain crawlable whether or not the panel is open, and it works with
+        no script at all. $dmFaqs is defined in @section('head') so the same array
+        feeds the FAQPage schema -- copy and markup cannot drift apart.
+    --}}
+    <section class="bg-white py-20" id="dm-faq">
+        <div class="mx-auto max-w-[900px] px-5">
+            <div class="mb-12 text-center">
+                <p class="m-0 mb-3 text-[11px] font-bold uppercase tracking-[3px] text-film-red">Common Questions</p>
+                <h2 class="m-0 text-[42px] font-bold leading-[1.15] text-black max-[575px]:text-[30px]">
+                    Digital Marketing FAQs
+                </h2>
+            </div>
+
+            @foreach($dmFaqs as $faq)
+            <details class="group border-0 border-b border-solid border-[#e8e8e8]">
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-4 py-6 [&::-webkit-details-marker]:hidden">
+                    <h3 class="m-0 text-[17px] font-bold leading-snug text-black max-[575px]:text-[15px]">{{ $faq['q'] }}</h3>
+                    <span aria-hidden="true"
+                          class="shrink-0 text-[24px] font-bold leading-none text-film-red transition-transform duration-300 group-open:rotate-45">+</span>
+                </summary>
+                <p class="m-0 pb-6 text-[15px] leading-[1.8] text-[#666]">{{ $faq['a'] }}</p>
+            </details>
+            @endforeach
+        </div>
+    </section>
+
+    {{-- ====================== CTA ====================== --}}
+    <section class="bg-white py-[100px]">
+        <div class="mx-auto max-w-[1140px] px-5">
+            <div class="mb-10 text-center">
+                <h4 class="m-0 mb-[10px] text-[38px] font-normal text-[#666] max-[575px]:text-[26px]">Innovate. Influence. Inspire</h4>
+                <h2 class="m-0 text-[42px] font-bold text-black max-[575px]:text-[32px]">Transforming Ideas into Digital Marketing Services</h2>
+            </div>
+            <p class="mx-auto m-0 max-w-[900px] text-center text-[18px] leading-[1.8] text-[#666]">
+                We begin by understanding your brand's aspirations and challenges to track and analyse the overall
+                performance. This makes us an extension of your team, achieving shared goals by incorporating strategy,
+                innovation, creativity and data driven insights on multiple channels. Our integrated approach works
+                together to enhance brand visibility and drive meaningful engagement.
+            </p>
+        </div>
+    </section>
+
+   {{-- ====================== BOTTOM ====================== --}}
+    <section class="bg-white py-[100px]">
+        <div class="mx-auto max-w-[1140px] px-5">
+            <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+                <div class="lg:col-span-5">
+                    <img src="{{ asset('assets/img/home/home-04.png') }}"
+                         alt="Brand Story"
+                         loading="lazy"
+                         class="h-auto max-w-full">
                 </div>
-                <div class="col-lg-7">
-                    <div class="content-box">
-                        <div class="sec-title">
-                            <p>Brand</p>
-                            <b>
-                                Your St
-                                <img src="{{ config('app.url') }}/assets/img/shape-03.png" alt="shape" class="shape-img">
-                                ry
-                            </b>
-                        </div>
-                        <div class="des">
-                            <p>
-                                We are creatively strategic and strategically creative. We follow a research-based
-                                strategy to create memorable brand identities.
-                            </p>
-                            <p>
-                                Advertising is the aftertaste of a good story. So, Thumbpin weaves a unique tale for
-                                your brand punched together with design and production.
-                            </p>
-                        </div>
-                        <div class="link">
-                            <a href="{{ route('contact') }}" class="btn-1">
-                                Get In Touch
-                            </a>
-                        </div>
+
+                <div class="lg:col-span-7">
+                    <div class="mb-6">
+                        <p class="m-0 mb-[10px] text-[56px] font-light text-black max-[575px]:text-[38px]">Brand</p>
+                        <b class="text-[66px] font-extrabold text-black max-[575px]:block max-[575px]:text-[42px]">
+                            Your St<img src="{{ asset('assets/img/shape-03.png') }}"
+                                        alt=""
+                                        aria-hidden="true"
+                                        class="inline-block w-[78px] -mt-20 -mb-8 -ml-[10px] -mr-4 max-[575px]:mx-0 max-[575px]:mt-0 max-[575px]:mb-0 max-[575px]:w-10 max-[575px]:align-middle">ry
+                        </b>
                     </div>
+
+                    <div class="mb-5 text-[18px] leading-[1.8] text-neutral-600">
+                        <p class="m-0 mb-5">
+                            We are creatively strategic and strategically creative. We follow a research-based
+                            strategy to create memorable brand identities.
+                        </p>
+                        <p class="m-0">
+                            Advertising is the aftertaste of a good story. So, Thumbpin weaves a unique tale for
+                            your brand punched together with design and production.
+                        </p>
+                    </div>
+
+                    <a href="{{ route('contact') }}"
+                       class="inline-block rounded bg-[#e20a15] px-10 py-[15px] font-semibold text-white no-underline transition-all duration-300 hover:-translate-y-[2px] hover:bg-[#c91820]">
+                        Get In Touch
+                    </a>
                 </div>
             </div>
         </div>
-    </div>
-    {{-- ====================== End Bottom Section ====================== --}}
+    </section>
+
 </main>
 @endsection
-
-@section('script')

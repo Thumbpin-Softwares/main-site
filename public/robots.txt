@@ -1,3 +1,15 @@
+# Thumbpin -- https://www.thumbpin.in
+#
+# All crawlers are welcome, including AI assistants. Being cited by answer
+# engines is worth more to us than withholding marketing copy from them.
+#
+# NOTE: Cloudflare can inject its own managed rules ABOVE this file at serve
+# time (Security -> Bots -> AI Scrapers and Crawlers). If ClaudeBot, GPTBot or
+# Google-Extended ever show up as Disallow in the served robots.txt, that is
+# coming from the Cloudflare dashboard, not from this file -- editing here will
+# not remove it.
+
 User-agent: *
-Disallow:
-Sitemap:https://www.thumbpin.in/sitemap.xml
+Allow: /
+
+Sitemap: https://www.thumbpin.in/sitemap.xml

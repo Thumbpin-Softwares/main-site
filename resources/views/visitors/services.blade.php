@@ -28,7 +28,6 @@ $serviceEntries = [
     'Digital Marketing'      => 'digital-marketing',
     'Real Estate Video Ads'  => 'real-estate-ads',
     'Web Design'             => 'web-design-agency',
-    'SEO Services'           => 'search-engine-optimization-seo-services',
     'Social Media Marketing' => 'social-media-marketing-agency',
     'Performance Marketing'  => 'performance-marketing-agency',
 ];
@@ -143,9 +142,11 @@ $schema = [
     border-color: #E50914;
     color: #E50914;
 }
+/* The inquiry form is always expanded, so the old accordion rules
+   (.svc-inquiry-wrap / .is-open) are gone. Their max-height:800px +
+   overflow:hidden also clipped the form on mobile, where the grid stacks to a
+   single column and grows past 800px, hiding the submit button. */
 ::placeholder { color: #444; }
-.svc-inquiry-wrap { overflow: hidden; max-height: 0; opacity: 0; transition: max-height 0.45s ease, opacity 0.35s ease; }
-.svc-inquiry-wrap.is-open { max-height: 800px; opacity: 1; }
 @media (max-width: 768px) {
     .inquiry-grid { grid-template-columns: 1fr !important; }
 }
@@ -248,18 +249,17 @@ $schema = [
 
             @php
             $services = [
-                    ['01', 'Branding',               'Undertaking brand and market research to fathom brand goals and positioning, along with building on the existing voice and visual language.',                                                              'branding-agency',                        'branding.jpeg'],
-                    ['02', 'Strategy',               'Deploying a research-based strategy with room for innovative developments, across all forms of traditional & non-traditional media.',                                                                     'strategy-agency',                        'strategy.jpeg'],
-                    ['03', 'Digital Marketing',      'We integrate marketing strategies & solutions to create distinctive conversations and reach a diverse audience through a unique online presence.',                                                          'digital-marketing',                      'digital-marketing.webp'],
-                    ['04', 'Real Estate Video Ads',  'Cinematic property walkthroughs, drone aerials and promo films that help builders and brokers showcase their projects and sell faster.',                                                                   'real-estate-ads',                        'real-estate-video-ads.webp'],
-                    ['05', 'Web Designing',          'Working with innovative UI/UX designs and infographics to establish a platform to connect with people.',                                                                                                   'web-design-agency',                      'web-design.jpeg'],
-                    ['06', 'AI Automation',          'Automating repetitive workflows, customer touchpoints and data pipelines with AI so your team focuses on work that actually moves the needle.',                                                            null,                                     'ai-automation.webp'],
-                    ['07', 'SEO Services',           'Technical and on-page SEO that grows organic visibility, so the right people find you without paying for every click.',                                                                                   'search-engine-optimization-seo-services', 'seo.jpg'],
-                    ['08', 'Social Media Marketing', 'Content and community management that turns followers into a audience which actually converts.',                                                                                                           'social-media-marketing-agency',          'digital-marketing.webp'],
-                    ['09', 'Performance Marketing',  'Paid campaigns built around measurable outcomes, optimised continuously against cost per acquisition.',                                                                                                   'performance-marketing-agency',           'performance-marketing.jpg'],
-                    ['10', 'Events & Live',          'We take your brand out on a walk amidst society & concerts.',                                                                                                                                            null,                                     'events.jpg'],
-                    ['11', 'Disruptive Ideas',       'We plan unprecedented solutions and ideas that take your brand to the front line of unique marketing campaigns.',                                                                                         null,                                     'disruptive-ideas.jpg'],
-                    ['12', 'Friendship With Benefits','Got a specific project for us? We\'re here to provide our expertise.',                                                                                                                                   null,                                     'freinds-with-benefits.avif'],
+                    ['Branding',               'Undertaking brand and market research to fathom brand goals and positioning, along with building on the existing voice and visual language.',                                                              'branding-agency',                        'branding.jpeg'],
+                    ['Strategy',               'Deploying a research-based strategy with room for innovative developments, across all forms of traditional & non-traditional media.',                                                                     'strategy-agency',                        'strategy.jpeg'],
+                    ['Digital Marketing',      'We integrate marketing strategies & solutions to create distinctive conversations and reach a diverse audience through a unique online presence.',                                                          'digital-marketing',                      'digital-marketing.webp'],
+                    ['Real Estate Video Ads',  'Cinematic property walkthroughs, drone aerials and promo films that help builders and brokers showcase their projects and sell faster.',                                                                   'real-estate-ads',                        'real-estate-video-ads.webp'],
+                    ['Web Designing',          'Working with innovative UI/UX designs and infographics to establish a platform to connect with people.',                                                                                                   'web-design-agency',                      'web-design.jpeg'],
+                    ['AI Automation',          'Automating repetitive workflows, customer touchpoints and data pipelines with AI so your team focuses on work that actually moves the needle.',                                                            null,                                     'ai-automation.webp'],
+                    ['Social Media Marketing', 'Content and community management that turns followers into a audience which actually converts.',                                                                                                           'social-media-marketing-agency',          'digital-marketing.webp'],
+                    ['Performance Marketing',  'Paid campaigns built around measurable outcomes, optimised continuously against cost per acquisition.',                                                                                                   'performance-marketing-agency',           'performance-marketing.jpg'],
+                    ['Events & Live',          'We take your brand out on a walk amidst society & concerts.',                                                                                                                                            null,                                     'events.jpg'],
+                    ['Disruptive Ideas',       'We plan unprecedented solutions and ideas that take your brand to the front line of unique marketing campaigns.',                                                                                         null,                                     'disruptive-ideas.jpg'],
+                    ['Friendship With Benefits','Got a specific project for us? We\'re here to provide our expertise.',                                                                                                                                   null,                                     'freinds-with-benefits.avif'],
             ];
 
             $card = 'group relative block overflow-hidden rounded-lg border border-solid border-[#e5e5e5]'
@@ -270,7 +270,10 @@ $schema = [
             @endphp
 
             <div class="mt-[60px] grid grid-cols-3 gap-[24px] max-[991px]:mt-10 max-[991px]:grid-cols-2 max-[991px]:gap-[20px] max-[576px]:grid-cols-1 max-[576px]:gap-4">
-                @foreach($services as [$num, $title, $desc, $route, $img])
+                {{-- The card number comes from the loop index, not the data. Hardcoding
+                     it meant removing a service left a gap in the sequence. --}}
+                @foreach($services as $i => [$title, $desc, $route, $img])
+                @php $num = str_pad($i + 1, 2, '0', STR_PAD_LEFT); @endphp
                 <div class="{{ $card }}" @if($route) style="cursor:pointer;" onclick="window.location='{{ route($route) }}'" @endif>
 
                     {{-- Accent bar --}}
@@ -319,40 +322,20 @@ $schema = [
             <p class="text-[16px] text-[#888] max-w-[480px] mx-auto leading-[1.65]">Tell us about your project we'll get back within 24 hours.</p>
         </div>
 
-        {{-- Toggle strip --}}
-        <button id="inquire-toggle"
-            aria-expanded="false"
-            onclick="(function(){
-                var wrap = document.getElementById('svc-inquiry-form-wrap');
-                var btn  = document.getElementById('inquire-toggle');
-                var open = btn.getAttribute('aria-expanded') === 'true';
-                if(open){
-                    wrap.classList.remove('is-open');
-                    btn.setAttribute('aria-expanded','false');
-                    btn.querySelector('.btn-label').textContent = 'Inquire Now';
-                } else {
-                    wrap.classList.add('is-open');
-                    btn.setAttribute('aria-expanded','true');
-                    btn.querySelector('.btn-label').textContent = 'Close Form';
-                }
-            })()"
-            class="w-full bg-black border-0 border-t border-b border-[#1e1e1e] p-0 cursor-pointer flex items-center justify-between">
+        {{-- Section header. A plain div, not a button: the form below is always
+             expanded, so a control that toggles nothing would mislead both users
+             and screen readers. The chevron and "Inquire Now" label went with it. --}}
+        <div class="w-full bg-black border-0 border-t border-b border-[#1e1e1e] flex items-center justify-between">
             <div class="max-w-[1300px] mx-auto px-5 py-7 flex items-center justify-between w-full gap-6 flex-wrap">
                 <div class="text-left">
                     <p class="text-[11px] tracking-[3px] text-tp-red uppercase font-bold mb-[6px]">Start Here</p>
                     <span class="text-[clamp(18px,2.5vw,26px)] font-extrabold text-white uppercase tracking-[-0.5px] block">Let's Get You Onboarded</span>
                 </div>
-                <div class="flex items-center gap-3 flex-shrink-0">
-                    <span class="btn-label text-[13px] font-bold uppercase tracking-[1.5px] text-white">Inquire Now</span>
-                    <span class="w-10 h-10 bg-tp-red flex items-center justify-center flex-shrink-0">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
-                    </span>
-                </div>
             </div>
-        </button>
+        </div>
 
-        {{-- Collapsible form body --}}
-        <div id="svc-inquiry-form-wrap" class="svc-inquiry-wrap bg-black border-b border-[#1e1e1e]">
+        {{-- Form body -- always visible --}}
+        <div id="svc-inquiry-form-wrap" class="bg-black border-b border-[#1e1e1e]">
             <div class="max-w-[1300px] mx-auto px-5">
                 <form action="{{ route('inquiry-form') }}" method="POST" class="py-12">
                     @csrf
