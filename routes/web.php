@@ -35,6 +35,9 @@ Route::view('/services/performance-marketing', 'visitors.services.performance-ma
 Route::view('/services/social-media-management', 'visitors.services.social-media-management')->name('social-media-management');
 Route::view('/services/application-development', 'visitors.services.application-development')->name('application-development');
 Route::view('/services/ai-automation', 'visitors.services.ai-automation')->name('ai-automation');
+Route::view('/services/events', 'visitors.services.events')->name('events-live');
+Route::view('/services/disruptive-ideas', 'visitors.services.disruptive-ideas')->name('disruptive-ideas');
+Route::view('/services/friendship-with-benefits', 'visitors.services.friendship-with-benefits')->name('friendship-with-benefits');
 
 // "Web Design" was renamed to "Application Development". 301 rather than dropping
 // the old URL: it has existing search rankings and inbound links, and a permanent

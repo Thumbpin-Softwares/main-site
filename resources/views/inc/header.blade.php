@@ -27,6 +27,9 @@
                                     <a href="{{ route('social-media-management') }}" class="{{ request()->is('services/social-media-management') ? 'active' : '' }}">Social Media Management</a>
                                     <a href="{{ route('application-development') }}" class="{{ request()->is('services/application-development') ? 'active' : '' }}">Application Development</a>
                                     <a href="{{ route('ai-automation') }}" class="{{ request()->is('services/ai-automation') ? 'active' : '' }}">AI Automation</a>
+                                    <a href="{{ route('events-live') }}" class="{{ request()->is('services/events') ? 'active' : '' }}">Events &amp; Live</a>
+                                    <a href="{{ route('disruptive-ideas') }}" class="{{ request()->is('services/disruptive-ideas') ? 'active' : '' }}">Disruptive Ideas</a>
+                                    <a href="{{ route('friendship-with-benefits') }}" class="{{ request()->is('services/friendship-with-benefits') ? 'active' : '' }}">Friendship With Benefits</a>
                                     <a href="{{ route('real-estate-ads') }}" class="{{ request()->is('services/real-estate-ads') ? 'active' : '' }}">Real Estate Video Ads</a>
                                     <a href="{{ route('branding-agency') }}" class="{{ request()->is('services/branding') ? 'active' : '' }}">Branding</a>
                                     <a href="{{ route('strategy-agency') }}" class="{{ request()->is('services/strategy') ? 'active' : '' }}">Strategy</a>
@@ -98,6 +101,9 @@
                             <li><a href="{{ route('social-media-management') }}">Social Media Management</a></li>
                             <li><a href="{{ route('application-development') }}">Application Development</a></li>
                             <li><a href="{{ route('ai-automation') }}">AI Automation</a></li>
+                            <li><a href="{{ route('events-live') }}">Events &amp; Live</a></li>
+                            <li><a href="{{ route('disruptive-ideas') }}">Disruptive Ideas</a></li>
+                            <li><a href="{{ route('friendship-with-benefits') }}">Friendship With Benefits</a></li>
                             <li><a href="{{ route('real-estate-ads') }}">Real Estate Video Ads</a></li>
                             <li><a href="{{ route('branding-agency') }}">Branding</a></li>
                             <li><a href="{{ route('strategy-agency') }}">Strategy</a></li>

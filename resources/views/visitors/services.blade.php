@@ -30,6 +30,9 @@ $serviceEntries = [
     'Application Development' => 'application-development',
     'AI Automation'          => 'ai-automation',
     'Social Media Management' => 'social-media-management',
+    'Events & Live'          => 'events-live',
+    'Disruptive Ideas'       => 'disruptive-ideas',
+    'Friendship With Benefits' => 'friendship-with-benefits',
     'Performance Marketing'  => 'performance-marketing-agency',
 ];
 
@@ -258,9 +261,9 @@ $schema = [
                     ['AI Automation',          'Automation across WhatsApp, Instagram, Facebook, LinkedIn and email so every enquiry gets answered, captured and followed up without anyone chasing it.',                                                'ai-automation',                          'ai-automation.webp'],
                     ['Social Media Management','Day-to-day running of your channels content calendars, publishing, community management and reporting so the accounts stay active and answered.',                                                        'social-media-management',                'digital-marketing.webp'],
                     ['Performance Marketing',  'Paid campaigns built around measurable outcomes, optimised continuously against cost per acquisition.',                                                                                                   'performance-marketing-agency',           'performance-marketing.jpg'],
-                    ['Events & Live',          'We take your brand out on a walk amidst society & concerts.',                                                                                                                                            null,                                     'events.jpg'],
-                    ['Disruptive Ideas',       'We plan unprecedented solutions and ideas that take your brand to the front line of unique marketing campaigns.',                                                                                         null,                                     'disruptive-ideas.jpg'],
-                    ['Friendship With Benefits','Got a specific project for us? We\'re here to provide our expertise.',                                                                                                                                   null,                                     'freinds-with-benefits.avif'],
+                    ['Events & Live',          'Brand activations, corporate events, launches, exhibitions and live shows planned, built and run on the ground across Gurgaon and Delhi NCR.',                                                          'events-live',                            'events.jpg'],
+                    ['Disruptive Ideas',       'Campaign ideas built to earn attention rather than buy it guerrilla and ambient work, moment marketing, experiential concepts and integrated rollout.',                                                    'disruptive-ideas',                       'disruptive-ideas.jpg'],
+                    ['Friendship With Benefits','Partner with us to make beautiful creatives white-label design and production, overflow capacity and project collaboration for agencies, studios and brand teams.',                                       'friendship-with-benefits',               'freinds-with-benefits.avif'],
             ];
 
             $card = 'group relative block overflow-hidden rounded-lg border border-solid border-[#e5e5e5]'

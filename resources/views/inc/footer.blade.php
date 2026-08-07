@@ -63,6 +63,9 @@
                     ['Solutions', [
                         ['performance-marketing-agency',  'Performance Marketing'],
                         ['real-estate-ads',               'Real Estate Ads'],
+                        ['events-live',                   'Events & Live'],
+                        ['disruptive-ideas',              'Disruptive Ideas'],
+                        ['friendship-with-benefits',      'Friendship With Benefits'],
                         ['advertising-agency-in-gurgaon', 'Advertising Agency in Gurgaon'],
                         ['video-production-in-gurgaon',   'Video Production in Gurgaon'],
                     ]],
