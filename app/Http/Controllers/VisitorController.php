@@ -9,7 +9,7 @@ class VisitorController extends Controller
     public function index()
     {
         $projects = $this->getProjects();
-        return view('visitors.index_new', compact('projects'));
+        return view('visitors.index', compact('projects'));
     }
 
     private function getProjects()

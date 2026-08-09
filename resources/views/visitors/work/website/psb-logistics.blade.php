@@ -26,7 +26,12 @@
     <div class="container">
         <h1 class="portfolio-title">PSB Logistics — Website Design & Development</h1>
         <div class="portfolio-img-box">
-            <img src="{{ config('app.url') }}/assets/img/work/website/psb-logistics-page.jpg" alt="img">
+            {{-- psb-logistics-page.jpg was never on disk, so this rendered a broken
+                 image. Falls back to the square mockup, which is the only PSB asset
+                 we have; swap in a real full-page capture when one exists. --}}
+            <img src="{{ config('app.url') }}/assets/img/work/website/opt/psb-logistics-page.webp"
+                 alt="PSB Logistics website designed and built by Thumbpin"
+                 loading="lazy" decoding="async">
         </div>
     </div>
 

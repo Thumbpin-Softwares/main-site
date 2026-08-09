@@ -1,9 +1,0 @@
-<iframe width="451" height="801" src="https://www.youtube.com/embed/qZxdQCYOV9Q" title="Artificial Branding #5" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<iframe width="451" height="801" src="https://www.youtube.com/embed/4yJ7K0P250I" title="Artificial Branding #4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<iframe width="451" height="801" src="https://www.youtube.com/embed/_wZpB1HCAL4" title="Artificial Branding #3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<iframe width="451" height="801" src="https://www.youtube.com/embed/0myv8Qo3cQU" title="Artificial Branding" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-<iframe width="451" height="801" src="https://www.youtube.com/embed/i4st8tpqLqc" title="Artificial Branding #1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>

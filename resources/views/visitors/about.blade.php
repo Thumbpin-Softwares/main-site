@@ -19,7 +19,7 @@
 --}}
 @php
 $team = [
-    ['BRAJESH PATHAK.jpeg',   'Brajesh Pathak',   'Founder & Business Head',      'Marketing enthusiast, translating businesses into stories.',        'https://www.linkedin.com/in/brajesh-pathak-415826120'],
+    ['BRAJESH PATHAK.jpeg',   'Brajesh Pathak',   'Business Head',      'Marketing enthusiast, translating businesses into stories.',        'https://www.linkedin.com/in/brajesh-pathak-415826120'],
     ['DURGESH SINGH.jpg',     'Durgesh Singh',    'Consultant', 'Story-teller by the day, creator by the night.',                    'https://www.linkedin.com/in/durgesh-singh-820b50ab'],
     ['SOHAN ROUT.jpeg',       'Sohan Rout',       'Full Stack Developer',         'Tidies as he builds, writing today for the team that arrives next year.', 'https://www.linkedin.com/in/sohan-rout/'],
     ['SPARSH SHARMA.png',     'Sparsh Sharma',    'Full Stack Developer',         'Ship first, polish after. Working beats perfect, every time.',       'https://www.linkedin.com/in/sparshdev/'],

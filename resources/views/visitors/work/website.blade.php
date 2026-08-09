@@ -63,18 +63,25 @@
                         <i class="fas fa-lock"></i>
                         <span id="urlDisplay">https://example.com</span>
                     </div>
+                    {{-- "Visit site" replaces the old refresh button, which only made
+                         sense for a live frame. Hidden entirely for projects whose
+                         domain is no longer reachable -- see $sites below. --}}
                     <div class="browser-controls">
-                        <button onclick="refreshIframe()" title="Refresh">
-                            <i class="fas fa-sync-alt"></i>
-                        </button>
+                        <a id="visitSite" href="#" target="_blank" rel="noopener noreferrer nofollow" title="Visit site">
+                            <i class="fas fa-external-link-alt"></i>
+                        </a>
                     </div>
                 </div>
+                {{-- Was an <iframe> loading the client's live site. That could never be
+                     reliable: we do not control those domains. Two had already stopped
+                     resolving, and a third served X-Frame-Options: DENY, which blocks
+                     framing outright. It also meant the portfolio showed whatever the
+                     site looks like today rather than what we delivered.
+
+                     Now a full-page screenshot, scrolled inside the same browser chrome
+                     so the presentation is unchanged. --}}
                 <div class="iframe-container">
-                    <div class="iframe-loader" id="iframeLoader">
-                        <div class="spinner"></div>
-                        <p>Loading website...</p>
-                    </div>
-                    <iframe id="websiteIframe" src="" frameborder="0" allowfullscreen></iframe>
+                    <img id="websiteShot" src="" alt="" decoding="async">
                 </div>
             </div>
         </div>
@@ -219,44 +226,43 @@
             position: relative;
             background: #fff;
         }
-        .iframe-loader {
-            position: absolute;
-            top: 0;
-            left: 0;
+        /* .iframe-loader and .spinner removed along with the <iframe>: a local
+           screenshot has nothing to wait for, so a loading state would only ever
+           flash. */
+        /* The screenshot is a tall full-page capture, so the container scrolls it
+           rather than the image being squashed to fit. width:100% + height:auto
+           means it scales to the frame and the page reads at its real proportions. */
+        .iframe-container {
+            overflow-y: auto;
+            overflow-x: hidden;
+            background: #fff;
+            -webkit-overflow-scrolling: touch;
+        }
+        #websiteShot {
+            display: block;
             width: 100%;
-            height: 100%;
+            height: auto;
+            border: none;
+        }
+        .browser-controls a {
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: #f5f5f5;
-            z-index: 10;
-            transition: opacity 0.3s;
+            width: 32px;
+            height: 32px;
+            border-radius: 6px;
+            color: #aaa;
+            font-size: 13px;
+            text-decoration: none;
+            transition: background 0.2s, color 0.2s;
         }
-        .iframe-loader.hidden {
-            opacity: 0;
-            pointer-events: none;
+        .browser-controls a:hover {
+            background: rgba(255,255,255,0.12);
+            color: #fff;
         }
-        .spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid #e0e0e0;
-            border-top-color: #667eea;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-        .iframe-loader p {
-            margin-top: 16px;
-            color: #666;
-            font-size: 14px;
-        }
-        #websiteIframe {
-            width: 100%;
-            height: 100%;
-            border: none;
+        /* Set by JS when a project's domain is no longer reachable. */
+        .browser-controls a.is-hidden {
+            display: none;
         }
         @media (max-width: 768px) {
             .modal-container {
@@ -283,105 +289,57 @@
     {{-- ====================== Sec-10 Area ====================== --}}
     <div class="sec-10">
         <div class="container">
+            {{-- Filter buttons and cards both come from $sites so they cannot drift apart.
+                 Ramaeri is gone: it had no screenshot on disk, and its domain now
+                 answers 402 with framing blocked. --}}
+            @php
+            $sites = [
+                ['slug' => 'psb-logistics', 'name' => 'PSB Logistics', 'url' => null,
+                 'alt'  => 'PSB Logistics website designed and built by Thumbpin'],
+                ['slug' => 'zero-waste',    'name' => 'Zero Waste',    'url' => 'https://www.zerowaste.ae/',
+                 'alt'  => 'Zero Waste recycling website designed and built by Thumbpin'],
+                ['slug' => 'mr-furniture',  'name' => 'Mr Furniture',  'url' => 'https://www.mrfurniture.ae',
+                 'alt'  => 'Mr Furniture e-commerce website designed and built by Thumbpin'],
+                ['slug' => 'mr-skips',      'name' => 'Mr Skips',      'url' => null,
+                 'alt'  => 'Mr Skips waste collection website designed and built by Thumbpin'],
+                ['slug' => 'probity',       'name' => 'Probity',       'url' => 'https://www.probitycorporate.ae/',
+                 'alt'  => 'Probity corporate services website designed and built by Thumbpin'],
+            ];
+            $shots = config('app.url') . '/assets/img/work/website/opt';
+            @endphp
+
             <ul class="filter_nav">
                 <li>
-                    <button type="button" class="active" onclick="window.open('{{ route('work') }}','_self')">All</button>
+                    <button type="button" data-filter="*" class="active">All</button>
                 </li>
+                @foreach($sites as $site)
                 <li>
-                    <button type="button" data-filter=".psb-logistics">PSB Logistics</button>
+                    <button type="button" data-filter=".{{ $site['slug'] }}">{{ $site['name'] }}</button>
                 </li>
-                <li>
-                    <button type="button" data-filter=".zero-waste">Zero Waste</button>
-                </li>
-                <li>
-                    <button type="button" data-filter=".mr-furniture">Mr Furniture</button>
-                </li>
-                <li>
-                    <button type="button" data-filter=".mr-skips">Mr Skips</button>
-                </li>
-                <li>
-                    <button type="button" data-filter=".probity">Probity</button>
-                </li>
-                <li>
-                    <button type="button" data-filter=".ramaeri">Ramaeri</button>
-                </li>
+                @endforeach
             </ul>
             <div class="row filter_box">
-                <div class="col-sm-6 psb-logistics">
-                    <div class="card-3" onclick="openWebsiteModal('https://psblogistics.co.uk', 'PSB Logistics')">
+                @foreach($sites as $site)
+                <div class="col-sm-6 {{ $site['slug'] }}">
+                    {{-- Card image was a .mp4 scroll clip; none of those six files exist
+                         on disk, so every card rendered an empty <video>. --}}
+                    <div class="card-3" onclick="openWebsiteModal('{{ $site['slug'] }}', @js($site['name']), @js($site['url']), @js($site['alt']))">
                         <div class="card-content">
                             <div class="name">
                                 website
                             </div>
-                            <video src="{{ config('app.url') }}/assets/img/work/website/psb-logistics.mp4" muted autoplay loop></video>
+                            <img src="{{ $shots }}/{{ $site['slug'] }}-card.webp"
+                                 alt="{{ $site['alt'] }}"
+                                 loading="lazy"
+                                 decoding="async">
                             <div class="preview-hint">
                                 <i class="fas fa-expand"></i> Click to preview
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 zero-waste">
-                    <div class="card-3" onclick="openWebsiteModal('https://www.zerowaste.ae/', 'Zero Waste')">
-                        <div class="card-content">
-                            <div class="name">
-                                website
-                            </div>
-                            <video src="{{ config('app.url') }}/assets/img/work/website/zero-waste.mp4" muted autoplay loop></video>
-                            <div class="preview-hint">
-                                <i class="fas fa-expand"></i> Click to preview
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 mr-furniture">
-                    <div class="card-3" onclick="openWebsiteModal('https://www.mrfurniture.ae', 'Mr Furniture')">
-                        <div class="card-content">
-                            <div class="name">
-                                website
-                            </div>
-                            <video src="{{ config('app.url') }}/assets/img/work/website/mr-furniture.mp4" muted autoplay loop></video>
-                            <div class="preview-hint">
-                                <i class="fas fa-expand"></i> Click to preview
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 mr-skips">
-                    <div class="card-3" onclick="openWebsiteModal('https://mrskips.co.uk', 'Mr Skips')">
-                        <div class="card-content">
-                            <div class="name">
-                                website
-                            </div>
-                            <video src="{{ config('app.url') }}/assets/img/work/website/mr-skips.mp4" muted autoplay loop></video>
-                            <div class="preview-hint">
-                                <i class="fas fa-expand"></i> Click to preview
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 probity">
-                    <div class="card-3" onclick="openWebsiteModal('https://www.probitycorporate.ae/', 'Probity')">
-                        <div class="card-content">
-                            <div class="name">
-                                website
-                            </div>
-                            <video src="{{ config('app.url') }}/assets/img/work/website/probity.mp4" muted autoplay loop></video>
-                            <div class="preview-hint">
-                                <i class="fas fa-expand"></i> Click to preview
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-6 ramaeri">
-                    <div class="card-3" onclick="openWebsiteModal('https://www.ramaeri.com', 'Ramaeri')">
-                        <div class="card-content">
-                            <div class="name">
-                                website
-                            </div>
-                            <video src="{{ config('app.url') }}/assets/img/work/website/ramaeri.mp4" muted autoplay loop></video>
-                            <div class="preview-hint">
-                                <i class="fas fa-expand"></i> Click to preview
-                            </div>
+                @endforeach
+            </div>
                         </div>
                     </div>
                 </div> 
@@ -425,64 +383,49 @@
 @section('script')
 
 <script>
-    // Website Preview Modal Functions
-    let currentUrl = '';
+    // Website Preview Modal. Shows a screenshot rather than framing the live site:
+    // client domains expire, get redesigned, or send X-Frame-Options, and all three
+    // had already happened here.
+    const SHOT_BASE = '{{ config('app.url') }}/assets/img/work/website/opt';
 
-    function openWebsiteModal(url, title) {
-        currentUrl = url;
-        const modal = document.getElementById('websitePreviewModal');
-        const iframe = document.getElementById('websiteIframe');
-        const loader = document.getElementById('iframeLoader');
+    function openWebsiteModal(slug, title, url, alt) {
+        const modal      = document.getElementById('websitePreviewModal');
+        const shot       = document.getElementById('websiteShot');
         const modalTitle = document.getElementById('modalTitle');
         const urlDisplay = document.getElementById('urlDisplay');
+        const visit      = document.getElementById('visitSite');
 
-        // Set title and URL display
         modalTitle.textContent = title;
-        urlDisplay.textContent = url;
+        // The URL bar is presentational -- it still reads as the project's address
+        // even where that domain no longer resolves, because it is showing what the
+        // site was, not linking to it. The visit button is what gates on reachability.
+        urlDisplay.textContent = url || (title.toLowerCase().replace(/\s+/g, '') + '.com');
 
-        // Show loader and reset iframe
-        loader.classList.remove('hidden');
-        iframe.src = '';
+        shot.src = SHOT_BASE + '/' + slug + '-page.webp';
+        shot.alt = alt || (title + ' website by Thumbpin');
 
-        // Show modal
+        if (url) {
+            visit.href = url;
+            visit.classList.remove('is-hidden');
+        } else {
+            visit.removeAttribute('href');
+            visit.classList.add('is-hidden');
+        }
+
+        // Always reopen scrolled to the top of the page capture.
+        const scroller = shot.parentElement;
+        if (scroller) scroller.scrollTop = 0;
+
         modal.classList.add('active');
         document.body.style.overflow = 'hidden';
-
-        // Load the website
-        setTimeout(() => {
-            iframe.src = url;
-        }, 100);
-
-        // Hide loader when iframe loads
-        iframe.onload = function() {
-            loader.classList.add('hidden');
-        };
-
-        // Fallback: hide loader after 5 seconds even if onload doesn't fire
-        setTimeout(() => {
-            loader.classList.add('hidden');
-        }, 5000);
     }
 
     function closeWebsiteModal() {
         const modal = document.getElementById('websitePreviewModal');
-        const iframe = document.getElementById('websiteIframe');
-
         modal.classList.remove('active');
         document.body.style.overflow = '';
-
-        // Clear iframe to stop loading
-        setTimeout(() => {
-            iframe.src = '';
-        }, 300);
-    }
-
-    function refreshIframe() {
-        const iframe = document.getElementById('websiteIframe');
-        const loader = document.getElementById('iframeLoader');
-
-        loader.classList.remove('hidden');
-        iframe.src = currentUrl;
+        // The screenshot is left in place: it is a cached local file, so there is
+        // nothing to stop loading and clearing it only causes a flash on reopen.
     }
 
     // Close modal on Escape key

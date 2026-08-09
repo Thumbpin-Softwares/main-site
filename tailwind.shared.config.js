@@ -24,6 +24,7 @@ module.exports = {
     './resources/views/layout/**/*.blade.php',
     // Legacy pages progressively adopting Tailwind utilities.
     './resources/views/visitors/services.blade.php',
+    './resources/views/visitors/work.blade.php',
   ],
   theme: {
     extend: {
@@ -33,6 +34,10 @@ module.exports = {
       },
       colors: {
         'tp-red': '#ce2d33',
+        // Also defined in tailwind.config.js. Duplicated here because inc/breadcrumb
+        // is shared by pages on both builds, and a colour missing from this one
+        // silently renders no hover state rather than erroring.
+        'film-red': '#E50914',
       },
       // Seamless marquee: the track holds the content twice, so shifting it by
       // exactly -50% lands on the duplicate and loops with no visible jump.

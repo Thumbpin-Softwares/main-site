@@ -31,6 +31,8 @@
                                     <a href="{{ route('disruptive-ideas') }}" class="{{ request()->is('services/disruptive-ideas') ? 'active' : '' }}">Disruptive Ideas</a>
                                     <a href="{{ route('friendship-with-benefits') }}" class="{{ request()->is('services/friendship-with-benefits') ? 'active' : '' }}">Friendship With Benefits</a>
                                     <a href="{{ route('real-estate-ads') }}" class="{{ request()->is('services/real-estate-ads') ? 'active' : '' }}">Real Estate Video Ads</a>
+                                    {{-- Not under /services/, so the active check matches its own top-level URL. --}}
+                                    <a href="{{ route('video-production-in-gurgaon') }}" class="{{ request()->is('video-production-in-gurgaon') ? 'active' : '' }}">Video Production</a>
                                     <a href="{{ route('branding-agency') }}" class="{{ request()->is('services/branding') ? 'active' : '' }}">Branding</a>
                                     <a href="{{ route('strategy-agency') }}" class="{{ request()->is('services/strategy') ? 'active' : '' }}">Strategy</a>
                                 </div>
@@ -105,6 +107,7 @@
                             <li><a href="{{ route('disruptive-ideas') }}">Disruptive Ideas</a></li>
                             <li><a href="{{ route('friendship-with-benefits') }}">Friendship With Benefits</a></li>
                             <li><a href="{{ route('real-estate-ads') }}">Real Estate Video Ads</a></li>
+                            <li><a href="{{ route('video-production-in-gurgaon') }}">Video Production</a></li>
                             <li><a href="{{ route('branding-agency') }}">Branding</a></li>
                             <li><a href="{{ route('strategy-agency') }}">Strategy</a></li>
                         </ul>

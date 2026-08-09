@@ -27,6 +27,10 @@ $serviceEntries = [
     'Strategy'               => 'strategy-agency',
     'Digital Marketing'      => 'digital-marketing',
     'Real Estate Video Ads'  => 'real-estate-ads',
+    // Lives at /video-production-in-gurgaon rather than under /services/. The URL
+    // predates the services folder and already ranks, so it is listed as a service
+    // here without being moved.
+    'Video Production'       => 'video-production-in-gurgaon',
     'Application Development' => 'application-development',
     'AI Automation'          => 'ai-automation',
     'Social Media Management' => 'social-media-management',
@@ -202,14 +206,30 @@ $schema = [
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 d-none d-lg-block">
-                    <div style="position: relative; height: 800px; display: flex; align-items: flex-end; justify-content: center; margin-left:20px;">
+                {{-- Was d-none d-lg-block, i.e. hidden below 992px. It now shows on
+                     mobile too, and because both columns are col-lg-6 inside a .row
+                     they stack in DOM order there -- text first, visual underneath --
+                     with no ordering utility needed.
+
+                     Every mobile override below is max-[991px] and marked ! because it
+                     has to beat the inline style attribute; desktop keeps the inline
+                     values untouched. The 800px column height is desktop-only: at phone
+                     width it would leave most of the screen empty. --}}
+                <div class="col-lg-6">
+                    <div class="max-[991px]:!ml-0 max-[991px]:!h-[400px] max-[991px]:mt-10 max-[575px]:!h-[340px]"
+                         style="position: relative; height: 800px; display: flex; align-items: flex-end; justify-content: center; margin-left:20px;">
                         <!-- Three.js Canvas Container (Floating above) -->
-                        <div id="cube-canvas-container" style="width: 80%; height: 80%; position: absolute; top: 110px; left: 0; z-index: 10;"></div>
-                        
+                        {{-- top:110px is measured against the 800px desktop column, so on
+                             mobile it would push the cube through the hand. --}}
+                        <div id="cube-canvas-container"
+                             class="max-[991px]:!top-[10px] max-[991px]:!w-full max-[991px]:!h-[50%]"
+                             style="width: 80%; height: 80%; position: absolute; top: 110px; left: 0; z-index: 10;"></div>
+
                         <!-- Hand Image -->
                         <div class="hand-img-container" style="position: relative; z-index: 1; width: 100%; text-align: center;">
-                            <img src="{{ config('app.url') }}/assets/img/hand.png" alt="hand" style="max-width: 95%; display: block; margin: 0 auto;">
+                            <img src="{{ config('app.url') }}/assets/img/hand.png" alt="hand"
+                                 class="max-[991px]:!max-w-[70%] max-[575px]:!max-w-[80%]"
+                                 style="max-width: 95%; display: block; margin: 0 auto;">
                         </div>
                     </div>
                 </div>
@@ -257,6 +277,7 @@ $schema = [
                     ['Strategy',               'Deploying a research-based strategy with room for innovative developments, across all forms of traditional & non-traditional media.',                                                                     'strategy-agency',                        'strategy.jpeg'],
                     ['Digital Marketing',      'We integrate marketing strategies & solutions to create distinctive conversations and reach a diverse audience through a unique online presence.',                                                          'digital-marketing',                      'digital-marketing.webp'],
                     ['Real Estate Video Ads',  'Cinematic property walkthroughs, drone aerials and promo films that help builders and brokers showcase their projects and sell faster.',                                                                   'real-estate-ads',                        'real-estate-video-ads.webp'],
+                    ['Video Production',       'Brand films, commercials, corporate videos and product shoots scripted, shot and edited end to end by our in-house production team.',                                                                    'video-production-in-gurgaon',            'video-production.png'],
                     ['Application Development',      'Web and product applications built on React, Next.js and Node.js, with PostgreSQL or MongoDB behind them and UI/UX designed in the same engagement.',                                                          'application-development',                 'web-design.jpeg'],
                     ['AI Automation',          'Automation across WhatsApp, Instagram, Facebook, LinkedIn and email so every enquiry gets answered, captured and followed up without anyone chasing it.',                                                'ai-automation',                          'ai-automation.webp'],
                     ['Social Media Management','Day-to-day running of your channels content calendars, publishing, community management and reporting so the accounts stay active and answered.',                                                        'social-media-management',                'digital-marketing.webp'],
@@ -505,11 +526,23 @@ function toggleFaq(index) {
         const container = document.getElementById('cube-canvas-container');
         if (!container) return;
 
+        // The container used to be inside `d-none d-lg-block`, so on mobile it
+        // measured 0x0: camera.aspect became NaN (0/0) and the render loop ran
+        // forever drawing nothing. It is visible at every width now, but the
+        // guard stays -- a zero measurement here is silent and hard to spot.
+        function size() {
+            return { w: container.clientWidth, h: container.clientHeight };
+        }
+
+        const start = size();
         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000);
+        const camera = new THREE.PerspectiveCamera(75, start.h ? start.w / start.h : 1, 0.1, 1000);
         const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
-        
-        renderer.setSize(container.clientWidth, container.clientHeight);
+
+        // Phones are usually 2-3x DPR; without this the cube renders soft. Capped
+        // at 2 because the gain above that is invisible and the fill cost is not.
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+        renderer.setSize(start.w, start.h);
         container.appendChild(renderer.domElement);
 
         // Lighting (Required for Solid Material)
@@ -529,11 +562,29 @@ function toggleFaq(index) {
             metalness: 0.1
         });
         const cube = new THREE.Mesh(geometry, material);
-        cube.position.y = 0.5; // Move up slightly to float above hand
+        // Move up slightly to float above hand. Mobile drops most of that lift:
+        // the camera sits closer there, and a rotating 2.2 cube reaches 1.9 units
+        // from centre at its corners, so +0.5 pushed the top corner past the frame
+        // edge and clipped it mid-spin.
+        function cubeLift() {
+            return window.innerWidth < 992 ? 0.05 : 0.5;
+        }
+        cube.position.y = cubeLift();
         scene.add(cube);
 
-        // Camera Position
-        camera.position.z = 5;
+        // Camera Position. Pulling the camera in makes the cube fill more of the
+        // frame, which is how it is scaled up on phones rather than by resizing
+        // the mesh -- the cube stays 2.2 units so the hand below it keeps its
+        // proportions and nothing else in the scene has to be re-tuned.
+        // Breakpoint matches the max-[991px] CSS overrides on the markup.
+        // 3.4, not 3.2: vertical FOV is fixed at 75deg, so the visible world height
+        // is tan(37.5) * z either way -- 2.6 units at 3.4 against the cube's 1.9
+        // unit corner reach. That ~27% margin is what keeps the corners inside the
+        // frame through a full rotation. Canvas pixel height does not affect this.
+        function cameraDistance() {
+            return window.innerWidth < 992 ? 3.4 : 5;
+        }
+        camera.position.z = cameraDistance();
 
         // Animation Loop
         function animate() {
@@ -547,15 +598,19 @@ function toggleFaq(index) {
         }
         animate();
 
-        // Handle Resize
+        // Handle Resize. Also fires on mobile browser-chrome show/hide, hence the
+        // zero guard -- resizing to 0 would poison camera.aspect with NaN and the
+        // canvas would stay blank even after a valid resize came through.
         window.addEventListener('resize', function() {
-            if (container) {
-                const width = container.clientWidth;
-                const height = container.clientHeight;
-                renderer.setSize(width, height);
-                camera.aspect = width / height;
-                camera.updateProjectionMatrix();
-            }
+            const { w, h } = size();
+            if (!w || !h) return;
+            renderer.setSize(w, h);
+            camera.aspect = w / h;
+            // Re-applied on resize so crossing the breakpoint (rotating a phone,
+            // dragging a desktop window narrow) rescales the cube to match.
+            camera.position.z = cameraDistance();
+            cube.position.y = cubeLift();
+            camera.updateProjectionMatrix();
         });
     });
 </script>

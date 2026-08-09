@@ -59,6 +59,7 @@
                         ['ai-automation',                           'AI Automation'],
                         ['digital-marketing',                       'Digital Marketing'],
                         ['social-media-management',                 'Social Media Management'],
+                        ['video-production-in-gurgaon',             'Video Production'],
                     ]],
                     ['Solutions', [
                         ['performance-marketing-agency',  'Performance Marketing'],
@@ -66,8 +67,9 @@
                         ['events-live',                   'Events & Live'],
                         ['disruptive-ideas',              'Disruptive Ideas'],
                         ['friendship-with-benefits',      'Friendship With Benefits'],
+                        // Video Production moved up to Services; this column keeps only
+                        // the location-targeted landing pages.
                         ['advertising-agency-in-gurgaon', 'Advertising Agency in Gurgaon'],
-                        ['video-production-in-gurgaon',   'Video Production in Gurgaon'],
                     ]],
                     ['Company', [
                         ['home',     'Home'],

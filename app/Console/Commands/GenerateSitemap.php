@@ -38,7 +38,7 @@ class GenerateSitemap extends Command
      * Without an entry here they still get listed, just with a coarser lastmod.
      */
     private array $viewMap = [
-        'home' => 'visitors.index_new',
+        'home' => 'visitors.index',
         'blog' => 'visitors.blog',
     ];
 
