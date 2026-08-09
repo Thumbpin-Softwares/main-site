@@ -145,6 +145,13 @@ $dmSchema = [
         </div>
     </section>
 
+    {{-- Visible breadcrumb, mirroring the BreadcrumbList schema in @section('head'). --}}
+    @include('inc.breadcrumb', ['trail' => [
+        ['Home',     route('home')],
+        ['Services', route('services')],
+        ['Digital Marketing', null],
+    ]])
+
     {{-- ====================== INTRO ====================== --}}
     <section class="bg-white py-[60px]">
         <div class="mx-auto max-w-[1140px] px-5">

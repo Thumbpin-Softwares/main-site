@@ -130,6 +130,25 @@
     max-width: 100% !important;
 }
 </style>
+{{-- Breadcrumb structured data, matching the trail rendered on the page. Same
+     Organization/@id convention as the other service pages. --}}
+@php
+$bcSchema = [
+    '@context' => 'https://schema.org',
+    '@graph'   => [[
+        '@type' => 'BreadcrumbList',
+        '@id'   => url()->current() . '/#breadcrumb',
+        'itemListElement' => [
+            ['@type' => 'ListItem', 'position' => 1, 'name' => 'Home',     'item' => config('app.url') . '/'],
+            ['@type' => 'ListItem', 'position' => 2, 'name' => 'Services', 'item' => route('services')],
+            ['@type' => 'ListItem', 'position' => 3, 'name' => 'Real Estate Video Ads', 'item' => url()->current()],
+        ],
+    ]],
+];
+@endphp
+<script type="application/ld+json">
+{!! json_encode($bcSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
+</script>
 @endsection
 
 @section('content')
