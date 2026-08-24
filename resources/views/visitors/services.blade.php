@@ -97,58 +97,61 @@ $schema = [
 {!! json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) !!}
 </script>
 <style>
-.group:hover .svc-img {
-    filter: grayscale(0%) !important;
-    transform: scale(1.05) !important;
+/*
+ * Service card actions.
+ *
+ * The cover images these cards used to carry were a mixed bag -- stock photos,
+ * word-art with the title baked in, two cards sharing one "DIGITAL MARKETING"
+ * graphic, and inconsistent crops and backgrounds. They are replaced by the
+ * drawn icon set in $svcIcons below, which shares its spec with the marks on
+ * the branding service page: 56x56 viewBox, 2px strokes, round caps and joins,
+ * structural strokes on currentColor plus exactly one tp-red accent.
+ *
+ * The two heavy buttons went with them. The whole card is a link now (the title
+ * carries a stretched ::after), so "Learn More" is a visual affordance rather
+ * than a second link to the same place, and only "Our Work" stays a real link.
+ */
+/*
+ * A real rule, not `border-t border-solid`. With preflight off, the three sides
+ * this page does not set keep the initial `medium` width, so border-solid turns
+ * them on at 3px and the action row renders as a box instead of a top rule.
+ * Anything on this page that wants one edge has to spell it out like this.
+ */
+.svc-actions {
+    border-top: 1px solid #f0f0f0;
 }
-.svc-card .svc-img-wrap {
-    margin: -28px -24px 18px;
-}
-@media (max-width: 991px) {
-    .svc-card .svc-img-wrap {
-        margin: -24px -20px 16px;
-    }
-}
-@media (max-width: 576px) {
-    .svc-card .svc-img-wrap {
-        margin: -20px -16px 14px;
-    }
-}
-.svc-btn-primary {
-    display: inline-block;
-    border: 2px solid #E50914;
-    background: #E50914;
-    color: #fff;
-    padding: 8px 16px;
-    font-size: 13px;
+.svc-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12px;
     font-weight: 700;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background 0.25s ease, color 0.25s ease;
+    color: #ce2d33;
 }
-.svc-btn-primary:hover {
-    background: transparent;
-    color: #E50914;
+.svc-more svg {
+    transition: transform 0.25s ease;
 }
-.svc-btn-secondary {
+.group:hover .svc-more svg {
+    transform: translateX(4px);
+}
+.svc-work {
     display: inline-block;
-    border: 2px solid #ddd;
-    background: transparent;
-    color: #555;
-    padding: 8px 16px;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 700;
+    letter-spacing: 0.8px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: #8a8a8a;
     text-decoration: none;
-    border-radius: 4px;
-    transition: border-color 0.25s ease, color 0.25s ease;
+    transition: color 0.25s ease;
 }
-.svc-btn-secondary:hover {
-    border-color: #E50914;
-    color: #E50914;
+.svc-work:hover,
+.svc-work:focus-visible {
+    color: #111;
+}
+@media (prefers-reduced-motion: reduce) {
+    .svc-more svg { transition: none; }
 }
 /* The inquiry form is always expanded, so the old accordion rules
    (.svc-inquiry-wrap / .is-open) are gone. Their max-height:800px +
@@ -272,63 +275,201 @@ $schema = [
             </div>
 
             @php
+            /* Fourth column is now an $svcIcons key rather than an image filename. */
             $services = [
-                    ['Branding',               'Undertaking brand and market research to fathom brand goals and positioning, along with building on the existing voice and visual language.',                                                              'branding-agency',                        'branding.jpeg'],
-                    ['Strategy',               'Deploying a research-based strategy with room for innovative developments, across all forms of traditional & non-traditional media.',                                                                     'strategy-agency',                        'strategy.jpeg'],
-                    ['Digital Marketing',      'We integrate marketing strategies & solutions to create distinctive conversations and reach a diverse audience through a unique online presence.',                                                          'digital-marketing',                      'digital-marketing.webp'],
-                    ['Real Estate Video Ads',  'Cinematic property walkthroughs, drone aerials and promo films that help builders and brokers showcase their projects and sell faster.',                                                                   'real-estate-ads',                        'real-estate-video-ads.webp'],
-                    ['Video Production',       'Brand films, commercials, corporate videos and product shoots scripted, shot and edited end to end by our in-house production team.',                                                                    'video-production-in-gurgaon',            'video-production.png'],
-                    ['Application Development',      'Web and product applications built on React, Next.js and Node.js, with PostgreSQL or MongoDB behind them and UI/UX designed in the same engagement.',                                                          'application-development',                 'web-design.jpeg'],
-                    ['AI Automation',          'Automation across WhatsApp, Instagram, Facebook, LinkedIn and email so every enquiry gets answered, captured and followed up without anyone chasing it.',                                                'ai-automation',                          'ai-automation.webp'],
-                    ['Social Media Management','Day-to-day running of your channels content calendars, publishing, community management and reporting so the accounts stay active and answered.',                                                        'social-media-management',                'digital-marketing.webp'],
-                    ['Performance Marketing',  'Paid campaigns built around measurable outcomes, optimised continuously against cost per acquisition.',                                                                                                   'performance-marketing-agency',           'performance-marketing.jpg'],
-                    ['Events & Live',          'Brand activations, corporate events, launches, exhibitions and live shows planned, built and run on the ground across Gurgaon and Delhi NCR.',                                                          'events-live',                            'events.jpg'],
-                    ['Disruptive Ideas',       'Campaign ideas built to earn attention rather than buy it guerrilla and ambient work, moment marketing, experiential concepts and integrated rollout.',                                                    'disruptive-ideas',                       'disruptive-ideas.jpg'],
-                    ['Friendship With Benefits','Partner with us to make beautiful creatives white-label design and production, overflow capacity and project collaboration for agencies, studios and brand teams.',                                       'friendship-with-benefits',               'freinds-with-benefits.avif'],
+                    ['Branding',               'Undertaking brand and market research to fathom brand goals and positioning, along with building on the existing voice and visual language.',                                                              'branding-agency',                        'branding'],
+                    ['Strategy',               'Deploying a research-based strategy with room for innovative developments, across all forms of traditional & non-traditional media.',                                                                     'strategy-agency',                        'strategy'],
+                    ['Digital Marketing',      'We integrate marketing strategies & solutions to create distinctive conversations and reach a diverse audience through a unique online presence.',                                                          'digital-marketing',                      'digital'],
+                    ['Real Estate Video Ads',  'Cinematic property walkthroughs, drone aerials and promo films that help builders and brokers showcase their projects and sell faster.',                                                                   'real-estate-ads',                        'realestate'],
+                    ['Video Production',       'Brand films, commercials, corporate videos and product shoots scripted, shot and edited end to end by our in-house production team.',                                                                    'video-production-in-gurgaon',            'video'],
+                    ['Application Development',      'Web and product applications built on React, Next.js and Node.js, with PostgreSQL or MongoDB behind them and UI/UX designed in the same engagement.',                                                          'application-development',                 'appdev'],
+                    ['AI Automation',          'Automation across WhatsApp, Instagram, Facebook, LinkedIn and email so every enquiry gets answered, captured and followed up without anyone chasing it.',                                                'ai-automation',                          'ai'],
+                    ['Social Media Management','Day-to-day running of your channels content calendars, publishing, community management and reporting so the accounts stay active and answered.',                                                        'social-media-management',                'social'],
+                    ['Performance Marketing',  'Paid campaigns built around measurable outcomes, optimised continuously against cost per acquisition.',                                                                                                   'performance-marketing-agency',           'performance'],
+                    ['Events & Live',          'Brand activations, corporate events, launches, exhibitions and live shows planned, built and run on the ground across Gurgaon and Delhi NCR.',                                                          'events-live',                            'events'],
+                    ['Disruptive Ideas',       'Campaign ideas built to earn attention rather than buy it guerrilla and ambient work, moment marketing, experiential concepts and integrated rollout.',                                                    'disruptive-ideas',                       'disruptive'],
+                    ['Friendship With Benefits','Partner with us to make beautiful creatives white-label design and production, overflow capacity and project collaboration for agencies, studios and brand teams.',                                       'friendship-with-benefits',               'partnership'],
             ];
 
-            $card = 'group relative block overflow-hidden rounded-lg border border-solid border-[#e5e5e5]'
-                  . ' bg-white p-[28px_24px] no-underline shadow-[0_2px_8px_rgba(0,0,0,0.04)]'
-                  . ' transition-all duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]'
-                  . ' hover:-translate-y-2 hover:border-tp-red hover:shadow-[0_12px_24px_rgba(0,0,0,0.12)]'
-                  . ' max-[991px]:p-[24px_20px] max-[576px]:p-[20px_16px] svc-card';
+            /*
+             * One drawn mark per service. Shared spec so the twelve read as a set:
+             * 56x56 viewBox, 2px strokes, round caps and joins, structural strokes
+             * on currentColor (so the card's hover carries the whole mark to red)
+             * and exactly one #ce2d33 accent marking the point of each idea.
+             */
+            $svcIcons = [
+
+                // Artboard holding a mark, palette swatches below.
+                'branding' => <<<'SVG'
+                    <rect x="3" y="3" width="44" height="30" rx="3" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="17" cy="18" r="7.5" stroke="#ce2d33" stroke-width="2"/>
+                    <rect x="28" y="11" width="14" height="14" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <rect x="3" y="41" width="12" height="9" rx="2" fill="#ce2d33"/>
+                    <rect x="19" y="41" width="12" height="9" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <rect x="35" y="41" width="12" height="9" rx="2" stroke="currentColor" stroke-width="2"/>
+                SVG,
+
+                // Bullseye with the arrow already in the centre.
+                'strategy' => <<<'SVG'
+                    <circle cx="24" cy="32" r="19" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="24" cy="32" r="10" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="24" cy="32" r="3.5" fill="#ce2d33"/>
+                    <path d="M24 32 51 5" stroke="#ce2d33" stroke-width="2"/>
+                    <path d="M41 5h10v10" stroke="#ce2d33" stroke-width="2"/>
+                SVG,
+
+                // Megaphone: reach, broadcast outward.
+                'digital' => <<<'SVG'
+                    <path d="M5 23v10a2 2 0 0 0 2 2h7l13 9V12L14 21H7a2 2 0 0 0-2 2z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M36 21a10 10 0 0 1 0 14" stroke="#ce2d33" stroke-width="2"/>
+                    <path d="M43 14a20 20 0 0 1 0 28" stroke="#ce2d33" stroke-width="2"/>
+                SVG,
+
+                // A building, and the film that sells it.
+                'realestate' => <<<'SVG'
+                    <path d="M7 51V11l17-8v48" stroke="currentColor" stroke-width="2"/>
+                    <path d="M13 17h5M13 26h5M13 35h5" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="39" cy="37" r="13" fill="#ce2d33"/>
+                    <path d="M36 32.5 44 37l-8 4.5z" fill="#fff"/>
+                SVG,
+
+                // Camera body and lens.
+                'video' => <<<'SVG'
+                    <rect x="4" y="16" width="32" height="25" rx="4" stroke="currentColor" stroke-width="2"/>
+                    <path d="M36 25.5 51 17v23l-15-8.5z" stroke="#ce2d33" stroke-width="2"/>
+                    <circle cx="14" cy="28.5" r="4" stroke="currentColor" stroke-width="2"/>
+                SVG,
+
+                // Browser chrome with code inside it.
+                'appdev' => <<<'SVG'
+                    <rect x="4" y="8" width="48" height="40" rx="4" stroke="currentColor" stroke-width="2"/>
+                    <path d="M4 20h48" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="11" cy="14" r="1.7" fill="#ce2d33"/>
+                    <circle cx="18" cy="14" r="1.7" fill="currentColor"/>
+                    <path d="M22 28l-6 6 6 6M34 28l6 6-6 6" stroke="#ce2d33" stroke-width="2"/>
+                SVG,
+
+                // Chip: the thing doing the work while nobody chases it.
+                'ai' => <<<'SVG'
+                    <rect x="14" y="14" width="28" height="28" rx="5" stroke="currentColor" stroke-width="2"/>
+                    <rect x="23" y="23" width="10" height="10" rx="2" fill="#ce2d33"/>
+                    <path d="M22 6v8M34 6v8M22 42v8M34 42v8M6 22h8M6 34h8M42 22h8M42 34h8" stroke="currentColor" stroke-width="2"/>
+                SVG,
+
+                // Content calendar: the day-to-day running of the channels.
+                'social' => <<<'SVG'
+                    <rect x="5" y="11" width="46" height="41" rx="4" stroke="currentColor" stroke-width="2"/>
+                    <path d="M5 23h46" stroke="currentColor" stroke-width="2"/>
+                    <path d="M17 5v10M39 5v10" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="18" cy="34" r="3.5" fill="#ce2d33"/>
+                    <path d="M28 34h14M16 44h26" stroke="currentColor" stroke-width="2"/>
+                SVG,
+
+                // Bars, with the outcome one filled: judged on results.
+                'performance' => <<<'SVG'
+                    <path d="M4 51h48" stroke="currentColor" stroke-width="2"/>
+                    <rect x="7" y="31" width="10" height="16" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <rect x="23" y="23" width="10" height="24" rx="2" stroke="currentColor" stroke-width="2"/>
+                    <rect x="39" y="11" width="10" height="36" rx="2" fill="#ce2d33"/>
+                SVG,
+
+                // Ticket, perforation in red.
+                'events' => <<<'SVG'
+                    <path d="M7 14h42a3 3 0 0 1 3 3v6a6 6 0 0 0 0 12v6a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3v-6a6 6 0 0 0 0-12v-6a3 3 0 0 1 3-3z" stroke="currentColor" stroke-width="2"/>
+                    <path d="M21 18v20" stroke="#ce2d33" stroke-width="2" stroke-dasharray="3 5"/>
+                SVG,
+
+                // A bolt, and the marks it leaves: attention earned, not bought.
+                'disruptive' => <<<'SVG'
+                    <path d="M32 3 13 31h11l-3 22 21-30H30z" fill="#ce2d33"/>
+                    <path d="M7 13l4 4M49 13l-4 4M4 41h6M52 41h-6" stroke="currentColor" stroke-width="2"/>
+                SVG,
+
+                // Two rings meeting: capacity shared with other studios.
+                'partnership' => <<<'SVG'
+                    <circle cx="21" cy="28" r="15" stroke="currentColor" stroke-width="2"/>
+                    <circle cx="35" cy="28" r="15" stroke="#ce2d33" stroke-width="2"/>
+                SVG,
+            ];
+
+            /*
+             * h-full + flex column: without it the cards in a row were as tall as
+             * their own copy, so the action rows landed at three different heights
+             * across a row. The description takes the slack (flex-1) and the
+             * actions sit on a common baseline.
+             */
+            $card = 'group relative flex h-full flex-col overflow-hidden rounded-xl border border-solid border-[#e8e8e8]'
+                  . ' bg-white p-[26px_24px_22px] shadow-[0_1px_3px_rgba(0,0,0,0.04)]'
+                  . ' transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)]'
+                  . ' hover:-translate-y-1 hover:border-tp-red/40 hover:shadow-[0_14px_30px_rgba(0,0,0,0.10)]'
+                  . ' focus-within:border-tp-red/40'
+                  . ' max-[991px]:p-[22px_20px_20px] max-[576px]:p-[20px_18px_18px] svc-card';
             @endphp
 
             <div class="mt-[60px] grid grid-cols-3 gap-[24px] max-[991px]:mt-10 max-[991px]:grid-cols-2 max-[991px]:gap-[20px] max-[576px]:grid-cols-1 max-[576px]:gap-4">
                 {{-- The card number comes from the loop index, not the data. Hardcoding
                      it meant removing a service left a gap in the sequence. --}}
-                @foreach($services as $i => [$title, $desc, $route, $img])
+                @foreach($services as $i => [$title, $desc, $route, $icon])
                 @php $num = str_pad($i + 1, 2, '0', STR_PAD_LEFT); @endphp
-                <div class="{{ $card }}" @if($route) style="cursor:pointer;" onclick="window.location='{{ route($route) }}'" @endif>
+                <div class="{{ $card }}">
 
                     {{-- Accent bar --}}
-                    <span class="absolute left-0 top-0 h-0 w-[4px] bg-tp-red transition-[height] duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:h-full"></span>
+                    <span aria-hidden="true" class="absolute left-0 top-0 h-0 w-[3px] bg-tp-red transition-[height] duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] group-hover:h-full"></span>
 
-                    {{-- Image flush to card edges --}}
-                    <div class="svc-img-wrap relative overflow-hidden" style="height:200px;border-radius:8px 8px 0 0;">
-                        <img src="{{ config('app.url') }}/img/services/{{ $img }}"
-                             alt="{{ $title }}"
-                             loading="lazy"
-                             class="svc-img"
-                             style="width:100%;height:100%;object-fit:cover;filter:grayscale(100%);transition:filter 0.4s ease,transform 0.4s ease;">
-                        <span class="absolute top-3 left-3 rounded border border-solid border-tp-red px-3 py-[6px] font-mono text-[14px] font-bold text-tp-red" style="background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);">
+                    {{-- Mark + number. aria-hidden on the mark: the <h3> below it
+                         already names the service, so announcing it would only
+                         repeat what was just read. --}}
+                    <div class="mb-6 flex items-start justify-between gap-4 max-[576px]:mb-5">
+                        <span aria-hidden="true"
+                              class="text-[#111] transition-colors duration-300 group-hover:text-tp-red">
+                            <svg viewBox="0 0 56 56" width="44" height="44" fill="none"
+                                 stroke-linecap="round" stroke-linejoin="round" role="presentation" focusable="false">
+                                {!! $svcIcons[$icon] !!}
+                            </svg>
+                        </span>
+                        <span class="font-mono text-[13px] font-bold leading-none text-[#c9c9c9] transition-colors duration-300 group-hover:text-tp-red">
                             {{ $num }}
                         </span>
                     </div>
 
                     <h3 class="m-0 mb-[10px] text-[18px] font-extrabold uppercase leading-[1.2] tracking-[-0.5px] text-black transition-colors duration-300 group-hover:text-tp-red max-[991px]:text-[16px] max-[576px]:text-[17px]">
+                        {{--
+                            The title is the card's link, and its ::after is
+                            stretched over the whole card. That replaces the old
+                            onclick + cursor:pointer, which gave a mouse a
+                            clickable card but left keyboard users with no way to
+                            reach it at all.
+                        --}}
+                        @if($route)
+                        <a href="{{ route($route) }}"
+                           class="text-inherit no-underline after:absolute after:inset-0 after:content-[''] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-tp-red">
+                            {{ $title }}
+                        </a>
+                        @else
                         {{ $title }}
+                        @endif
                     </h3>
 
-                    <p class="m-0 mb-4 text-[13px] leading-[1.65] text-[#666] transition-colors duration-300 group-hover:text-[#333]">
+                    {{-- flex-1 pushes the action row to the bottom of every card. --}}
+                    <p class="m-0 mb-5 flex-1 text-[13px] leading-[1.65] text-[#6b6b6b] transition-colors duration-300 group-hover:text-[#333]">
                         {{ $desc }}
                     </p>
 
-                    <div style="display:flex;gap:12px;flex-wrap:wrap;">
+                    <div class="svc-actions flex flex-wrap items-center gap-x-5 gap-y-2 pt-4">
                         @if($route)
-                        <a href="{{ route($route) }}" onclick="event.stopPropagation();" class="svc-btn-primary">Learn More</a>
+                        {{-- A span, not a link: the stretched title link already
+                             points here, and two links to one target in the same
+                             card is noise for anyone tabbing or using a screen
+                             reader. This is the visual affordance for it. --}}
+                        <span class="svc-more">
+                            Learn More
+                            <svg viewBox="0 0 16 16" width="13" height="13" fill="none" aria-hidden="true" focusable="false">
+                                <path d="M2 8h11M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
                         @endif
-                        <a href="{{ route('work') }}" onclick="event.stopPropagation();" class="svc-btn-secondary">Our Work</a>
+                        {{-- Raised above the stretched link so it stays clickable. --}}
+                        <a href="{{ route('work') }}" class="svc-work relative z-10">Our Work</a>
                     </div>
                 </div>
                 @endforeach

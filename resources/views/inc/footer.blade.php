@@ -2,9 +2,20 @@
 {{--
     Styled with Tailwind utilities from css/shared.css (utilities only, no
     preflight). Because preflight is off here, resets that markup relies on
-    (list-none, pl-0, m-0) are spelled out explicitly -- and border utilities
-    must always be paired with `border-solid`, since without preflight the
-    border-style defaults to `none` and a width alone renders nothing.
+    (list-none, pl-0, m-0) are spelled out explicitly.
+
+    BORDERS: this partial ships on every page, and only some of them also load
+    css/app.css -- the build that carries preflight, and therefore the thing
+    that sets `border-width: 0` on every element. So:
+
+      * `border border-solid` (all four edges) is fine -- `border` sets all
+        four widths to 1px itself.
+      * `border-t` / `border-b` + `border-solid` is NOT. On a page without
+        preflight the other three edges keep the initial `medium` width and
+        border-solid turns them on at 3px, boxing the element in grey.
+
+    Single-edge rules are therefore spelled out as .foot-rule-t /
+    .foot-group-sep in the <style> block at the bottom.
 
     The footer is unconditionally dark, so there is no light variant. The
     `footer_black` value some pages still pass through @extends is kept on the
@@ -80,7 +91,7 @@
             </div>
 
             {{-- ---------- Middle: link groups ---------- --}}
-            <div class="grid grid-cols-3 gap-x-12 gap-y-10 border-t border-solid border-[#1c1c1c] py-12 max-[991px]:gap-x-8 max-[767px]:grid-cols-2 max-[767px]:gap-y-8 max-[575px]:grid-cols-1 max-[575px]:gap-y-0 max-[575px]:py-4">
+            <div class="grid grid-cols-3 gap-x-12 gap-y-10 foot-rule-t py-12 max-[991px]:gap-x-8 max-[767px]:grid-cols-2 max-[767px]:gap-y-8 max-[575px]:grid-cols-1 max-[575px]:gap-y-0 max-[575px]:py-4">
                 @php
                 $sections = [
                     ['Services', [
@@ -118,7 +129,7 @@
                      already opens with a border-t, and the two together drew a
                      pair of parallel lines with a gap between them. --}}
                 @foreach($sections as [$heading, $links])
-                <details open class="foot-group border-solid border-[#1c1c1c] {{ $loop->last ? '' : 'max-[575px]:border-b' }}">
+                <details open class="foot-group {{ $loop->last ? "" : "foot-group-sep" }}">
                     {{-- min-h keeps the mobile tap target above 44px. On desktop
                          the summary is an inert heading: pointer-events-none stops
                          it toggling, and the chevron is hidden. --}}
@@ -147,7 +158,7 @@
             </div>
 
             {{-- ---------- Social ---------- --}}
-            <div class="flex items-center gap-4 border-t border-solid border-[#1c1c1c] py-8 max-[575px]:flex-col max-[575px]:items-start max-[575px]:gap-4 max-[575px]:py-7">
+            <div class="flex items-center gap-4 foot-rule-t py-8 max-[575px]:flex-col max-[575px]:items-start max-[575px]:gap-4 max-[575px]:py-7">
                 <span class="font-body text-[11px] font-bold uppercase tracking-[2px] text-[#777]">
                     Follow Us
                 </span>
@@ -172,7 +183,7 @@
             </div>
 
             {{-- ---------- Bottom: copyright ---------- --}}
-            <div class="flex items-center justify-between gap-4 border-t border-solid border-[#1c1c1c] pt-7 max-[575px]:flex-col max-[575px]:items-start max-[575px]:gap-2 max-[575px]:pt-6">
+            <div class="flex items-center justify-between gap-4 foot-rule-t pt-7 max-[575px]:flex-col max-[575px]:items-start max-[575px]:gap-2 max-[575px]:pt-6">
                 <p class="m-0 font-body text-[12px] font-medium text-[#7d7d7d]">
                     &copy; {{ date('Y') }} Thumbpin. All rights reserved.
                 </p>
@@ -186,6 +197,22 @@
 </footer>
 
 <style>
+/*
+ * Single-edge rules, spelled out rather than done with `border-t border-solid`.
+ *
+ * The footer ships on every page, and only some of them load css/app.css. That
+ * is the build that carries Tailwind preflight, and preflight is the thing that
+ * sets `border-width: 0` on every element. Without it -- on /services, /work
+ * and the other legacy pages -- the three sides a `border-t` does not set keep
+ * the initial `medium` width, and `border-solid` then turns them on at 3px, so
+ * every link group renders inside a grey box. These rules set one edge and
+ * touch nothing else, so they look identical on both kinds of page.
+ */
+.foot-rule-t { border-top: 1px solid #1c1c1c; }
+@media (max-width: 575px) {
+    .foot-group-sep { border-bottom: 1px solid #1c1c1c; }
+}
+
 /* Chevron flips when the group is open. Mobile only -- on desktop the summary
    is inert and the marker is hidden. */
 .foot-group[open] .foot-chev { transform: rotate(180deg); }
