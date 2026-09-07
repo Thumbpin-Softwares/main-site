@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Concerns\ReadsSpamAssessment;
 use Illuminate\Http\Request;
 use App\Models\RealEstateLead;
 use Illuminate\Support\Facades\Mail;
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 
 class RealEstateLeadController extends Controller
 {
+    use ReadsSpamAssessment;
+
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -41,7 +44,12 @@ class RealEstateLeadController extends Controller
                 'url'              => $request->url(),
             ]);
 
-            $this->sendNotificationEmail($lead);
+            $lead->applySpamAssessment($this->spamAssessment($request))->save();
+
+            // Flagged leads are stored for review but never emailed.
+            if (! $lead->is_spam) {
+                $this->sendNotificationEmail($lead);
+            }
 
             return response()->json([
                 'success' => true,

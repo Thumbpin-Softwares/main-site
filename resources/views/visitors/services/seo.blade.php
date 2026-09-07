@@ -552,6 +552,7 @@ $bcSchema = [
                 </div>
                 <div class="form">
                     <form action="{{ route('project-form') }}" method="post">
+                    @include('inc.spam-fields')
                         @csrf
                         <input type="hidden" name="url" value="{{ Request::url() }}">
                         <div class="row">

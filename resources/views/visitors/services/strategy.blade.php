@@ -444,6 +444,7 @@ $strategySchema = [
                 {{-- Tighter top padding on phones: py-12 under the "Start Here"
                      strip left a visibly empty band before the first field. --}}
                 <form action="{{ route('inquiry-form') }}" method="POST" class="py-12 max-[575px]:pt-6 max-[575px]:pb-10">
+                    @include('inc.spam-fields')
                     @csrf
                     <input type="hidden" name="url" value="{{ url()->current() }}">
 

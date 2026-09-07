@@ -169,6 +169,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             }
         }
     </style>
+
+    {{-- Cloudflare Turnstile. Loads only once real keys are in .env, so this is
+         absent (and costs nothing) until then. See config/spamguard.php. --}}
+    @if(config('spamguard.turnstile.enabled'))
+        <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+    @endif
 </head>
 
 <body>
@@ -203,6 +209,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </div>
                 <div class="form">
                     <form action="{{ route('inquiry-form') }}" method="post">
+                    @include('inc.spam-fields')
                         @csrf
                         <input type="hidden" name="url" value="{{ Request::url() }}">
                         <div class="input-field">

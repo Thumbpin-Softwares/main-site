@@ -89,6 +89,7 @@
                     <div class="col-lg-6">
                         <div class="form-1">
                             <form action="{{ route('contact-submit') }}" method="POST">
+                    @include('inc.spam-fields')
                                 @csrf
                                 <input type="hidden" name="url" value="{{ Request::url() }}">
                                 <div class="title">
@@ -135,6 +136,7 @@
                             </div>
                             <div class="form-2">
                                 <form action="{{ route('task-submit') }}" method="POST" enctype="multipart/form-data">
+                    @include('inc.spam-fields')
                                     @csrf
                                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                     <input type="hidden" name="url" value="{{ Request::url() }}">
@@ -248,6 +250,7 @@
             </div> --}}
                 {{-- <div class="form-2">
                 <form action="{{ route('task-submit') }}" method="POST">
+                    @include('inc.spam-fields')
                     @csrf
                     <input type="hidden" name="url" value="{{ Request::url() }}">
                     <div class="row">

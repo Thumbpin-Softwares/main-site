@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Concerns\ReadsSpamAssessment;
 use Illuminate\Http\Request;
 use App\Models\AdvertisingAgencyContact;
 use Illuminate\Support\Facades\Mail;
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\Validator;
 
 class AdvertisingAgencyContactController extends Controller
 {
+    use ReadsSpamAssessment;
+
     /**
      * Store a new contact submission
      */
@@ -46,8 +49,12 @@ class AdvertisingAgencyContactController extends Controller
                 'url' => $request->url(),
             ]);
 
-            // Send notification email (optional)
-            $this->sendNotificationEmail($contact);
+            $contact->applySpamAssessment($this->spamAssessment($request))->save();
+
+            // Flagged submissions are stored for review but never emailed.
+            if (! $contact->is_spam) {
+                $this->sendNotificationEmail($contact);
+            }
 
             // Return success response
             return response()->json([

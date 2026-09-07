@@ -92,13 +92,44 @@ Route::get('/blog/{slug}', [BlogController::class, 'blog'])->name('blog-detail')
 Route::get('/tag/{slug}', [BlogController::class, 'tagBlogs'])->name('tag');
 Route::get('/blog/category/{category_slug}', [BlogController::class, 'filterByCategory'])->name('blogs-category');
 
-Route::post('/contact', [ContactController::class, 'contact'])->name('contact-submit');
-Route::post('/inquiry-form', [ContactController::class, 'inquiry_form'])->name('inquiry-form');
-Route::post('/task-submit', [ContactController::class, 'task_submit'])->name('task-submit');
-Route::post('/project-form', [ContactController::class, 'project_form'])->name('project-form');
-Route::post('/advertising-agency-contact', [AdvertisingAgencyContactController::class, 'store'])->name('advertising-agency-contact');
-Route::post('/video-production-lead', [\App\Http\Controllers\VideoProductionLeadController::class, 'store'])->name('video-production-lead');
-Route::post('/real-estate-lead', [\App\Http\Controllers\RealEstateLeadController::class, 'store'])->name('real-estate-lead');
+/*
+ | Public form endpoints.
+ |
+ | Every one of these is guarded by SpamGuard (config/spamguard.php). The
+ | middleware arguments name the fields that make up that form's body, which is
+ | what duplicate detection fingerprints -- so leave the ip/user_agent/url
+ | plumbing fields out of them.
+ |
+ | 'throttle' is a hard backstop on top of the scoring: SpamGuard only *scores*
+ | a fast IP, this turns away a flood outright.
+ */
+Route::post('/contact', [ContactController::class, 'contact'])
+    ->middleware(['throttle:20,1', 'spamguard:name,email,mobile,message'])
+    ->name('contact-submit');
+
+Route::post('/inquiry-form', [ContactController::class, 'inquiry_form'])
+    ->middleware(['throttle:20,1', 'spamguard:name,email,mobile,requirement'])
+    ->name('inquiry-form');
+
+Route::post('/task-submit', [ContactController::class, 'task_submit'])
+    ->middleware(['throttle:20,1', 'spamguard:task'])
+    ->name('task-submit');
+
+Route::post('/project-form', [ContactController::class, 'project_form'])
+    ->middleware(['throttle:20,1', 'spamguard:name,company_name,email,mobile,requirement'])
+    ->name('project-form');
+
+Route::post('/advertising-agency-contact', [AdvertisingAgencyContactController::class, 'store'])
+    ->middleware(['throttle:20,1', 'spamguard:name,email,phone,company_name,message'])
+    ->name('advertising-agency-contact');
+
+Route::post('/video-production-lead', [\App\Http\Controllers\VideoProductionLeadController::class, 'store'])
+    ->middleware(['throttle:20,1', 'spamguard:name,email,phone,company_name,message'])
+    ->name('video-production-lead');
+
+Route::post('/real-estate-lead', [\App\Http\Controllers\RealEstateLeadController::class, 'store'])
+    ->middleware(['throttle:20,1', 'spamguard:name,company_name,email,contact,requirement'])
+    ->name('real-estate-lead');
 Route::post('/api/voice-parse', [\App\Http\Controllers\VoiceParseController::class, 'parse'])->name('voice-parse');
 
 Route::group(['prefix' => 'admin'], function () {

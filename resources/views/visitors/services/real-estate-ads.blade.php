@@ -362,6 +362,7 @@ $bcSchema = [
         <div id="re-lead-form-wrap" class="re-lead-form-wrap bg-[#0d0d0d] border-b border-[#1e1e1e]">
             <div class="max-w-[1300px] mx-auto px-5 max-[768px]:px-3">
                 <form id="re-lead-form" class="flex flex-col py-12" novalidate>
+                    @include('inc.spam-fields')
                     @csrf
 
                     <div class="grid grid-cols-2 gap-x-[60px] max-[768px]:grid-cols-1">
@@ -528,6 +529,7 @@ $bcSchema = [
             </p>
 
             <form id="cta-lead-form" class="max-w-[700px] mx-auto text-left relative z-[1]" novalidate>
+                @include('inc.spam-fields')
                 @csrf
                 <input type="hidden" name="url" value="{{ Request::url() }}">
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Concerns\ReadsSpamAssessment;
 use App\Mail\ContactMail;
 use App\Mail\InquiryMail;
 use App\Mail\TaskMail;
@@ -15,7 +16,16 @@ use Illuminate\Support\Facades\Mail;
 
 class ContactController extends Controller
 {
-    public function contact(){
+    use ReadsSpamAssessment;
+
+    public function contact(Request $request){
+
+        $request->validate([
+            'name'    => 'required|string|max:255',
+            'email'   => 'required|email|max:255',
+            'mobile'  => 'required|string|max:20',
+            'message' => 'nullable|string|max:5000',
+        ]);
 
         $contact = new Contact();
         $contact->name = request()->input('name');
@@ -23,8 +33,9 @@ class ContactController extends Controller
         $contact->mobile = request()->input('mobile');
         $contact->message = request()->input('message');
         $contact->url = request()->input('url');
-        $contact->ip = $_SERVER['REMOTE_ADDR'];
-        $contact->user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $contact->ip = $request->ip();
+        $contact->user_agent = $request->userAgent();
+        $contact->applySpamAssessment($this->spamAssessment($request));
         $contact->save();
 
         $data = array(
@@ -43,7 +54,16 @@ class ContactController extends Controller
 
     }
 
-    public function inquiry_form(){
+    public function inquiry_form(Request $request){
+
+        $request->validate([
+            'name'        => 'required|string|max:255',
+            'email'       => 'required|email|max:255',
+            'mobile'      => 'required|string|max:20',
+            'country'     => 'nullable|string|max:100',
+            'requirement' => 'nullable|string|max:5000',
+        ]);
+
         $contact = new InquiryForm();
         $contact->name = request()->input('name');
         $contact->email = request()->input('email');
@@ -51,8 +71,9 @@ class ContactController extends Controller
         $contact->country = request()->input('country');
         $contact->requirement = request()->input('requirement');
         $contact->url = request()->input('url');
-        $contact->ip = $_SERVER['REMOTE_ADDR'];
-        $contact->user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $contact->ip = $request->ip();
+        $contact->user_agent = $request->userAgent();
+        $contact->applySpamAssessment($this->spamAssessment($request));
         $contact->save();
 
         $data = array(
@@ -74,11 +95,16 @@ class ContactController extends Controller
 
     public function task_submit(Request $request)
     {
+        $request->validate([
+            'task' => 'required|string|max:5000',
+        ]);
+
         $task = new TaskForm();
         $task->task = request()->input('task');
         $task->url = request()->input('url');
-        $task->ip = $_SERVER['REMOTE_ADDR'];
-        $task->user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $task->ip = $request->ip();
+        $task->user_agent = $request->userAgent();
+        $task->applySpamAssessment($this->spamAssessment($request));
 
         $images = '';
         if (request()->hasFile('file')) {
@@ -104,13 +130,23 @@ class ContactController extends Controller
             'type' => 'task form'
         );
 
-        Mail::to(env('MAIL_TO_ADDRESS'))->send(new TaskMail($data));
+        // Flagged submissions are stored but never emailed -- the whole point
+        // is to keep the inbox clean. Review them in Voyager instead.
+        if (! $task->is_spam) {
+            Mail::to(env('MAIL_TO_ADDRESS'))->send(new TaskMail($data));
+        }
+
         return redirect(route('thank-you'));
     }
-    public function project_form(){
-        request()->validate([
-            'mobile' =>'required|numeric|digits_between:10,15',
+    public function project_form(Request $request){
+        $request->validate([
+            'name'        => 'required|string|max:255',
+            'email'       => 'required|email|max:255',
+            'mobile'      => 'required|numeric|digits_between:10,15',
+            'company_name'=> 'nullable|string|max:255',
+            'requirement' => 'nullable|string|max:5000',
         ]);
+
         $project = new ProjectForm();
         $project->name = request()->input('name');
         $project->company_name = request()->input('company_name');
@@ -118,8 +154,9 @@ class ContactController extends Controller
         $project->mobile = request()->input('mobile');
         $project->requirement = request()->input('requirement');
         $project->url = request()->input('url');
-        $project->ip = $_SERVER['REMOTE_ADDR'];
-        $project->user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $project->ip = $request->ip();
+        $project->user_agent = $request->userAgent();
+        $project->applySpamAssessment($this->spamAssessment($request));
         $project->save();
 
         $data = array(

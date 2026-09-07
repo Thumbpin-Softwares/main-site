@@ -260,6 +260,7 @@ $dmSchema = [
         <div id="svc-inquiry-form-wrap" class="bg-black border-b border-[#1e1e1e]">
             <div class="max-w-[1300px] mx-auto px-5">
                 <form action="{{ route('inquiry-form') }}" method="POST" class="py-12">
+                    @include('inc.spam-fields')
                     @csrf
                     <input type="hidden" name="url" value="{{ url()->current() }}">
 

@@ -895,6 +895,7 @@ marketing agency Gurgaon',
                         <div id="form-messages" class="form-messages"></div>
 
                         <form action="{{ route('project-form') }}" method="post" id="homeContactForm">
+                    @include('inc.spam-fields')
                             @csrf
                             <input type="hidden" name="url" value="{{ Request::url() }}">
                             <div class="grid grid-cols-2 gap-3.5 max-[860px]:grid-cols-1 max-[860px]:gap-0">
