@@ -110,10 +110,25 @@ class ContactController extends Controller
         if (request()->hasFile('file')) {
             $voyagerData = [];
             $image = request()->file('file');
-            $newImage = time() . '.' . $image->getClientOriginalExtension();
-            $images = $image->move('storage/task_file', $newImage);
+
+            /*
+             * Absolute path, deliberately.
+             *
+             * This used to be the relative 'storage/task_file', which resolves
+             * against the web server's working directory rather than the app.
+             * On this host that is public_html -- a deployed *copy* of public/,
+             * not the app itself -- so uploads landed outside storage/ and were
+             * wiped by a routine deploy. storage_path() always points at the
+             * application's own storage, whatever the document root is doing.
+             *
+             * uniqid() rather than time(): two files uploaded in the same second
+             * produced the same name and silently overwrote each other.
+             */
+            $newImage = time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+            $images   = $image->move(storage_path('app/public/task_file'), $newImage);
 
             $f = [];
+            // Relative to the public disk, which Voyager resolves to /storage/...
             $f['download_link'] = 'task_file/'.$newImage;
             $f['original_name'] = $image->getClientOriginalName();
             array_push($voyagerData, $f);

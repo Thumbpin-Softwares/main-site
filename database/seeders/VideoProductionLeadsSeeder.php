@@ -196,6 +196,54 @@ class VideoProductionLeadsSeeder extends Seeder
             ])->save();
         }
 
+        // SpamGuard's verdict. Shown in the browse list so a flagged lead is
+        // obvious at a glance, and on the read view so you can see *why* it was
+        // flagged -- but not on add/edit, since it is set by the guard.
+        $dataRow = $this->dataRow($contactDataType, 'is_spam');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'checkbox',
+                'display_name' => 'Spam?',
+                'required'     => 0,
+                'browse'       => 1,
+                'read'         => 1,
+                'edit'         => 1,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 14,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($contactDataType, 'spam_score');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'number',
+                'display_name' => 'Spam Score',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 15,
+            ])->save();
+        }
+
+        $dataRow = $this->dataRow($contactDataType, 'spam_reasons');
+        if (!$dataRow->exists) {
+            $dataRow->fill([
+                'type'         => 'text',
+                'display_name' => 'Spam Reasons',
+                'required'     => 0,
+                'browse'       => 0,
+                'read'         => 1,
+                'edit'         => 0,
+                'add'          => 0,
+                'delete'       => 0,
+                'order'        => 16,
+            ])->save();
+        }
+
         $dataRow = $this->dataRow($contactDataType, 'created_at');
         if (!$dataRow->exists) {
             $dataRow->fill([

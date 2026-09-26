@@ -3309,8 +3309,18 @@ video, .noise-overlay, .hero-overlay {
                 <div class="skeleton-box" style="width:160px;"></div>
             </div>
 
-            <form id="contactForm">
+            {{--
+                novalidate: the browser's own validation was refusing to fire the
+                submit event and silently scrolling to the first invalid control,
+                whose tooltip the custom .c-input styling clips -- so a click on
+                "Send Brief" just jumped the page and appeared to do nothing. The
+                required attributes are kept for semantics and for the no-JS case;
+                the handler below now does the checking and reports into
+                #form-messages, where the server's errors already land.
+            --}}
+            <form id="contactForm" novalidate>
                 @csrf
+                @include('inc.spam-fields')
                 <div class="c-row">
                     <div class="c-field"><input type="text" name="name" class="c-input" placeholder="Your Name *" required></div>
                     <div class="c-field"><input type="text" name="company_name" class="c-input" placeholder="Brand / Company"></div>
@@ -3835,6 +3845,52 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     var form = this;
     var submitBtn = document.getElementById('submitBtn');
     var messagesDiv = document.getElementById('form-messages');
+
+    function showMessage(text, ok) {
+        messagesDiv.textContent = text;
+        messagesDiv.style.background = ok ? 'rgba(37, 211, 102, 0.15)' : 'rgba(229, 9, 20, 0.15)';
+        messagesDiv.style.color = ok ? '#25D366' : '#e50914';
+        messagesDiv.style.borderLeft = '4px solid ' + (ok ? '#25D366' : '#e50914');
+        messagesDiv.style.display = 'block';
+        messagesDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    // Client-side check, replacing the native validation turned off by
+    // `novalidate`. Reports every missing field at once rather than stopping at
+    // the first, and names them, so the two dropdowns -- which don't look empty
+    // the way a blank text box does -- are obvious.
+    var required = [
+        ['name',         'Your Name'],
+        ['email',        'Email Address'],
+        ['phone',        'Phone Number'],
+        ['video_type',   'Video Type'],
+        ['budget_range', 'Budget Range'],
+        ['message',      'Project Details']
+    ];
+
+    var missing   = [];
+    var firstBad  = null;
+
+    for (var i = 0; i < required.length; i++) {
+        var el = form.elements[required[i][0]];
+        if (!el || !String(el.value || '').trim()) {
+            missing.push(required[i][1]);
+            if (!firstBad) { firstBad = el; }
+        }
+    }
+
+    var emailEl = form.elements['email'];
+    if (emailEl && emailEl.value.trim() && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailEl.value.trim())) {
+        missing.push('a valid Email Address');
+        if (!firstBad) { firstBad = emailEl; }
+    }
+
+    if (missing.length) {
+        showMessage('Please fill in: ' + missing.join(', ') + '.', false);
+        if (firstBad && firstBad.focus) { firstBad.focus(); }
+        return;
+    }
+
     var formData = new FormData(form);
 
     var csrfToken = document.querySelector('meta[name="csrf-token"]')
@@ -3865,11 +3921,7 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
     })
     .then(function(data) {
         if (data.success) {
-            messagesDiv.textContent = data.message;
-            messagesDiv.style.background = 'rgba(37, 211, 102, 0.15)';
-            messagesDiv.style.color = '#25D366';
-            messagesDiv.style.borderLeft = '4px solid #25D366';
-            messagesDiv.style.display = 'block';
+            showMessage(data.message, true);
             form.reset();
         } else {
             var errorMsg = data.message || 'Something went wrong. Please try again.';
@@ -3880,27 +3932,15 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
                 }
                 errorMsg = allErrors.join(', ');
             }
-            messagesDiv.textContent = errorMsg;
-            messagesDiv.style.background = 'rgba(229, 9, 20, 0.15)';
-            messagesDiv.style.color = '#e50914';
-            messagesDiv.style.borderLeft = '4px solid #e50914';
-            messagesDiv.style.display = 'block';
+            showMessage(errorMsg, false);
         }
     })
     .catch(function(error) {
         if (error.message === 'CSRF_TOKEN_MISMATCH') {
-            messagesDiv.textContent = 'Security token expired. Refreshing page...';
-            messagesDiv.style.background = 'rgba(229, 9, 20, 0.15)';
-            messagesDiv.style.color = '#e50914';
-            messagesDiv.style.borderLeft = '4px solid #e50914';
-            messagesDiv.style.display = 'block';
+            showMessage('Security token expired. Refreshing page...', false);
             setTimeout(function() { window.location.reload(); }, 3000);
         } else {
-            messagesDiv.textContent = 'Network error. Please try again.';
-            messagesDiv.style.background = 'rgba(229, 9, 20, 0.15)';
-            messagesDiv.style.color = '#e50914';
-            messagesDiv.style.borderLeft = '4px solid #e50914';
-            messagesDiv.style.display = 'block';
+            showMessage('Network error. Please try again.', false);
         }
     })
     .finally(function() {
