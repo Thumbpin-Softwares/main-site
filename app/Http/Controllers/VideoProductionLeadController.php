@@ -61,6 +61,8 @@ class VideoProductionLeadController extends Controller
                 'message' => 'Thank you! Your brief has been received. We\'ll get back to you within 24 hours.',
             ]);
         } catch (\Exception $e) {
+            \Log::error('Failed to store video production lead: ' . $e->getMessage());
+
             return response()->json([
                 'success' => false,
                 'message' => 'Something went wrong. Please try again later.',

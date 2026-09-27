@@ -134,6 +134,11 @@ Route::post('/api/voice-parse', [\App\Http\Controllers\VoiceParseController::cla
 
 Route::group(['prefix' => 'admin'], function () {
     Voyager::routes();
+
+    // Overrides Voyager's asset route (same URI and name; the later registration
+    // wins) so fonts and images are served without PHP's fileinfo extension.
+    Route::get('voyager-assets', [\App\Http\Controllers\VoyagerAssetsController::class, 'show'])
+        ->name('voyager.voyager_assets');
 });
 
 

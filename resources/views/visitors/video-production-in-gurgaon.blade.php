@@ -3524,10 +3524,13 @@ window.addEventListener("scroll", reveal);
 reveal();
 
 // === LENIS SMOOTH SCROLL INITIALIZATION ===
-// === LENIS SMOOTH SCROLL INITIALIZATION ===
-// Initializing Lenis only for larger screens
+// Initializing Lenis only for larger screens. The Lenis script is loaded with
+// `defer`, so it only exists once DOMContentLoaded fires -- calling it inline
+// threw a ReferenceError that killed the rest of this script, including the
+// lead form's submit handler.
 let lenis;
-if (window.innerWidth >= 768) {
+document.addEventListener('DOMContentLoaded', function() {
+if (window.innerWidth >= 768 && typeof Lenis !== 'undefined') {
     lenis = new Lenis({
         duration: 1.0,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -3574,6 +3577,7 @@ if (lenis) {
         reveal();
     });
 }
+});
 
 // Explicitly stop scrolling on interactive triggers
 function stopScroll() { if (lenis) lenis.stop(); }
