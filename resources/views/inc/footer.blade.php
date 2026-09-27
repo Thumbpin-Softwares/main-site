@@ -82,7 +82,7 @@
                                 <i class="fas fa-map-marker-alt"></i>
                             </span>
                             <span class="max-w-[260px] pt-[6px]">
-                                Spaze Itech Park, Tower B1, 6th Floor, Office 657,<br>
+                                Spaze Itech Park, Tower B1, 6th Floor, Office 657,
                                 Sector 49, Gurugram &ndash; 122018
                             </span>
                         </li>
